@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://icinga.org/icinga/config/global/menu/1.0">
+    <ae:configuration>
+     
+
+        <menu id="menu_admin">
+            <credential>lconf.user;appkit.admin</credential>
+            
+
+            <icon>icinga-icon-wrench</icon>
+            <caption>Admin</caption>
+            <items>
+                <item id="menu_admin_users">
+                    <credential>appkit.admin.users</credential>
+                    <icon>icinga-icon-user</icon>
+                    <caption>Users</caption>
+                    <route target="new">
+                        modules.appkit.admin.users
+                    </route>
+                </item>
+                <item id="menu_admin_groups">
+                    <credential>appkit.admin.groups</credential>
+                    <icon>icinga-icon-group</icon>
+                    <caption>Groups</caption>
+                    <route target="new">
+                        modules.appkit.admin.groups
+                    </route>
+                </item>
+             
+            </items>
+        </menu>
+    </ae:configuration>
+</ae:configurations>

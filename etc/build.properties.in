@@ -1,0 +1,13 @@
+# default properties
+appkit.etcdir=etc/
+src = ./
+# paths
+
+db.agaviXML = ${src}/app/config/databases.xml
+db.doctrine.core = ${src}/lib/doctrine/lib/Doctrine.php
+db.doctrine.models = ${src}/app/modules/AppKit/lib/database/models/
+
+# php executable
+php.bin=@PHP@
+
+# [EOF]

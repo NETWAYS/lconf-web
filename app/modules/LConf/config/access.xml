@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ae:configurations xmlns="http://icinga.org/api/config/parts/access/module/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0">
+    <ae:configuration>
+        <instances></instances>
+        <defaults>
+            <access>
+                <execute>
+                    <files>
+                        <resource name="lconf_export">/usr/local/LConf/lconf_deploy.sh</resource>
+                    </files>
+                </execute>
+            </access>
+        </defaults>
+        <hosts></hosts>
+    </ae:configuration>     
+</ae:configurations>

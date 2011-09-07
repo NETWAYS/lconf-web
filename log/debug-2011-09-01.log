@@ -1,0 +1,1175 @@
+[Thu Sep  1 13:20:05 2011] [warn] Access with sufficient privileges to Interface/ViewMainEditor (LConf) by root (Root, Enoch)
+[Thu Sep  1 13:32:12 2011] [warn] Access with sufficient privileges to Interface/ViewMainEditor (LConf) by root (Root, Enoch)
+[Thu Sep  1 14:53:52 2011] [warn] Access with sufficient privileges to Interface/ViewMainEditor (LConf) by root (Root, Enoch)
+[Thu Sep  1 14:54:02 2011] [info] User root (Root, Enoch) logged out!
+[Thu Sep  1 14:54:02 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 14:54:02 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 14:54:02 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 14:54:02 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:12:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:12:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:12:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:12:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:12:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:12:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:12:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:12:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:13:00 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:13:00 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:13:00 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:13:00 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:13:00 2011] [warn] Access with sufficient privileges to Interface/ViewMainEditor (LConf) by root (Root, Enoch)
+[Thu Sep  1 15:28:15 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:28:15 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:28:15 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:28:15 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:28:19 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:28:19 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:28:19 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:28:22 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:28:22 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:28:22 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:28:49 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:28:49 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:28:49 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:32:29 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:32:29 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:32:29 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:32:47 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:32:47 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:32:47 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:33:07 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:33:07 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:33:07 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:33:08 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:33:08 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:33:08 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:33:08 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:33:08 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:33:08 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:33:08 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:33:08 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:34:25 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:34:25 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:34:25 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:34:41 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:34:41 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:34:41 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:35:22 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:35:22 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:35:22 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:36:06 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:36:06 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:36:06 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:37:21 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:37:21 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:37:21 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:37:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:37:31 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:37:31 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:37:31 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:37:32 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:37:32 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:37:32 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:37:32 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:37:32 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:37:51 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:37:51 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:37:51 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:37:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:38:44 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:38:44 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:38:44 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:38:44 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:39:10 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:39:10 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:39:10 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:39:11 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:39:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:39:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:39:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:39:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:41:28 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:41:28 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:41:28 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:41:28 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:41:53 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:41:53 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:41:53 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:41:53 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 15:42:10 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:42:10 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 15:42:10 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 15:42:11 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 15:42:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 15:42:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 15:42:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 15:42:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:12:44 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:12:44 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:12:44 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:12:44 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:13:00 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:13:00 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:13:00 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:13:00 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:14:00 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:14:00 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:14:00 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:14:10 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:16:02 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:16:02 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:16:02 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:16:03 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:16:03 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:16:03 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:16:03 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:16:03 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:16:12 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:16:12 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:16:12 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:16:12 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:16:58 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:16:58 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:16:58 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:16:58 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:24:02 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:24:03 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:24:03 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:24:03 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:24:03 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:37:25 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:37:25 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:37:25 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:37:25 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:37:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:37:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:37:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:37:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:37:48 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:37:48 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:37:48 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:37:48 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:37:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:37:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:37:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:37:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:39:39 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:39:39 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:39:39 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:39:40 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:39:40 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:39:40 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:39:40 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:39:40 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Thu Sep  1 16:40:25 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:25 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Thu Sep  1 16:40:25 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Thu Sep  1 16:40:26 2011] [info] User root (Root, Enoch) logged in!
+[Thu Sep  1 16:40:30 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:30 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:30 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:30 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:34 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:34 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:34 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:34 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:39 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:39 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:39 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:39 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:44 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:54 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:54 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:54 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:54 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:40:59 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:40:59 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:40:59 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:40:59 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:04 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:04 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:04 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:04 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:09 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:09 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:09 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:09 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:14 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:14 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:14 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:14 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:19 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:19 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:19 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:19 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:24 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:24 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:24 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:24 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:29 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:29 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:29 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:29 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:34 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:34 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:34 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:34 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:39 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:39 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:39 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:39 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:44 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:54 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:54 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:54 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:54 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:41:59 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:41:59 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:41:59 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:41:59 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:04 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:04 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:04 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:04 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:09 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:09 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:09 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:09 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:14 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:14 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:14 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:14 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:19 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:19 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:19 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:19 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:24 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:24 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:24 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:24 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:29 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:29 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:29 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:29 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:34 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:34 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:34 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:34 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:39 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:39 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:39 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:39 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:44 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:54 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:54 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:54 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:54 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:42:59 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:42:59 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:42:59 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:42:59 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:04 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:04 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:04 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:04 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:09 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:09 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:09 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:09 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:14 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:14 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:14 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:14 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:19 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:19 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:19 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:19 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:24 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:24 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:24 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:24 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:29 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:29 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:29 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:29 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:34 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:34 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:34 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:34 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:39 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:39 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:39 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:39 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:44 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:44 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:44 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:44 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:43:55 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:43:55 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:43:55 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:43:55 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:00 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:05 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:05 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:05 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:05 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:10 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:10 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:10 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:10 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:15 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:15 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:15 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:15 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:20 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:20 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:20 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:20 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:25 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:30 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:30 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:30 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:30 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:35 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:35 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:35 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:35 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:40 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:40 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:40 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:40 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:45 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:45 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:45 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:45 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:50 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:50 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:50 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:50 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:44:55 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:44:55 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:44:55 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:44:55 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:00 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:05 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:05 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:05 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:05 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:10 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:10 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:10 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:10 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:15 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:15 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:15 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:15 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:20 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:20 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:20 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:20 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:25 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:30 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:30 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:30 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:30 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:35 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:35 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:35 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:35 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:40 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:40 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:40 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:40 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:45 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:45 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:45 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:45 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:50 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:50 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:50 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:50 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:45:55 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:45:55 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:45:55 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:45:55 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:00 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:00 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:00 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:00 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:05 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:05 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:05 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:05 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:46:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:46:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:46:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:46:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:47:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:47:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:47:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:47:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:48:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:48:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:48:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:48:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:49:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:49:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:49:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:49:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:50:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:50:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:50:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:50:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:51:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:51:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:51:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:51:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:52:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:52:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:52:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:52:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:06 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:06 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:06 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:06 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:11 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:21 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:21 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:21 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:21 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:36 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:41 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:41 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:41 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:41 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 16:53:56 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 16:53:56 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 16:53:56 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 16:53:56 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:12 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:12 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:12 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:12 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:22 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:22 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:22 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:22 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:37 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:37 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:37 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:37 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:42 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:42 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:42 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:42 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:47 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:52 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:52 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:52 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:52 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:14:57 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:14:57 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:14:57 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:14:57 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:02 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:02 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:02 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:02 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:07 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:07 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:07 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:07 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:12 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:12 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:12 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:12 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:17 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:17 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:17 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:17 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:22 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:22 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:22 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:22 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:27 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:27 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:27 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:27 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:32 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:32 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:32 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:32 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:37 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:37 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:37 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:37 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:42 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:42 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:42 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:42 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:47 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:52 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:52 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:52 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:52 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:15:57 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:15:57 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:15:57 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:15:57 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:16:03 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:16:03 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:16:03 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:16:03 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:16:07 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:16:07 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:16:07 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:16:07 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:16:13 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:16:13 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:16:13 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:16:13 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:16:17 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:16:17 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:16:17 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:16:17 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:16:23 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:16:23 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:16:23 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:16:23 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Thu Sep  1 18:16:27 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Thu Sep  1 18:16:27 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Thu Sep  1 18:16:27 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Thu Sep  1 18:16:27 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)

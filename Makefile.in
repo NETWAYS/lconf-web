@@ -1,0 +1,153 @@
+SHELL=/bin/sh
+
+PACKAGE_TARNAME=@PACKAGE_TARNAME@
+PACKAGE_NAME=@PACKAGE_NAME@
+PACKAGE_VERSION=@PACKAGE_VERSION@
+
+VERSION_MAJOR=@VERSION_MAJOR@
+VERSION_MINOR=@VERSION_MINOR@
+VERSION_PATCH=@VERSION_PATCH@
+VERSION_EXTEN=@VERSION_EXTEN@
+
+RELEASE_DATE=@RELEASE_DATE@
+TAR_DIR_NAME=$(shell basename `pwd`)
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+LOGDIR=@web_log_folder@
+CFGDIR=@sysconfdir@
+BINDIR=@bindir@
+CGIDIR=@sbindir@
+HTMLDIR=@datarootdir@
+
+INSTALL=@INSTALL@
+INSTALL_OPTS=@INSTALL_OPTS@
+INSTALL_OPTS_WEB=@INSTALL_OPTS_WEB@
+INSTALL_OPTS_CACHE=@INSTALL_OPTS_CACHE@
+
+BIN_USER=@bin_user@
+BIN_GROUP=@bin_group@
+WEB_USER=@web_user@
+WEB_GROUP=@web_group@
+WEB_PATH=@web_path@
+WEB_APACHE_PATH=@web_apache_path@
+
+SED=@SED@
+PHP=@PHP@
+PHING=@PHING@
+PHING_CALL=bin/phing -f etc/build.xml
+PHPUNIT=@PHPUNIT@
+PHPCS=@PHPCS@
+
+API_DIR=@icinga_api@
+
+LOC_PO=app/data/i18n/po
+LOC_MO=app/data/i18n/mo
+LOC_TEMPLATE=$(LOC_PO)/templates/default.pot
+
+SRC_DIR=@srcdir@
+SRC_LIB=@srcdir@/lib
+SRC_PUB=@srcdir@/pub
+SRC_ETC=@srcdir@/etc
+SRC_BIN=@srcdir@/bin
+SRC_DOC=@srcdir@/doc
+SRC_APP=@srcdir@/app
+SRC_SITE=@srcdir@/etc/sitecfg
+
+none:
+#	@printf "\t%-22s - %s\n" "" ""
+	@printf "Please supply a command line argument (i.e. 'make install').\n\n"
+	@printf "Generic targets: install, clean\n\n"
+
+	@printf "\nWeb targets:\n"
+	@printf "\t%-22s - %s\n" "install-apache-config" "Install the apache config to configured path"
+
+	
+logclean:
+	rm -rf $(LOGDIR)/*.log
+
+locclean:
+	rm -f \
+		$(LOC_MO)/*.mo \
+		$(LOC_MO)/*.json
+
+cacheclean:
+	$(PHING_CALL) agavi-clear-cache	
+
+clean: distclean
+
+distclean:
+	rm -rf \
+	autom4te.cache/ \
+	.build/ \
+	
+	rm -f \
+        Makefile \
+        pub/Makefile \
+        etc/Makefile \
+        doc/Makefile \
+        app/Makefile \
+ 	app/config/databases.xml \
+        app/config/icinga.xml \
+        app/config/logging.xml \
+        app/config/settings.xml \
+        app/config/translation.xml \
+    	app/modules/Api/config/access.xml \
+        app/modules/AppKit/config/module.xml \
+        app/modules/AppKit/config/auth.xml \
+        etc/build.properties \
+        etc/apache2/lconf-web.conf \
+        bin/clearcache.sh \
+        pub/.htaccess \
+
+	
+remove-temp-files:
+	bin/rmtmp-files.sh
+install-javascript:
+	$(INSTALL) -m 755 $(INSTALL_OPTS) -d $(DESTDIR)$(prefix)/pub/js
+	ln -sf $(DESTDIR)$(prefix)/lib/ext3 $(DESTDIR)$(prefix)/pub/js/ext3
+
+install-apache-config:
+	${INSTALL} -b -m 664 $(INSTALL_OPTS) etc/apache2/lconf-web.conf $(DESTDIR)$(WEB_APACHE_PATH)/lconf-web.conf
+	@printf "\nInstalled configuration in '%s'.\n" "$(WEB_APACHE_PATH)"
+	@printf "Please make sure that the directory is included or \n"
+	@printf "include %s/lconf-web.conf manually.\n" "$(WEB_APACHE_PATH)"
+	@printf "\nPlease restart your apache in order to complete this step.\n\n"
+
+install-lib:
+	cd $(SRC_LIB) && $(MAKE)
+
+install-pub:
+	cd $(SRC_PUB) && $(MAKE)
+
+install-etc:
+	cd $(SRC_ETC) && $(MAKE)
+
+install-bin:
+	cd $(SRC_BIN) && $(MAKE)
+
+install-doc:
+	cd $(SRC_DOC) && $(MAKE)
+
+install-app:
+	cd $(SRC_APP) && $(MAKE)
+
+install-log:
+	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(LOGDIR)
+
+install-all: install-lib install-pub install-bin install-app install-log
+
+install: install-all install-done
+
+install-done:
+	@printf "\n\n"
+	@printf "Installation if lconf-web succeeded.\n"
+	@printf "\n"
+	@printf	"Please check the new Apache2 configuration (etc/apache2/lconf-web.conf).\n"
+	@printf "\n"
+	@printf "You can install it simply by invoking 'make install-apache-config'.\n"
+	@printf "\n"
+	@printf "If you don't want this you can restore its old behavior by\n"
+	@printf "typing 'make install-javascript'. This will install the old symlinks\n"
+	@printf "\n"
+	@printf "Have fun!\n\n"

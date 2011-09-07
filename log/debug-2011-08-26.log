@@ -1,0 +1,754 @@
+[Fri Aug 26 14:07:46 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:07:46 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:07:46 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:07:46 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:07:51 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:07:51 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 14:07:51 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Fri Aug 26 14:07:52 2011] [info] User root (Root, Enoch) logged in!
+[Fri Aug 26 14:08:10 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:08:10 2011] [debug] SendCommandAction: Successfull authentication (hmac=07ffc8775b6142cc83d2e861fd29f7afb13bb384)
+[Fri Aug 26 14:08:11 2011] [info] Sending command failed SSH auth for user jmosshammer failed (using authtype password) :Array
+(
+)
+
+[Fri Aug 26 14:08:53 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:08:53 2011] [debug] SendCommandAction: Successfull authentication (hmac=07ffc8775b6142cc83d2e861fd29f7afb13bb384)
+[Fri Aug 26 14:08:54 2011] [info] Sending command failed SSH auth for user jmosshammer failed (using authtype password) :Array
+(
+)
+
+[Fri Aug 26 14:10:25 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:10:25 2011] [debug] SendCommandAction: Successfull authentication (hmac=75b7fea66a7a7248c96c15ecf100957b04797d98)
+[Fri Aug 26 14:11:54 2011] [info] Sending command failed SSH auth for user jmosshammer failed (using authtype password) :Array
+(
+)
+
+[Fri Aug 26 14:12:41 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:12:41 2011] [debug] SendCommandAction: Successfull authentication (hmac=25c96adc25d0ab608fd19f156eb4fce8dc94dc64)
+[Fri Aug 26 14:12:46 2011] [info] Sending command failed SSH auth for user jmosshammer failed (using authtype password) :Array
+(
+)
+
+[Fri Aug 26 14:13:52 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:13:52 2011] [debug] SendCommandAction: Successfull authentication (hmac=25c96adc25d0ab608fd19f156eb4fce8dc94dc64)
+[Fri Aug 26 14:14:00 2011] [info] Sending command failed SSH auth for user jmosshammer failed (using authtype password) :Array
+(
+)
+
+[Fri Aug 26 14:14:17 2011] [debug] Deleting sessions older that 2011-08-26T13:50:17+02:00
+[Fri Aug 26 14:14:17 2011] [info] Session garbage collector, deleted 7 old sessions.
+[Fri Aug 26 14:16:30 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:16:30 2011] [debug] SendCommandAction: Successfull authentication (hmac=9a3d0420e539f4f3d44ddbefa3a7e24cf7462c0a)
+[Fri Aug 26 14:17:30 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:17:30 2011] [debug] SendCommandAction: Successfull authentication (hmac=9a3d0420e539f4f3d44ddbefa3a7e24cf7462c0a)
+[Fri Aug 26 14:18:03 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:18:03 2011] [debug] SendCommandAction: Successfull authentication (hmac=9a3d0420e539f4f3d44ddbefa3a7e24cf7462c0a)
+[Fri Aug 26 14:31:53 2011] [info] User root (Root, Enoch) logged out!
+[Fri Aug 26 14:31:54 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:31:54 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:31:54 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:31:54 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:32:02 2011] [debug] Auth.Dispatch: Starting authenticate (username=test)
+[Fri Aug 26 14:32:02 2011] [debug] Auth.Dispatch: User test not found, try to import
+[Fri Aug 26 14:32:02 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:32:02 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:32:02 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:32:02 2011] [debug] Auth.Dispatch: User cound not authorized (username=test)
+[Fri Aug 26 14:32:02 2011] [error] Userlogin by test failed!
+[Fri Aug 26 14:32:05 2011] [debug] Auth.Dispatch: Starting authenticate (username=test)
+[Fri Aug 26 14:32:05 2011] [debug] Auth.Dispatch: User test not found, try to import
+[Fri Aug 26 14:32:05 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:32:05 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:32:05 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:32:05 2011] [debug] Auth.Dispatch: User cound not authorized (username=test)
+[Fri Aug 26 14:32:05 2011] [error] Userlogin by test failed!
+[Fri Aug 26 14:32:09 2011] [debug] Auth.Dispatch: Starting authenticate (username=test)
+[Fri Aug 26 14:32:09 2011] [debug] Auth.Dispatch: User test not found, try to import
+[Fri Aug 26 14:32:09 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:32:09 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:32:09 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:32:09 2011] [debug] Auth.Dispatch: User cound not authorized (username=test)
+[Fri Aug 26 14:32:09 2011] [error] Userlogin by test failed!
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:32:15 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:32:15 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:32:15 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:32:16 2011] [info] User testro (testro, testro) logged in!
+[Fri Aug 26 14:32:16 2011] [warn] Access with sufficient privileges to System/CronkPortal (Cronks) by testro (testro, testro)
+[Fri Aug 26 14:32:24 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 14:32:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:32:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:32:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:32:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:32:33 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:32:33 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 14:32:33 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Fri Aug 26 14:32:33 2011] [info] User root (Root, Enoch) logged in!
+[Fri Aug 26 14:33:21 2011] [info] User root (Root, Enoch) logged out!
+[Fri Aug 26 14:33:22 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:33:22 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:33:22 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:33:22 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Dispatch: Starting authenticate (username=testUser)
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Dispatch: Userdata found in db (uid=2)
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testUser)
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Provider.Database: HASH(186944fe4fbcd8f93994680b6e3d94d4c3056b142cdd98da507dfa456390e06e)
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:33:34 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testUser)
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:33:34 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testUser)
+[Fri Aug 26 14:33:34 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testUser (not_authoritative=internal)
+[Fri Aug 26 14:33:34 2011] [info] User testUser (test, testUser) logged in!
+[Fri Aug 26 14:36:25 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 14:36:25 2011] [debug] SendCommandAction: Successfull authentication (hmac=30339b30776baf1409126f828a0ebf855b02cc70)
+[Fri Aug 26 14:36:37 2011] [info] User testUser (test, testUser) logged out!
+[Fri Aug 26 14:36:38 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:36:38 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:36:38 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:36:38 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Provider.Database: HASH(6f937e96ff2a31b082ca4641d64583a6e442709572b5c021f6e0696962ea3493)
+[Fri Aug 26 14:36:47 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:36:47 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:36:47 2011] [debug] Auth.Dispatch: User cound not authorized (username=testRo)
+[Fri Aug 26 14:36:47 2011] [error] Userlogin by testRo failed!
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Provider.Database: HASH(9861cf9543a9c2fa69256dbd4b05cc5bd96f9dba785162b5a93b2b50b731c4f7)
+[Fri Aug 26 14:36:50 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:36:50 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:36:50 2011] [debug] Auth.Dispatch: User cound not authorized (username=testRo)
+[Fri Aug 26 14:36:50 2011] [error] Userlogin by testRo failed!
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:36:54 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:36:54 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:36:54 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:36:54 2011] [info] User testRo (testro, testro) logged in!
+[Fri Aug 26 14:42:25 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 14:42:26 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:42:26 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:42:26 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:42:26 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:42:31 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:42:31 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:42:31 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:42:31 2011] [info] User testro (testro, testro) logged in!
+[Fri Aug 26 14:44:01 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 14:44:01 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:44:01 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:44:01 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:44:01 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:44:08 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:44:08 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:44:08 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:44:08 2011] [info] User testro (testro, testro) logged in!
+[Fri Aug 26 14:44:50 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 14:44:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:44:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:44:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:44:51 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:44:53 2011] [debug] Deleting sessions older that 2011-08-26T14:20:53+02:00
+[Fri Aug 26 14:44:53 2011] [info] Session garbage collector, deleted 31 old sessions.
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:45:49 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:45:49 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:45:49 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:47:46 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 14:47:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:47:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:47:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:47:47 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:47:55 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:47:55 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:47:55 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:48:15 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:48:15 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:48:15 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:48:15 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:49:07 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:49:07 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:49:07 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:50:27 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:50:27 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:50:27 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:50:27 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:50:34 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:50:34 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:50:34 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:51:09 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:51:09 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:51:09 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:51:09 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:51:18 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:51:19 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:51:19 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:51:19 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:51:57 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:51:57 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:51:57 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:51:57 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:52:11 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:52:11 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:52:11 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:57:02 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:57:02 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:57:02 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:57:02 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:57:11 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:57:11 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:57:11 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:57:11 2011] [fatal] Uncaught AppKitPHPError: PHP Error ob_end_clean(): failed to delete buffer. No buffer to delete (/usr/local/icinga-web/lib/agavi/src/exception/AgaviException.class.php:293) (/usr/local/icinga-web/app/modules/AppKit/lib/logging/AppKitExceptionHandler.class.php:37)
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:57:51 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:57:51 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:57:51 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:57:52 2011] [fatal] Uncaught AppKitPHPError: PHP Error ob_end_clean(): failed to delete buffer. No buffer to delete (/usr/local/icinga-web/lib/agavi/src/exception/AgaviException.class.php:293) (/usr/local/icinga-web/app/modules/AppKit/lib/logging/AppKitExceptionHandler.class.php:37)
+[Fri Aug 26 14:58:23 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:58:24 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:58:24 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:58:24 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:58:24 2011] [fatal] Uncaught AppKitPHPError: PHP Error array_merge(): Argument #1 is not an array (/usr/local/icinga-web/app/modules/AppKit/lib/database/models/NsmUser.php:337) (/usr/local/icinga-web/app/modules/AppKit/lib/logging/AppKitExceptionHandler.class.php:37)
+[Fri Aug 26 14:59:17 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:59:17 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:59:17 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:59:18 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:59:18 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:59:18 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:59:18 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:59:18 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:59:18 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:59:18 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:59:18 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 14:59:18 2011] [fatal] Uncaught AppKitPHPError: PHP Error array_merge(): Argument #2 is not an array (/usr/local/icinga-web/app/modules/AppKit/lib/database/models/NsmUser.php:339) (/usr/local/icinga-web/app/modules/AppKit/lib/logging/AppKitExceptionHandler.class.php:37)
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 14:59:54 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 14:59:54 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 14:59:54 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:31:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:31:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:31:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:31:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:31:37 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:31:37 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 15:31:37 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Fri Aug 26 15:31:37 2011] [info] User root (Root, Enoch) logged in!
+[Fri Aug 26 15:32:07 2011] [info] User root (Root, Enoch) logged out!
+[Fri Aug 26 15:32:08 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:32:08 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:32:08 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:32:08 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Provider.Database: HASH(2b6a5e9149bc5df19f65fa00e5057dd395836616fe4ed6050613559c10c173d3)
+[Fri Aug 26 15:32:49 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:32:49 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:32:49 2011] [debug] Auth.Dispatch: User cound not authorized (username=testRo)
+[Fri Aug 26 15:32:49 2011] [error] Userlogin by testRo failed!
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:32:53 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:32:53 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:32:53 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:32:53 2011] [info] User testRo (testro, testro) logged in!
+[Fri Aug 26 15:33:15 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 15:33:16 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:33:16 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:33:16 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:33:16 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:33:30 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:33:30 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:33:30 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:33:30 2011] [info] User testro (testro, testro) logged in!
+[Fri Aug 26 15:36:07 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 15:36:07 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:36:07 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:36:07 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:36:07 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:36:13 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:36:13 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:13 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:36:17 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:36:17 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:17 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Provider.Database: HASH(fd502bffc868e5461ff35f63a1d0264937623d5022a585736243480ca73eb5c6)
+[Fri Aug 26 15:36:47 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:47 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:36:47 2011] [debug] Auth.Dispatch: User cound not authorized (username=testro)
+[Fri Aug 26 15:36:47 2011] [error] Userlogin by testro failed!
+[Fri Aug 26 15:36:50 2011] [debug] Auth.Dispatch: Starting authenticate (username=testrot)
+[Fri Aug 26 15:36:50 2011] [debug] Auth.Dispatch: User testrot not found, try to import
+[Fri Aug 26 15:36:51 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:36:51 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:36:51 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:36:51 2011] [debug] Auth.Dispatch: User cound not authorized (username=testrot)
+[Fri Aug 26 15:36:51 2011] [error] Userlogin by testrot failed!
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:36:59 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:36:59 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:36:59 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:36:59 2011] [info] User testro (testro, testro) logged in!
+[Fri Aug 26 15:37:39 2011] [info] SendCommandAction: Prepare to send command (command=ADD_HOST_COMMENT)
+[Fri Aug 26 15:37:39 2011] [debug] SendCommandAction: Successfull authentication (hmac=e4c4db152bf1210cc75602a1901f808222771530)
+[Fri Aug 26 15:37:42 2011] [fatal] Uncaught AppKitPHPError: PHP Error fsockopen(): unable to connect to 192.168.56.102:22 (No route to host) (/usr/local/icinga-web/lib/phpseclib/Net/SSH2.php:689) (/usr/local/icinga-web/app/modules/AppKit/lib/logging/AppKitExceptionHandler.class.php:37)
+[Fri Aug 26 15:37:42 2011] [fatal] Uncaught AppKitPHPError: PHP Error Cannot connect to 192.168.56.102. Error 113. No route to host (/usr/local/icinga-web/lib/phpseclib/Net/SSH2.php:691) (/usr/local/icinga-web/app/modules/AppKit/lib/logging/AppKitExceptionHandler.class.php:37)
+[Fri Aug 26 15:45:48 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 15:45:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:45:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:45:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:45:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:45:57 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:45:57 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:45:57 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:56:03 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:56:03 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:56:03 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:58:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:58:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:58:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:58:25 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:58:36 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:58:36 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:58:36 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:59:31 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:59:31 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:59:31 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:59:31 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Dispatch: Starting authenticate (username=testro)
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 15:59:37 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 15:59:37 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 15:59:37 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 15:59:37 2011] [info] User testro (testro, testro) logged in!
+[Fri Aug 26 16:01:05 2011] [error] Fetch failed with message Couldn't find class h
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:01:06 2011] [error] Fetch failed with message Couldn't find class h
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:01:06 2011] [error] Fetch failed with message Couldn't find class h
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:01:07 2011] [error] Fetch failed with message Couldn't find class h
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:07:58 2011] [error] Fetch failed with message Unknown relation alias host
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:07:58 2011] [error] Fetch failed with message Unknown relation alias host
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:07:58 2011] [error] Fetch failed with message Unknown relation alias host
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:07:58 2011] [error] Fetch failed with message Unknown relation alias host
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaServicegroups
+               	 - Searchtype: 
+[Fri Aug 26 16:14:57 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 16:14:58 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:14:58 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:14:58 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:14:58 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 16:16:47 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:16:47 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 16:16:47 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Fri Aug 26 16:16:47 2011] [info] User root (Root, Enoch) logged in!
+[Fri Aug 26 16:22:45 2011] [debug] Deleting sessions older that 2011-08-26T15:58:45+02:00
+[Fri Aug 26 16:22:45 2011] [info] Session garbage collector, deleted 100 old sessions.
+[Fri Aug 26 16:22:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:22:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:22:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:22:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:22:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:22:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:22:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:22:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:23:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:24:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:24:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:24:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:24:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:24:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:24:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:24:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:24:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:25:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:26:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:26:55 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:26:55 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:26:55 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:26:55 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:27:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:27:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:27:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:27:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:27:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:27:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:27:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:27:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:28:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:29:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:29:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:29:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:29:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:29:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:29:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:29:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:29:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:30:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:30:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:30:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:30:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:30:49 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:30:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:30:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:30:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:31:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:31:48 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:31:48 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:31:48 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:31:48 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:31:49 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:31:49 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:31:49 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:31:55 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:31:55 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:31:55 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:31:55 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:32:25 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:32:25 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:32:25 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:32:25 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Provider.Database: HASH(2b6a5e9149bc5df19f65fa00e5057dd395836616fe4ed6050613559c10c173d3)
+[Fri Aug 26 16:32:42 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 16:32:42 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 16:32:42 2011] [debug] Auth.Dispatch: User cound not authorized (username=testRo)
+[Fri Aug 26 16:32:42 2011] [error] Userlogin by testRo failed!
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Dispatch: Starting authenticate (username=testRo)
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Dispatch: Userdata found in db (uid=3)
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=testro)
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Provider.Database: HASH(b471713adc4de8dd27d3645ef42071e72e95a07cd58043ef8bd5e21c126f47e0)
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 16:32:45 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:32:45 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=testro)
+[Fri Aug 26 16:32:45 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for testro (not_authoritative=internal)
+[Fri Aug 26 16:32:46 2011] [info] User testRo (testro, testro) logged in!
+[Fri Aug 26 16:32:57 2011] [error] Fetch failed with message Unknown relation alias services
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaObjects
+               	 - Searchtype: 
+[Fri Aug 26 16:33:39 2011] [error] Fetch failed with message Unknown relation alias services
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaObjects
+               	 - Searchtype: 
+[Fri Aug 26 16:33:47 2011] [debug] Deleting sessions older that 2011-08-26T16:09:47+02:00
+[Fri Aug 26 16:33:47 2011] [info] Session garbage collector, deleted 11 old sessions.
+[Fri Aug 26 16:34:33 2011] [error] Fetch failed with message Unknown relation alias services
+ Query: (No query created) 
+TargetStore info (IcingaApiModel): 
+               	 - Store target: IcingaObjects
+               	 - Searchtype: 
+[Fri Aug 26 16:42:37 2011] [info] User testro (testro, testro) logged out!
+[Fri Aug 26 16:42:38 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 16:42:38 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 16:42:38 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 16:42:38 2011] [debug] Auth.Provider.HTTPBasicAuthentification: Got data (auth_name=, auth_type=)
+[Fri Aug 26 17:08:24 2011] [debug] Deleting sessions older that 2011-08-26T16:44:24+02:00
+[Fri Aug 26 17:08:24 2011] [info] Session garbage collector, deleted 36 old sessions.
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Dispatch: Starting authenticate (username=root)
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Dispatch: Userdata found in db (uid=1)
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Provider: Object (name=internal) initialized
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Dispatch: Authoritative provider found (provider=internal, authid=root)
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Provider.Database: HASH(42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1)
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Dispatch: Successfull authentication (provder=internal)
+[Fri Aug 26 17:28:15 2011] [info] Auth.Dispatch: Delegate authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Provider: Object (name=auth_key) initialized
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Provider: Object (name=http-basic-authentication) initialized
+[Fri Aug 26 17:28:15 2011] [debug] Auth.Dispatch: Delegate authentication, try http-basic-authentication (not_authoritative=internal,user=root)
+[Fri Aug 26 17:28:15 2011] [error] Auth.Dispatch: Delegate authentication, no providers found for root (not_authoritative=internal)
+[Fri Aug 26 17:28:15 2011] [info] User root (Root, Enoch) logged in!

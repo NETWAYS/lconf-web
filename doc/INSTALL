@@ -1,0 +1,21 @@
+INSTALLATION
+
+Requirements:
+
+- A running web-server
+- PHP >= 5.2
+- php-sqlite3
+- sqlite3
+- php-xml
+- php-xsl
+- php-ldap
+
+Installing the lconf-web standalone package is almost like icinga-web, altough you don't need database credentials, as sqlite will be used for storage:
+
+1.) ./configure (see --help for options)
+
+2.) make install
+
+3.) check your permissions on app/data/lconf.db, www-user needs write permissions
+
+

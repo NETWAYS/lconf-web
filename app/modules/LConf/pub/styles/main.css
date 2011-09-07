@@ -1,0 +1,190 @@
+@CHARSET "UTF-8";
+.ldap-connection {
+    width:150px;
+    margin:5px;
+    padding:5px;
+    height:65px;
+    float:left;
+    border: 1px solid #cacaca;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-align:center;
+    background-color:#efefef;
+    cursor:pointer;
+}
+
+.ldap-connection.plus {
+	padding-top:30px;
+	background-color: #f3f3f3;
+	color: #acacac;
+	height:40px;
+	float:left;
+	font-size:10px;
+}
+
+.lconf-icon-plus {
+	background-image: url(../../../../images/icons/plus.png) !important;
+	background-repeat: no-repeat;
+	float:left;
+}
+
+.ldap-connection.x-view-over {
+    background-color:#dedede;
+}
+.ldap-connection.x-view-select{
+    background-color:#dddddd;
+}
+
+.ldap-connection .thumb {
+    height:35px;
+    width:35px;
+    background-image:url(../images/world.png);
+    background-repeat:no-repeat;
+    margin:auto;
+}
+
+.ldap-filter {
+    margin:2px;
+    width:98%;
+    padding:5px;
+    height:1.5em;
+    float:left;
+    border: 1px solid #cacaca;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-align:left;
+    background-color:#efefef;
+    cursor:pointer;
+}
+
+.ldap-filter .thumb {
+  	height:20px;
+    width:35px;
+    float:left;
+    background-image:url(../../../../images/icons/control-stop.png);
+    background-repeat:no-repeat;
+    margin:auto;
+}
+
+.ldap-filter.x-view-over {
+    background-color:#dedede;
+}
+.ldap-filter.x-view-select{
+    background-color:#dddddd;
+}
+
+.ldap-filter.isActive  .thumb {
+    background-image:url(../../../../images/icons/accept.png);
+}
+
+.lconf-panel-disabled * .ldap-filter .thumb  {
+    background-image:url(../../../../images/icons/stop.png);
+}
+
+
+.middleAlign {
+    vertical-align:middle;
+}
+
+.x-tree-node .noMatch *{
+    color:grey;
+}
+
+.lconf_infobox {
+	margin:10px;
+	width:400px;
+	font-size:10px;
+	padding:5px;
+	height:200px;
+	scroll:auto;
+	overflow:scroll;
+        border:1px solid #ababab;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background:white;
+	cursor:text;
+	color:'red';
+}
+
+.lconf_infobox ul {
+    margin-left:10px;
+    padding-left:5px;  
+    list-style: circle;
+}
+
+.lconf_infobox ul li {
+    border-bottom:1px solid grey;
+    margin-bottom:2px;
+}
+
+.lconfGrid .x-grid3-col {
+    border-bottom:1px solid #ababab;
+    border-right:1px solid #ababab;
+}
+
+.lconfGrid .x-grid3-row.inherited{
+    color:#787878;
+}
+.lconf-about {
+	width:100%;
+	text-align:center;
+	margin:auto
+}
+.lconf-about .logo {
+	background-image: url(../images/LConf_Logo.jpg);
+	height:146px;
+	width:406px;
+	margin:auto;
+	text-align:center;
+	background-repeat: no-repeat;	
+}
+
+.lconf_cronk_sel.unfinished{
+
+	background-image: url(../../../../images/ajax/circle-ball.gif);
+	height:32;
+	width:32;
+	background-repeat: no-repeat;	
+}
+
+.lconf_cronk_sel.available{
+	background-image: url(../../../../images/icons/sitemap.png);
+	height:32;
+	width:32;
+	cursor:pointer;
+	background-repeat: no-repeat;	
+}
+
+.lconf_cronk_sel.notAvailable{
+	background-image: none;
+	height:32;
+	width:32;
+	background-repeat: no-repeat;	
+}
+
+li div.italic * span {
+	color: #acacac;
+}
+
+/**
+* Disable text-selection supression in grid
+**/
+.x-grid3-col-value .dnSelectable  {
+	-moz-user-select:inherit;
+	-khtml-user-select:text;
+}
+
+
+.lconf-logo { background-image: url(../images/tree_small.png) !important; background-repeat: no-repeat;}
+.icinga-icon-arrow-divide { background-image: url(../../../../images/icons/arrow-branch.png) !important; background-repeat: no-repeat; }
+.icinga-icon-server {background-image: url(../../../../images/icons/server.png) !important; background-repeat: no-repeat; }
+.icinga-icon-arrow-turn-left { background-image: url(../../../../images/icons/arrow-curve-090-left.png) !important; background-repeat: no-repeat; }
+.icinga-icon-arrow-right-medium { background-image: url(../../../../images/icons/other/iconRightMedium.gif) !important; background-repeat: no-repeat; }
+.icinga-icon-chart-organisation{ background-image: url(../../../../images/icons/sitemap.png) !important; background-repeat: no-repeat; }
+.icinga-icon-clock-red { background-image: url(../../../../images/icons/alarm-clock.png) !important; background-repeat: no-repeat; }
+.icinga-icon-script { background-image: url(../../../../images/icons/script.png) !important; background-repeat: no-repeat; }
+.icinga-icon-organisation { background-image: url(../../../../images/icons/sitemap.png) !important; background-repeat: no-repeat; }
+.icinga-icon-sitemap { background-image: url(../../../../images/icons/sitemap.png) !important; background-repeat: no-repeat; }
+.icinga-icon-stop { background-image: url(../../../../images/icons/control-stop.png) !important; background-repeat: no-repeat; }
+.icinga-icon-attach { background-image: url(../../../../images/icons/paper-clip.png) !important; background-repeat: no-repeat; }
+.icinga-icon-disk { background-image: url(../../../../images/icons/disk.png) !important; background-repeat: no-repeat; }
