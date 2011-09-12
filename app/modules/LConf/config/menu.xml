@@ -12,7 +12,7 @@
         </menu>    
         <menu id="menu_lconf_connectionmgr">
             <preferposition>after:menu_lconf</preferposition>
-
+            <credential>lconf.user</credential>
             <icon>icinga-icon-user</icon>
             <caption>Connections</caption>
             <route target="new">
