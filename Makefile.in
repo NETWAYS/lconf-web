@@ -108,8 +108,8 @@ install-javascript:
 	ln -sf $(DESTDIR)$(prefix)/lib/ext3 $(DESTDIR)$(prefix)/pub/js/ext3
 
 install-sqlite-db:
-	$(INSTALL) -m 600 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(prefix)/app/data/db/
-	$(INSTALL) -m 700 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(DESTDIR)$(prefix)/app/data/db/
+	$(INSTALL) -m 700 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(prefix)/app/data/db/
+	$(INSTALL) -m 600 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(DESTDIR)$(prefix)/app/data/db/
 
 install-apache-config:
 	${INSTALL} -b -m 664 $(INSTALL_OPTS) etc/apache2/lconf-web.conf $(DESTDIR)$(WEB_APACHE_PATH)/lconf-web.conf
