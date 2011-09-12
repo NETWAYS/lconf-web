@@ -86,9 +86,9 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
     },
 
     addClock : function(itemsCfg) {
-        var item = new AppKit.util.Servertime();
-        AppKit.log(item)
-        itemsCfg.push({xtype: 'container',items:item});
+        //var item = new AppKit.util.Servertime();
+       
+        //itemsCfg.push({xtype: 'container',items:item});
     },
 
     addMenuFields : function(itemsCfg,menuData) {
