@@ -10,7 +10,7 @@
 					
 					http://www.doctrine-project.org/documentation/manual/1_1/en/introduction-to-connections
 				-->
-				<ae:parameter name="dsn">sqlite:///%core.root_dir%/app/data/lconf.db</ae:parameter>
+				<ae:parameter name="dsn">sqlite:///%core.root_dir%/app/data/db/lconf.db</ae:parameter>
 				
 				<!-- Generic credentials  -->
 				<!-- <ae:parameter name="username">@db_user@</ae:parameter> -->
