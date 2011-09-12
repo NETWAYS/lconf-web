@@ -107,6 +107,9 @@ install-javascript:
 	$(INSTALL) -m 755 $(INSTALL_OPTS) -d $(DESTDIR)$(prefix)/pub/js
 	ln -sf $(DESTDIR)$(prefix)/lib/ext3 $(DESTDIR)$(prefix)/pub/js/ext3
 
+install-sqlite-db:
+	$(INSTALL) -m 600 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(DESTDIR)$(prefix)/app/data/
+
 install-apache-config:
 	${INSTALL} -b -m 664 $(INSTALL_OPTS) etc/apache2/lconf-web.conf $(DESTDIR)$(WEB_APACHE_PATH)/lconf-web.conf
 	@printf "\nInstalled configuration in '%s'.\n" "$(WEB_APACHE_PATH)"
@@ -135,7 +138,7 @@ install-app:
 install-log:
 	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(LOGDIR)
 
-install-all: install-lib install-pub install-bin install-app install-log
+install-all: install-lib install-pub install-bin install-app install-log install-sqlite-db
 
 install: install-all install-done
 
