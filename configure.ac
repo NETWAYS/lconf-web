@@ -17,6 +17,7 @@ AC_PREFIX_DEFAULT(/usr/local/lconf-web)
 
 if test "x$prefix" = "xNONE" ; then
     installDir="/usr/local/lconf-web"
+    prefix=$installDir
 else
     installDir=$prefix 
 fi
@@ -40,12 +41,12 @@ AC_ARG_VAR([PHP],[php cli binary])
 ACICINGA_CHECK_BIN([PHP], [php])
 
 # Check for mysql
-AC_ARG_VAR([MYSQL],[mysql client binary])
-ACICINGA_CHECK_BIN([MYSQL], [mysql])
+AC_ARG_VAR([SQLITE],[sqlite client binary])
+ACICINGA_CHECK_BIN([SQLITE], [sqlite3])
 
 # Check for phing
-AC_ARG_VAR([PHING],[phing build tool])
-ACICINGA_CHECK_BIN([PHING], [phing])
+#AC_ARG_VAR([PHING],[phing build tool])
+#ACICINGA_CHECK_BIN([PHING], [phing])
 
 # Checks for libraries.
 
@@ -153,7 +154,7 @@ AC_SUBST(bin_group)
 
 AC_SUBST(CFLAGS)
 AC_SUBST(PHP)
-AC_SUBST(MYSQL)
+AC_SUBST(SQLITE)
 AC_SUBST(PHING)
 AC_SUBST(PHPUNIT)
 
