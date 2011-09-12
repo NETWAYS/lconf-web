@@ -171,8 +171,8 @@ AC_CONFIG_FILES([
 	Makefile
 	lib/Makefile
 	pub/Makefile
-	
 	app/Makefile
+	bin/Makefile
 	app/config/databases.xml
 	app/config/icinga.xml
 	app/config/logging.xml

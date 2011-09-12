@@ -2312,7 +2312,7 @@ CFLAGS=""
 
 
 
-ac_config_files="$ac_config_files Makefile lib/Makefile pub/Makefile app/Makefile app/config/databases.xml app/config/icinga.xml app/config/logging.xml app/config/settings.xml app/config/translation.xml app/modules/Api/config/access.xml app/modules/AppKit/config/module.xml app/modules/AppKit/config/auth.xml etc/build.properties etc/apache2/lconf-web.conf pub/.htaccess"
+ac_config_files="$ac_config_files Makefile lib/Makefile pub/Makefile app/Makefile bin/Makefile app/config/databases.xml app/config/icinga.xml app/config/logging.xml app/config/settings.xml app/config/translation.xml app/modules/Api/config/access.xml app/modules/AppKit/config/module.xml app/modules/AppKit/config/auth.xml etc/build.properties etc/apache2/lconf-web.conf pub/.htaccess"
 
 
 cat >confcache <<\_ACEOF
@@ -3037,6 +3037,7 @@ do
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;
     "pub/Makefile") CONFIG_FILES="$CONFIG_FILES pub/Makefile" ;;
     "app/Makefile") CONFIG_FILES="$CONFIG_FILES app/Makefile" ;;
+    "bin/Makefile") CONFIG_FILES="$CONFIG_FILES bin/Makefile" ;;
     "app/config/databases.xml") CONFIG_FILES="$CONFIG_FILES app/config/databases.xml" ;;
     "app/config/icinga.xml") CONFIG_FILES="$CONFIG_FILES app/config/icinga.xml" ;;
     "app/config/logging.xml") CONFIG_FILES="$CONFIG_FILES app/config/logging.xml" ;;
