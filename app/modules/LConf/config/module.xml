@@ -30,15 +30,15 @@
 				
 				<setting name="icons">
 					<ae:parameter name="organizationalUnit">icinga-icon-organisation</ae:parameter>
-					<ae:parameter name="lconfStructuralObject">lconf-logo</ae:parameter>
-					<ae:parameter name="lconfTimeperiod">icinga-icon-clock-red</ae:parameter>
-					<ae:parameter name="lconfCommand">icinga-icon-script</ae:parameter>
-					<ae:parameter name="lconfContact">icinga-icon-user</ae:parameter>
-					<ae:parameter name="lconfContactgroup">icinga-icon-group</ae:parameter>
-					<ae:parameter name="lconfHost">icinga-icon-server</ae:parameter>
-					<ae:parameter name="lconfHostgroup">icinga-icon-hostgroup</ae:parameter>
-					<ae:parameter name="lconfService">icinga-icon-cog</ae:parameter>
-					<ae:parameter name="lconfServicegroup">icinga-object-servicegroup</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@StructuralObject">lconf-logo</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Timeperiod">icinga-icon-clock-red</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Command">icinga-icon-script</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Contact">icinga-icon-user</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Contactgroup">icinga-icon-group</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Host">icinga-icon-server</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Hostgroup">icinga-icon-hostgroup</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Service">icinga-icon-cog</ae:parameter>
+					<ae:parameter name="@@SCHEMA_PREFIX@@Servicegroup">icinga-object-servicegroup</ae:parameter>
 					<ae:parameter name="alias">icinga-icon-attach</ae:parameter>
 				</setting>
 				<setting name="prefix">@@SCHEMA_PREFIX@@</setting>		
