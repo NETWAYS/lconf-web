@@ -22,7 +22,7 @@ class LConf_Backend_LConfExportTaskAction extends IcingaLConfBaseAction
 		$connectionId = $rd->getParameter("connection_id");
 		$connManager->getConnectionsFromDB();
 		
-		$conn = $connManager->getConnectionById(1);
+		$conn = $connManager->getConnectionById($connectionId);
 		$confExporter = AgaviContext::getInstance()->getModel('LConfExporter','LConf');
 		try {
 			if(!$preflight) {
