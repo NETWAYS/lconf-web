@@ -64,7 +64,7 @@
 		    Comma seperated list of icinga group name a new user will be
 		    added to
 		-->
-		<ae:parameter name="auth_groups">icinga_user</ae:parameter>
+		<ae:parameter name="auth_groups">lconf_user</ae:parameter>
 				
 		<!--
 			* auth_enable
