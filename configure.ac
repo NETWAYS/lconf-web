@@ -180,7 +180,6 @@ AC_CONFIG_FILES([
     pub/Makefile
     etc/Makefile
     bin/Makefile
-    doc/Makefile
     app/Makefile
     app/config.php
     app/config/databases.xml
