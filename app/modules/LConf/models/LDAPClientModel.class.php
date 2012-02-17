@@ -9,6 +9,7 @@
  * @author jmosshammer
  *
  */
+
 class LConf_LDAPClientModel extends IcingaLConfBaseModel
 {
 	/**
@@ -47,11 +48,11 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel
 	 * ldap_options, see @link http://de2.php.net/manual/en/ref.ldap.php 
 	 * @var array
 	 */
-	private $ldap_options	= array (
-		LDAP_OPT_REFERRALS			=> 0,
-		LDAP_OPT_DEREF				=> LDAP_DEREF_NEVER,
-		LDAP_OPT_PROTOCOL_VERSION	=> 3
-	); 
+	private $ldap_options = array (
+        LDAP_OPT_REFERRALS			=> 0,
+        LDAP_OPT_DEREF				=> LDAP_DEREF_NEVER,
+        LDAP_OPT_PROTOCOL_VERSION	=> 3
+    );
 	
 	/**
 	 * Attributes that describe the dn according to RFC4514/RFC4519
@@ -124,6 +125,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel
 	}
 	
 	public function __construct(LConf_LDAPConnectionModel $connection = null) {
+
 		if($connection)	
 			$this->setConnectionModel($connection);
 	}
@@ -144,6 +146,9 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel
 	 * @return void
 	 */
 	public function connect() {
+        if(!extension_loaded("ldap"))
+            throw new AppKitException("Please install the php-ldap extension and restart your webserver");
+
 		$connConf = $this->getConnectionModel();
 		$this->helper = AgaviContext::getInstance()->getModel("LDAPHelper","LConf");
 		$ldaps = $connConf->isLDAPS() ? 'ldaps://' : '';
@@ -375,11 +380,11 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel
 	}	
 
 	public function listDN($dn,$resolveAlias = true,$ignoreFilter = false) {
-		$filter = "objectClass=*";
-		
+		$filter = "objectclass=*";
+        
+        
 		$result = @ldap_list($this->getConnection(),$dn,$filter,array("dn","objectclass","aliasedobjectname","modifyTimestamp","description"));
-		if(!$result)
-			return null;
+
 		$entries = @ldap_get_entries($this->getConnection(),$result);
 		if($resolveAlias)
 			$entries = $this->helper->resolveAliases($entries);
@@ -416,7 +421,10 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel
 				
 			}
 		}
-		return $entries[0];
+        if(isset($entries[0]))
+    		return $entries[0];
+        else
+            return null;
 	}
 	
 	protected function addInheritedProperties(array &$entries, $dn, $inheritance) {
@@ -819,6 +827,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel
 		}
 		// and finally (and hopefuly)- reconnect!
 		$this->connect();
+        $this->applyldapOptions();
 	}
 
 	

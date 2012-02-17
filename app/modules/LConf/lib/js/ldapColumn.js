@@ -23,7 +23,7 @@ Ext.ns('Cronk.grid.ColumnRenderer');
 		if(!Ext.isArray(ids))
 			return false;
 		Ext.Ajax.request({
-			url: window.location.protocol+"//"+window.window.location.host+"/"+cfg.base+"/"+cfg.url,
+			url: window.location.protocol+"//"+window.window.location.host+AppKit.c.path+"/"+cfg.url,
 			params: {
 				ids: Ext.encode(ids),
 				target: cfg.target,
@@ -64,8 +64,20 @@ Ext.ns('Cronk.grid.ColumnRenderer');
 		}
 		var dnInfo = data.dn[id];
 		elem.replaceClass("unfinished","available");
+        registerQTip(elem);
 		elem.on("click",function(e) {showDNMenu(e,dnInfo,cfg)},this);
 	}
+
+    var registerQTip = function(elem) {
+        var qtipAttr = elem.getAttribute("qtip","ext");
+       
+        if(qtipAttr !== '') {
+           new Ext.ToolTip({
+                target: Ext.get(elem.findParentNode('td')),
+                html: _(qtipAttr)
+            }).doLayout();
+        }
+    }
 	
 	var showDNMenu = function(e,dnInfo,cfg) {
 		var menuItems = [];
@@ -74,7 +86,9 @@ Ext.ns('Cronk.grid.ColumnRenderer');
 			menuItems.push({
 				text: _('Use ')+connection.name,
 				handler: function() {
-					var url = window.location.protocol+"//"+window.window.location.host+"/"+cfg.base+"/"+cfg.ldapRoute;
+
+                    var url = AppKit.c.path+"/"+cfg.ldapRoute;
+                    
 					window.location.href = url+"/"+connection.id+"/"+dnInfo.DN;				
 				}
 			});
@@ -86,9 +100,15 @@ Ext.ns('Cronk.grid.ColumnRenderer');
 	
 	Cronk.grid.ColumnRenderer.ldapColumn = 	function(cfg) {
 		
-		return function(value, garbage, record, rowIndex, colIndex, store) {
-			ldapColumnSelector.delay(500,null,null,[cfg]);
-			return '<div class="lconf_cronk_sel unfinished" lconf_val="'+value+'"><div style="width:25px;height:25px;display:block"></div></div>'
+		return function(value, metaData, record, rowIndex, colIndex, store) {
+			ldapColumnSelector.delay(200,null,null,[cfg]);
+            
+
+            var flat_attr = "";
+            for(var attr in cfg.attr) {
+                flat_attr = attr+'="'+cfg.attr[attr]+'"';
+            }
+			return '<div class="lconf_cronk_sel unfinished" '+flat_attr+' lconf_val="'+value+'"><div style="width:25px;height:25px;display:block;" ></div></div>';
 		}
 	}
 		

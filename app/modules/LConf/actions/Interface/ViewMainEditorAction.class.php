@@ -17,11 +17,7 @@ class LConf_Interface_ViewMainEditorAction extends IcingaLConfBaseAction
 	public function executeRead() {
 		return $this->getDefaultViewName();	
 	}
-
-    public function executeWrite() {
-		return $this->getDefaultViewName();	
-	}
-		
+	
 	public function getDefaultViewName()
 	{
 		return 'Success';

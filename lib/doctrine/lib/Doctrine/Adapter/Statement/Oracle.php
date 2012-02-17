@@ -171,6 +171,7 @@ class Doctrine_Adapter_Statement_Oracle implements Doctrine_Adapter_Statement_In
         } else {
             $variable_name = $column;
         }
+        //print "Binding $variable to $variable_name".PHP_EOL;
         $status = @oci_bind_by_name($this->statement, $variable_name, $variable, $oci_length, $oci_type);
         if ($status === false) {
            $this->handleError();

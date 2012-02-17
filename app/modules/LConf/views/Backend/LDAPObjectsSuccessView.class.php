@@ -25,20 +25,23 @@ class LConf_Backend_LDAPObjectsSuccessView extends IcingaLConfBaseView
 			$connectionId = $rd->getParameter("connectionId");
 			$ctx->getModel("LDAPClient","LConf");
 			$client = LConf_LDAPClientModel::__fromStore($connectionId,$ctx->getStorage());
-			$filtergr = $ctx->getModel("LDAPFilterGroup","LConf",array("OR"));
+			$filtergr = $ctx->getModel("LDAPFilterGroup","LConf",array("AND"));
 			foreach($field["LDAP"] as $filter) {
 				$filter = explode("=",$filter);
 				$filterModel = $ctx->getModel("LDAPFilter","LConf",array($filter[0],$filter[1]));
 				$filtergr->addFilter($filterModel);
 			}
 			
-			foreach($client->searchEntries($filtergr,null,array(@$field["Attr"])) as $entry) {
+			foreach($client->searchEntries($filtergr,null,array(isset($field["Attr"]) ? $field["Attr"] : null)) as $entry) {
 				if(is_int($entry))
 					continue;
-				if(@$field["Attr"] != "dn" && $field["Attr"])
+				if(isset($field["Attr"]) && $field["Attr"] != "dn" && $field["Attr"] != "*")
 					$result[] = array("entry"=>$entry[$field["Attr"]][0]);
-				else 
+				else if(isset($field["Attr"]) && $field["Attr"] == "*")
+                    $result[] = array("entry"=>$entry);
+                else
 					$result[] = array("entry"=>$entry["dn"]);
+
 			}
 		}
 		$response = array();

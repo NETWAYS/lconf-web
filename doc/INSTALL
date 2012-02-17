@@ -16,6 +16,6 @@ Installing the lconf-web standalone package is almost like icinga-web, altough y
 
 2.) make install
 
-3.) check your permissions on app/data/lconf.db, www-user needs write permissions
+3.) check your permissions on app/data/lconf.db, www-user needs write permissions (to both the file AND the folder!)
 
 

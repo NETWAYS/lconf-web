@@ -31,6 +31,10 @@ class LConf_Backend_Cronks_CustomVarDNCollectorAction extends IcingaLConfBaseAct
 	public function isSecure() {
 		return true;
 	}
+
+    public function getCredentials() {
+        return array('icinga.user');
+    }
 }
 
 ?>

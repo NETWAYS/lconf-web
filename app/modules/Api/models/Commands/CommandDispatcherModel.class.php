@@ -10,36 +10,50 @@ class UnknownIcingaCommandException extends CommandDispatcherException {}
 class MissingCommandParameterException extends CommandDispatcherException {}
 class Api_Commands_CommandDispatcherModel extends IcingaApiBaseModel implements AgaviISingletonModel {
     protected $consoleContext = null;
+    
     protected $config = null;
-    protected static $xmlLoaded = false;
+    
+    /**
+     * @var Api_Commands_CommandInfoModel
+     */
+    protected $commandInfoModel = null;
+    
     public function setConsoleContext(IcingaConsoleInterface $model) {
         $this->consoleContext = $model;
     }
 
     public function initialize(AgaviContext $ctx, array $parameters = array()) {
+        
         if (isset($parameters["console"]) && $parameters["console"] instanceof IcingaConsoleInterface) {
             $this->setConsoleContext($parameters["console"]);
         }
 
         parent::initialize($ctx,$parameters);
-        $this->loadConfig();
+        
+        $this->commandInfoModel = $ctx->getModel('Commands.CommandInfo', 'Api');
     }
 
     public function submitCommand($cmd_name,array $params,
                                   $commandClass = array("Console.ConsoleCommand","Api")) {
-        $command = $this->getCommand($cmd_name);
-        $string = $this->buildCommandString($command,$params);
-        $cmd = $this->getContext()->getModel($commandClass[0],$commandClass[1],
-                                             array(
-                                                     "command" => "printf",
-                                                     "connection" => $this->consoleContext,
-                                                     "arguments" => array($string)
-                                             )
-                                            );
-        $cmd->stdoutFile("icinga_pipe");
-
+        
         try {
-            $this->consoleContext->exec($cmd);
+            $user = $this->getContext()->getUser()->getNsmUser();
+            $onlySimple = $user->hasTarget('IcingaCommandRestrictions');
+            
+            $command = $this->getCommand($cmd_name);
+           
+            $string = $this->buildCommandString($command,$params);   
+            if($onlySimple && !$command["isSimple"])
+                throw new Exception("Could not send command. Your user isn't allowed to send this command.");
+            $cmd = $this->getContext()->getModel($commandClass[0],$commandClass[1],
+                                                 array(
+                                                         "command" => "printf",
+                                                         "arguments" => array($string)
+                                                 )
+                                                );
+            $cmd->stdoutFile("icinga_pipe");
+
+            ($this->consoleContext->exec($cmd));
             if($cmd->getReturnCode() != '0')
                 throw new Exception("Could not send command. Check if your webserver's user has correct permissions for writing to the command pipe.");
         } catch (Exception $e) {
@@ -53,6 +67,9 @@ class Api_Commands_CommandDispatcherModel extends IcingaApiBaseModel implements 
     private function buildCommandString(array $command, array $params) {
         $str = "[".time()."] ".$command["definition"];
         foreach($command["parameters"] as $param=>$vals) {
+            if(!isset($vals["required"]))
+                $vals["required"] = true;
+
             if (!isset($params[$vals["alias"]]) && $vals["required"]) {
                 throw new MissingCommandParameterException($vals["alias"]." is missing");
             } else if (!isset($params[$vals["alias"]])) {
@@ -74,20 +91,16 @@ class Api_Commands_CommandDispatcherModel extends IcingaApiBaseModel implements 
     }
 
     public function getCommands() {
-        return $this->config;
+        return $this->commandInfoModel->getInfo();
     }
 
     public function getCommand($name) {
 
-        if (isset($this->config[$name])) {
-            return $this->config[$name];
+        if ($this->commandInfoModel->hasCommand($name)) {
+            return $this->commandInfoModel->getInfo($name);
         } else {
             throw new UnknownIcingaCommandException("Command $name is undefined");
         }
-    }
-
-    protected function loadConfig() {
-        $this->config = include AgaviConfigCache::checkConfig(AgaviToolkit::expandDirectives('%core.module_dir%/Api/config/icingaCommands.xml'));
     }
 
 }

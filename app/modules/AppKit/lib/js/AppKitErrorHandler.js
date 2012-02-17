@@ -17,8 +17,6 @@ Ext.ns("AppKit.errorHandler");
 				this.msg = msg;
 				this.file = file;
 				this.line = line;
-
-			//	this.stack = printStackTrace({e:msg,guess:false})
 			} catch(e) {}
 		};
 
@@ -123,12 +121,13 @@ Ext.ns("AppKit.errorHandler");
 		}
 
 		window.onerror = handleError;
-
+        var clearErrors = function() {
+            occuredErrors = [];
+            updateErrorDisplay();
+        };
 		return {
-			clearErrors : function() {
-				occuredErrors = [];
-				updateErrorDisplay();
-			},
+			clearErrors: this.clearErrors,
+            
 			getErrors: function() {
 				return occuredErrors;
 			},
@@ -169,7 +168,7 @@ Ext.ns("AppKit.errorHandler");
 					}),
 					tpl: new Ext.XTemplate(
 						'<tpl for=".">',
-							'<div qtip="Click to comment this bug" class="icinga-bugBox">',
+							'<div ext:qtip="Click to comment this bug" class="icinga-bugBox">',
 								'<b>Message</b>: {msg}<br/>',
 								'<b>File</b>: {file}<br/>',
 								'<b>Line</b>: {line}<br/>',
@@ -200,6 +199,7 @@ Ext.ns("AppKit.errorHandler");
 
 				});
 				var boxId = Ext.id('box_bug');
+                var _this = this;
 				var box = new Ext.Window({
 					modal:true,
 					height: 400,
@@ -236,10 +236,10 @@ Ext.ns("AppKit.errorHandler");
 						text: _('Clear errors'),
 						iconCls: 'icinga-icon-delete',
 						handler: function() {
-							AppKit.errorHandler.clearErrors()
+                            clearErrors();
 							Ext.getCmp(boxId).close();
 						},
-						scope:this
+						scope:_this
 					},{
 						text: _('Close'),
 						iconCls: 'icinga-icon-cancel',
@@ -286,7 +286,7 @@ Ext.ns("AppKit.errorHandler");
             });
             
             
-        }
+        };
     
 		var handleError = function(response,proxy) {
 			switch(response.status) {	
@@ -367,12 +367,12 @@ Ext.ns("AppKit.errorHandler");
 
 	var setupErrorHandler = function() {
 		var setHandlerFunc = function() {
-			if(AppKit.getPreferences()["org.icinga.errorNotificationsEnabled"] == 'true') {
+			if(AppKit.getPreferences()["org.icinga.errorNotificationsEnabled"] == true) {
 				AppKit.AjaxErrorHandler.enableErrorNotifyBox();
 			} else {
 				AppKit.AjaxErrorHandler.disableErrorNotifyBox();
 			}
-			if(AppKit.getPreferences()["org.icinga.bugTrackerEnabled"]  == 'true') {
+			if(AppKit.getPreferences()["org.icinga.bugTrackerEnabled"]  == true) {
 				AppKit.BugTracker.setShowErrors(true);
 				AppKit.AjaxErrorHandler.enableBugTrackerReport();
 			} else {

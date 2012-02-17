@@ -2,7 +2,7 @@
 <ae:configurations
 	xmlns="http://agavi.org/agavi/config/parts/validators/1.0"
 	xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
-	parent="%core.module_dir%/Api/config/validators.xml"
+	parent="%core.module_dir%/Web/config/validators.xml"
 >
 	<ae:configuration>
 		
@@ -25,7 +25,7 @@
 					<error>Data parameter is required</error>
 				</errors>
 			</validator>
-                        <validator name="authkey" class="string" required="false">
+            <validator name="authkey" class="string" required="false">
 				<argument>authkey</argument>
 				<errors>
 					<error>Validation of authkey failed!</error>

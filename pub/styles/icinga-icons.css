@@ -44,10 +44,19 @@
 .icinga-icon-info-passive { background-image: url("../images/icons/arrow-in.png") !important; background-repeat: no-repeat; }
 
 /*
+ * Common actions
+ */
+.icinga-action-icon-search { background-image: url(../images/icons/magnifier.png) !important; background-repeat: no-repeat; background-position: center center; }
+.icinga-action-icon-ok { background-image: url(../images/icons/tick-circle-frame.png) !important; background-repeat: no-repeat; } 
+.icinga-action-icon-cancel { background-image: url(../images/icons/cross-circle-frame.png) !important; background-repeat: no-repeat; }
+.icinga-action-refresh { background-image: url(../images/icons/arrow-circle-double-135.png) !important; background-repeat: no-repeat; }
+
+/*
  *	Default iconset
  */
 .icinga-icon-accept { background-image: url(../images/icons/tick-circle-frame.png) !important; background-repeat: no-repeat; }
 .icinga-icon-cancel { background-image: url(../images/icons/cross-circle-frame.png) !important; background-repeat: no-repeat; }
+.icinga-icon-chart-pie { background-image: url(../images/icons/chart-pie.png) !important; background-repeat: no-repeat; }
 .icinga-icon-application { background-image: url(../images/icons/application.png) !important; background-repeat: no-repeat; }
 .icinga-icon-application-add { background-image: url(../images/icons/application-plus.png) !important; background-repeat: no-repeat; }
 .icinga-icon-application-cascade { background-image: url(../images/icons/applications.png) !important; background-repeat: no-repeat; }
@@ -70,7 +79,7 @@
 .icinga-icon-wrench { background-image: url(../images/icons/wrench.png) !important; background-repeat: no-repeat; }
 .icinga-icon-wrench-screwdriver { background-image: url(../images/icons/wrench-screwdriver.png) !important; background-repeat: no-repeat; } 
 .icinga-icon-user { background-image: url(../images/icons/user.png) !important; background-repeat: no-repeat; }
-.icinga-icon-user-add { background-image: url(../images/icons/user--plus.gif) !important; background-repeat: no-repeat; }
+.icinga-icon-user-add { background-image: url(../images/icons/user--plus.png) !important; background-repeat: no-repeat; }
 .icinga-icon-user-comment { background-image: url(../images/icons/user-pencil.png) !important; background-repeat: no-repeat; }
 .icinga-icon-user-delete { background-image: url(../images/icons/user--minus.png) !important; background-repeat: no-repeat; }
 .icinga-icon-user-edit { background-image: url(../images/icons/user--pencil.png) !important; background-repeat: no-repeat; }
@@ -126,6 +135,7 @@
 .icinga-icon-comment { background-image: url(../images/icons/balloon-ellipsis.png) !important; background-repeat: no-repeat; background-position: center center; }
 .icinga-icon-downtime { background-image: url(../images/icons/contrast.png) !important; background-repeat: no-repeat; background-position: center center; }
 .icinga-icon-exclamation-white { background-image: url(../images/icons/exclamation-white.png) !important; background-repeat: no-repeat; background-position: center center; }
+.icinga-icon-exclamation-clock { background-image: url(../images/icons/clock--exclamation.png) !important; background-repeat: no-repeat; background-position: center center; }
 .icinga-icon-exclamation-red { background-image: url(../images/icons/exclamation-red.png) !important; background-repeat: no-repeat; background-position: center center; }
 .icinga-icon-notify { background-image: url(../images/icons/speaker-volume.png) !important; background-repeat: no-repeat; background-position: center center; }
 .icinga-icon-notify-disabled { background-image: url(../images/icons/speaker-volume-control-mute.png) !important; background-repeat: no-repeat; background-position: center center; }
@@ -163,6 +173,9 @@
 .icinga-icon-alarm-clock-edit { background-image: url(../images/icons/alarm-clock--pencil.png) !important; background-repeat: no-repeat; }
 .icinga-icon-alarm-clock-arrow { background-image: url(../images/icons/alarm-clock--arrow.png) !important; background-repeat: no-repeat; }
 .icinga-icon-applications-stack { background-image: url(../images/icons/applications-stack.png) !important; background-repeat: no-repeat; }
+.icinga-icon-lightning-minus { background-image: url(../images/icons/lightning--minus.png) !important; background-repeat: no-repeat; }
+.icinga-icon-lightning-arrow { background-image: url(../images/icons/lightning--arrow.png) !important; background-repeat: no-repeat; }
+.icinga-icon-universal { background-image: url(../images/icons/universal.png) !important; background-repeat: no-repeat; }
 
 .icinga-icon-throbber {background-image: url(../images/ajax/circle-ball.gif) !important;background-repeat: no-repeat;}
 

@@ -1,9 +1,98 @@
 <?php
 class IcingaDoctrine_Query extends Doctrine_Query {
+    
+    protected $defaultJoinType = "left";
+    protected $aliasDefs = array();
+    protected $mainAlias = "my";
+    private $aliasJoins = array();
+    
+    /**
+     * @var IcingaDoctrineQueryFilterChain
+     */
+    private $filterChain = null;
+    
+    /**
+    * To disable the hydrator fixing feature. In some cases it is needed
+    * to produce 'real' distinct queries
+    * @var boolean
+    */
+    protected $_disableAutoIdentifiedFields = false;
+    
+    /**
+     * Creates an instance
+     * @param mixed $conn
+     * @param mixed $class
+     * @return IcingaDoctrine_Query
+     */
     public static function create($conn = NULL, $class = NULL) {
+        $manager = Doctrine_Manager::getInstance();
+        
+        if (!($conn instanceof Doctrine_Connection) && $conn) {
+            $conn = $manager->getConnection($conn);
+        } else {
+            $conn = $manager->getConnection(IcingaDoctrineDatabase::CONNECTION_ICINGA);
+        }
+        
+        $conn_name = $manager->getConnectionName($conn);
+    
+        if ($conn_name !== IcingaDoctrineDatabase::CONNECTION_ICINGA) {        
+            AgaviContext::getInstance()->getLoggerManager()->log('QUERY::CREATE Obtain doctrine connection: '. $conn_name, AgaviLogger::DEBUG);
+        }
 
-        return new IcingaDoctrine_Query($conn);
+        return parent::create($conn, 'IcingaDoctrine_Query');
     }
+    
+    /**
+     * Overwritten constructor from Doctrine_Query_Abstract to initialize
+     * some objects we need here
+     * @param Doctrine_Connection $connection
+     * @param Doctrine_Hydrator_Abstract $hydrator
+     */
+    public function __construct(Doctrine_Connection $connection = null, Doctrine_Hydrator_Abstract $hydrator = null) {
+        parent::__construct($connection, $hydrator);
+        $this->filterChain = new IcingaDoctrineQueryFilterChain();
+    }
+    
+    /**
+     * Shortcut method to add filters to this query
+     * @param Doctrine_Query_Filter_Interface $filter
+     */
+    public function addFilter(IcingaIDoctrineQueryFilter $filter) {
+        $this->filterChain->add($filter);
+        return $this;
+    }
+    
+    /**
+     * Shurtcut method to remove filters from chain
+     * @param IcingaIDoctrineQueryFilter $filter
+     */
+    public function removeFilter(IcingaIDoctrineQueryFilter $filter) {
+        $this->filterChain->remove($filter);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see Doctrine_Query_Abstract::_preQuery()
+     */
+    protected function _preQuery($params = array()) {
+        if ($this->_preQueried === false && $this->filterChain->canExecutePre()) {
+            $this->filterChain->preQuery($this);
+        }
+        return parent::_preQuery($params);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see Doctrine_Query_Abstract::_execute()
+     */
+    protected function _execute($params) {
+        if ($this->filterChain->canExecutePost()) {
+            $this->filterChain->postQuery($this);
+        }
+        return parent::_execute($params);
+    }
+    
+    
     /**
     * @see Doctrine_Query::processPendingFields
     *
@@ -52,7 +141,7 @@ class IcingaDoctrine_Query extends Doctrine_Query {
             // only auto-add the primary key fields if this query object is not
             // a subquery of another query object or we're using a child of the Object Graph
             // hydrator
-            if (! $this->_isSubquery && is_subclass_of($driverClassName, 'Doctrine_Hydrator_Graph')) {
+            if (! $this->_isSubquery && is_subclass_of($driverClassName, 'Doctrine_Hydrator_Graph') && $this->_disableAutoIdentifiedFields == false) {
                 $fields = array_unique(array_merge((array) $table->getIdentifier(), $fields));
             }
         }
@@ -104,11 +193,6 @@ class IcingaDoctrine_Query extends Doctrine_Query {
         $groups = array_unique($groups);
     }
 
-    protected $defaultJoinType = "left";
-    protected $aliasDefs = array();
-    protected $mainAlias = "my";
-    private $aliasJoins = array();
-
     public function setAliasDefs($mainAlias,array $defs) {
         $this->aliasDefs = $defs;
         $this->mainAlias = $mainAlias;
@@ -158,13 +242,17 @@ class IcingaDoctrine_Query extends Doctrine_Query {
 
     }
 
-    protected function checkForAlias($statement,$ignore = array()) {
-        $regExp = "/(?<alias>\w+)\.(?<field>\w+)/";
+    protected function checkForAlias(&$statement,$ignore = array()) {
+        $regExp = "/(?<alias>\w+)\.(?<field>[\*A-Za-z]+)/";
         $matches = array();
         preg_match_all($regExp,$statement,$matches);
 
         for ($i=0; $i<count($matches["alias"]); $i++) {
-
+            if($matches["alias"] == $this->mainAlias) {
+                $resolved = explode(".",$statement,2);
+                $statement = $resolved[1];
+            }
+                
             if (in_array($matches["alias"][$i],$ignore)) {
                 continue;
             }
@@ -221,14 +309,65 @@ class IcingaDoctrine_Query extends Doctrine_Query {
         foreach($this->_dqlParts as &$dqlGroup) {
             if (is_array($dqlGroup))
                 foreach($dqlGroup as &$dql) {
-                $this->checkForAlias($dql,array($this->mainAlias));
+                    $this->checkForAlias($dql,array($this->mainAlias));
             } else {
                 $this->checkForAlias($dql,array($this->mainAlias));
             }
         }
-
     }
-
+    
+    /**
+     * Tries to find the alias name used in the query
+     * @todo Search over joins too
+     * @param string $componentName
+     * @return string
+     */
+    protected function findAliasByComponent($componentName) {
+        $alias = null;
+        
+        foreach ($this->_dqlParts['from'] as $from) {
+            if (!(strstr($from, $componentName)!==false)) {
+                $alias = $from;
+            }
+        }
+        
+        if ($alias) {
+            $arry = explode(' ', $alias);
+            return $arry[1];
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Appends a custom variable filter to doctrine query
+     * @param string $alias
+     * @return IcingaDoctrine_Query
+     */
+    public function appendCustomvarFilter($alias=null) {
+        if ($alias === null) {
+            $alias = $this->findAliasByComponent('IcingaCustomVars');
+        }
+        
+        if ($alias) {
+            $exclude = AgaviConfig::get('modules.api.exclude_customvars');
+            if (is_array($exclude) && count($exclude)) {
+                $this->andWhereNotIn($alias. '.varname', $exclude);
+            }
+        }
+        return $this;
+    }
+    
+    /**
+     * To produce real distinct query this function
+     * can disable to autoid feature
+     * @param boolean $flag
+     * @return IcingaDoctrine_Query
+     */
+    public function disableAutoIdentifierFields($flag) {
+        $this->_disableAutoIdentifiedFields = (boolean)$flag;
+        return $this;
+    }
 
 }
 ?>

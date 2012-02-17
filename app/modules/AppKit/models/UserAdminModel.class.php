@@ -36,7 +36,7 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
      * @author Jannis Mosshammer
      */
     public function getUsersCollectionInRange($disabled=false,$start = 0,$limit=25,$sort= null,$asc = true) {
-        $query = Doctrine_Query::create()
+        $query = AppKitDoctrineUtil::createQuery()
                  ->from("NsmUser")
                  ->limit($limit)
                  ->offset($start);
@@ -53,7 +53,7 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
     }
 
     public function getUserCount($disabled=false) {
-        $query = Doctrine_Query::create()
+        $query = AppKitDoctrineUtil::createQuery()
                  ->select("COUNT(u.user_id) count")
                  ->from("NsmUser u");
 
@@ -72,7 +72,7 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
      * @author Marius Hein
      */
     public function getUsersQuery($disabled=false) {
-        $query = Doctrine_Query::create()
+        $query = AppKitDoctrineUtil::createQuery()
                  ->from('NsmUser')
                  ->orderBy('user_name ASC');
 
@@ -159,8 +159,8 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
         }
 
         // Checking the principal
-        if (!$user ->NsmPrincipal->principal_id) {
-            $user ->NsmPrincipal->principal_type = NsmPrincipal::TYPE_ROLE;
+        if (!$user ->principal->principal_id) {
+            $user ->principal->principal_type = NsmPrincipal::TYPE_ROLE;
         }
 
         // Save the record
@@ -184,7 +184,32 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
 
     public function removeUser(NsmUser &$user) {
         try {
-            Doctrine_Manager::connection()->beginTransaction();
+            
+            /*
+            * These are our connections to any cronks
+            */
+        
+            foreach($user->cronkPrincipals as $cp) {
+                $re = AppKitDoctrineUtil::createQuery()->delete('CronkPrincipalCronk cpc')
+                ->andWhere('cpc.cpc_cronk_id=? and cpc.cpc_principal_id=?', array($cp->cpc_cronk_id, $cp->cpc_principal_id))
+                ->execute();
+            }
+            /*
+             * Our cronks
+            */
+            foreach ($user->cronks as $cronk) {
+                /*
+                 * All connections to our cronks
+                */
+                AppKitDoctrineUtil::createQuery()->delete('CronkPrincipalCronk cpc')
+                ->andWhere('cpc.cpc_cronk_id=?', array($cronk->cronk_id))
+                ->execute();
+            
+                $cronk->delete();
+            }
+            
+            AppKitDoctrineUtil::getConnection()->beginTransaction();
+            
             $this->updateUserroles($user,array());
             $targets = $user->getTargets();
             foreach($targets as $target) {
@@ -194,7 +219,7 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
                 }
             }
             $principals = $user->getPrincipals();
-
+            
             if (!$principals instanceof NsmPrincipal) {
                 foreach($principals as $pr) {
                     if ($pr->NsmPrincipalTarget) {
@@ -214,13 +239,14 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
 
                 $principals->delete();
             }
-
+            
             $user->delete();
-            Doctrine_Manager::connection()->commit();
+            
+            AppKitDoctrineUtil::getConnection()->commit();
 
             return true;
         } catch (Exception $e) {
-            Doctrine_Manager::connection()->rollback();
+            AppKitDoctrineUtil::getConnection()->rollback();
             $this->getContext()->getLoggerManager()->log($e->getMessage());
             throw($e);
         }

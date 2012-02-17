@@ -39,6 +39,8 @@ class Api_ApiSearchAction extends IcingaApiBaseAction {
                                         "notifications" => array("NOTIFICATION_ID","NOTIFICATION_TYPE","NOTIFICATION_REASON","NOTIFICATION_STARTTIME","NOTIFICATION_ENDTIME","NOTIFICATION_OUTPUT","NOTIFICATION_OBJECT_ID","NOTIFICATION_OBJECTTYPE_ID"),
                                         "hostgroup_summary" => array('HOSTGROUP_SUMMARY_COUNT',"HOSTGROUP_ID","HOSTGROUP_OBJECT_ID","HOSTGROUP_NAME"),
                                         "comment" => array('SERVICEGROUP_SUMMARY_COUNT',"SERVICEGROUP_ID","SERVICEGROUP_OBJECT_ID","SERVICEGROUP_NAME"),
+                                        "servicecomment" => array('SERVICE_NAME',"SERVICE_ID","COMMENT_ID","COMMENT_DATA"),
+                                        "hostcomment" => array('HOST_NAME',"HOST_ID","COMMENT_ID","COMMENT_DATA"),
                                         "host_service" => array('HOST_NAME',"SERVICE_NAME")
                                     );
 
@@ -47,38 +49,12 @@ class Api_ApiSearchAction extends IcingaApiBaseAction {
         return 'Success';
     }
 
-    public function checkAuth(AgaviRequestDataHolder $rd) {
-        $user = $this->getContext()->getUser();
-        $authKey = $rd->getParameter("authkey");
-        $validation = $this->getContainer()->getValidationManager();
-
-        if (!$user->isAuthenticated() && $authKey) {
-            try {
-                $user->doAuthKeyLogin($authKey);
-            } catch (Exception $e) {
-                $validation->setError("Login error","Invalid Auth key!");
-                return false;
-            }
-        }
-
-        if (!$user->isAuthenticated()) {
-            $validation->setError("Login error","Not logged in!");
-            return false;
-        }
-
-        if ($user->hasCredential("appkit.api.access") || $user->hasCredential("appkit.user")) {
-            return true;
-        }
-
-        $validation->setError("Error","Invalid credentials for api access!");
-        return false;
-    }
-
     public function executeRead(AgaviRequestDataHolder $rd) {
-        if (!$this->checkAuth($rd)) {
-            return "Error";
-        }
-
+        
+        if (!$this->context->getUser()->isAuthenticated() || !$this->context->getUser()->hasCredential('icinga.user')) {
+            return array('Api', 'GenericError');
+	    }
+        
         $context = $this->getContext();
         $API = $context->getModel("Icinga.ApiContainer","Web");
         $target = $rd->getParameter("target");
@@ -92,30 +68,91 @@ class Api_ApiSearchAction extends IcingaApiBaseAction {
         $this->setLimit($search,$rd);
 
         $search->setResultType(IcingaApiConstants::RESULT_ARRAY);
-        $search->fetch()->getAll();
         // Adding security principal targets to the query
         IcingaPrincipalTargetTool::applyApiSecurityPrincipals($search);
-
+        
         $res = $search->fetch()->getAll();
-
-
 
         //Setup count
         if ($rd->getParameter("countColumn")) {
             $search = @$API->createSearch()->setSearchTarget($target);
-            $search->setSearchType(IcingaApiConstants::SEARCH_TYPE_COUNT);
             $this->addFilters($search,$rd);
+
             $this->setColumns($search,$rd);
-            $search->setResultType(IcingaApiConstants::RESULT_ARRAY);
+            $this->setGrouping($search,$rd);
+            $this->setOrder($search,$rd);
+            $this->setLimit($search,$rd);
+
+            $search->setSearchType(IcingaApiConstants::SEARCH_TYPE_COUNT);
 
             IcingaPrincipalTargetTool::applyApiSecurityPrincipals($search);
+           
             $rd->setParameter("searchCount",$search->fetch()->getAll());
         }
+        
+        if($rd->getParameter("withSLA") && ($target == "host" || $target == "service")) {
+            $slaDefaults = AgaviConfig::get("modules.api.sla_settings");
 
+            if(isset($slaDefaults["enabled"]) && $slaDefaults["enabled"]) {
+                if(!isset($slaDefaults["default_timespan"]))
+                    $slaDefaults["default_timespan"] = "-1 Month";
+                $ts = $rd->getParameter("slaTimespan",$slaDefaults["default_timespan"]);
+                $this->addSLAData($res,$ts);
+            }
+        }
+        
         $rd->setParameter("searchResult", $res);
+
         return $this->getDefaultViewName();
     }
+    private function addSLAData(array &$result,$timespan) {
+        $objIds = array();
+        $map = array(); //hashmap for fast lookup
+        foreach($result as $idx=>&$record) {
+            $id = "";
+            if(isset($record["HOST_OBJECT_ID"]))
+                $id = $record["HOST_OBJECT_ID"];
+            else if (isset($record["SERVICE_OBJECT_ID"]))
+                $id = $record["SERVICE_OBJECT_ID"];
+            else
+                continue;
+            $record["SLA_STATE_AVAILABLE"] = 0;
+            $record["SLA_STATE_UNAVAILABLE"] = 0;
+            $record["SLA_STATE_0"] = 0;
+            $record["SLA_STATE_1"] = 0;
+            $record["SLA_STATE_2"] = 0;
+            $record["SLA_STATE_3"] = 0;
 
+
+            $map[$id] = $idx;
+            $objIds[] = $id;
+        }
+        $filter = $this->getContext()->getModel("SLA.SLAFilter","Api");
+        $filter->setObjectId($objIds);
+        
+        $filter->setTimespan($timespan);
+
+        $stmt = IcingaSlahistoryTable::getSummary(null, $filter);
+
+        foreach($stmt as $sla_entry) {
+            $oid = $sla_entry->object_id;
+            $state = $sla_entry->sla_state;
+            if(!isset($map[$oid]))
+                continue;
+            $entry = &$result[$map[$oid]];
+            
+            if(($state > 0 && $sla_entry->objecttype_id == 1) ||
+                ($state > 1 && $sla_entry->objecttype_id == 2))
+                $entry["SLA_STATE_UNAVAILABLE"] += $sla_entry->percentage;
+            else
+                $entry["SLA_STATE_AVAILABLE"] += $sla_entry->percentage;
+            if(isset($entry["SLA_STATE_".$state]))
+                $entry["SLA_STATE_".$state] += $sla_entry->percentage;
+
+           
+        }
+
+    }
     protected function addFilters($search,AgaviRequestDataHolder $rd) {
         // URL filter definitions
         $field = $rd->getParameter("filter",null);
@@ -144,13 +181,14 @@ class Api_ApiSearchAction extends IcingaApiBaseAction {
         if (isset($filterdef["type"])) {
             $searchField = $filterdef["field"];
         }
-
+       
         $filterGroup = $search->createFilterGroup($filterdef["type"]);
         if(!is_array($searchField))
             $searchField = array($searchField);
         foreach($searchField as $element) {
             if ($element["type"] == "atom") {
-                $filterGroup->addFilter($search->createFilter($element["field"][0],$element["value"][0],$element["method"][0]));
+                $element["value"] = str_replace("*","%",$element["value"]);
+                $filterGroup->addFilter($search->createFilter(strtoupper($element["field"][0]),$element["value"][0],$element["method"][0]));
             } else {
                 $filterGroup->addFilter($this->buildFiltersFromArray($search,$element));
             }

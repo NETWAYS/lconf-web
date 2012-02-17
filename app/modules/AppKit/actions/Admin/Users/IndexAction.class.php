@@ -22,7 +22,7 @@ class AppKit_Admin_Users_IndexAction extends AppKitBaseAction {
     }
 
     public function getCredentials() {
-        return array('appkit.admin', 'appkit.admin.users');
+        return array('lconf.admin');
     }
 
     public function execute(AgaviRequestDataHolder $rd) {

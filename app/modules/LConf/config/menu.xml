@@ -4,32 +4,12 @@
         <menu id="menu_lconf">
             <credential>lconf.user</credential>
             <preferposition>before:menu_admin</preferposition>
-             <icon>lconf-logo</icon>
+            <icon>icinga-icon-chart-organisation</icon>
             <caption>LDAP Editor</caption>
             <route target="new">
                 modules.lconf.main
             </route>
-        </menu>    
-        <menu id="menu_lconf_connectionmgr">
-            <preferposition>after:menu_lconf</preferposition>
-            <credential>lconf.user</credential>
-            <icon>icinga-icon-user</icon>
-            <caption>Connections</caption>
-            <route target="new">
-                modules.lconf.admin
-            </route>
-        </menu>     
-        <menu id="menu_lconf_about">
-            <preferposition>last</preferposition>
-
-            <icon>icinga-icon-help</icon>
-            <caption>About</caption>
-            <route target="window" title="About lconf" id="icinga-window-lconf-about">
-                modules.lconf.about
-            </route>
         </menu>
-        
-
     </ae:configuration>
 </ae:configurations>
 

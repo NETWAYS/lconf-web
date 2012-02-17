@@ -9,12 +9,11 @@
         <autoload name="AccessConfig">%core.module_dir%/Api/lib/config/AccessConfig.class.php</autoload>		
         <autoload name="AccessConfigHandler">%core.module_dir%/Api/lib/config/AccessConfigHandler.class.php</autoload>		
 		<autoload name="IcingaDoctrineDatabase">%core.module_dir%/Api/lib/database/IcingaDoctrineDatabase.class.php</autoload>
-
 		<autoload name="IcingaDoctrine_Query">%core.module_dir%/Api/lib/database/IcingaDoctrine_Query.class.php</autoload>
 		<autoload name="Icinga_Doctrine_Table">%core.module_dir%/Api/lib/database/IcingaDoctrineTable.class.php</autoload>
+        <autoload name="IcingaDoctrineQueryFilterChain">%core.module_dir%/Api/lib/database/filter/IcingaDoctrineQueryFilterChain.class.php</autoload>
+        <autoload name="IcingaDoctrineFilterMap">%core.module_dir%/Api/lib/database/filter/IcingaDoctrineFilterMap.class.php</autoload>
 		<autoload name="IcingaApiBaseView">%core.module_dir%/Api/lib/view/IcingaApiBaseView.class.php</autoload>		
-		<autoload name="IcingaConsoleInterface">%core.module_dir%/Api/lib/console/IcingaConsoleInterface.php</autoload>
-		<autoload name="IcingaConsoleCommandInterface">%core.module_dir%/Api/lib/console/IcingaConsoleCommandInterface.php</autoload>
 		<autoload name="BaseConsoleConnection">%core.module_dir%/Api/lib/console/BaseConsoleConnection.class.php</autoload>
 		<autoload name="LocalConsoleConnection">%core.module_dir%/Api/lib/console/LocalConsoleConnection.class.php</autoload>
 		<autoload name="SshConsoleConnection">%core.module_dir%/Api/lib/console/SshConsoleConnection.class.php</autoload>	
@@ -35,18 +34,25 @@
         <autoload name="IcingaStoreFilterModifierModel">%core.module_dir%/Api/lib/datastore/filter/IcingaStoreFilterModifierModel.class.php</autoload> 
         <autoload name="IcingaStoreTargetModifierModel">%core.module_dir%/Api/lib/datastore/IcingaStoreTargetModifierModel.class.php</autoload> 
         <autoload name="IDataStoreModifier">%core.module_dir%/Api/lib/datastore/interfaces/IDataStoreModifier.php</autoload> 
-<!--
+
         <autoload name="IcingaApiConstants">%core.module_dir%/Api/lib/legacylib/IcingaApiConstants.php</autoload> 
         <autoload name="IcingaApiSearchFilterGroupIdo">%core.module_dir%/Api/lib/legacylib/filter/IcingaApiSearchFilterGroupIdo.php</autoload> 
         <autoload name="IcingaApiSearchFilterGroup">%core.module_dir%/Api/lib/legacylib/filter/IcingaApiSearchFilterGroup.php</autoload> 
         <autoload name="IcingaApiSearchFilter">%core.module_dir%/Api/lib/legacylib/filter/IcingaApiSearchFilter.php</autoload> 
         <autoload name="IcingaApiSearchFilterIdo">%core.module_dir%/Api/lib/legacylib/filter/IcingaApiSearchFilterIdo.php</autoload> 
         <autoload name="IcingaApiSearchFilterInterface">%core.module_dir%/Api/lib/legacylib/filter/IcingaApiSearchFilterInterface.php</autoload> 
-    -->    
+        
         <autoload name="ApiStoreFilter">%core.module_dir%/Api/lib/datastore/filter/ApiStoreFilter.class.php</autoload> 
         <autoload name="ApiStoreFilterGroup">%core.module_dir%/Api/lib/datastore/filter/ApiStoreFilterGroup.class.php</autoload> 
         <autoload name="DataStoreFilterModifier">%core.module_dir%/Api/lib/datastore/DataStoreFilterModifier.class.php</autoload> 
 
 		<autoload name="IcingaCommandsConfigHandler">%core.module_dir%/Api/lib/config/IcingaCommandsConfigHandler.class.php</autoload>
+		
+		<autoload name="IcingaApiAuthentificationRoutingCallback">%core.module_dir%/Api/lib/auth/IcingaApiAuthentificationRoutingCallback.class.php</autoload>
+        
+        <!-- Interfaces -->
+        <autoload name="IcingaConsoleInterface">%core.module_dir%/Api/lib/console/IcingaConsoleInterface.php</autoload>
+        <autoload name="IcingaConsoleCommandInterface">%core.module_dir%/Api/lib/console/IcingaConsoleCommandInterface.php</autoload>
+        <autoload name="IcingaIDoctrineQueryFilter">%core.module_dir%/Api/lib/database/filter/IcingaIDoctrineQueryFilter.interface.php</autoload>
    	</ae:configuration>
 </ae:configurations>

@@ -5,7 +5,19 @@
         <javascript>
             <ae:parameter>%core.module_dir%/LConf/lib/js/GridTreeEditorField.js</ae:parameter>
             <ae:parameter>%core.module_dir%/LConf/lib/js/MultiSelectTree.js</ae:parameter>
-            <ae:parameter>%core.module_dir%/LConf/lib/js/ldapColumn.js</ae:parameter>
+
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/EventDispatcher.js</ae:parameter>
+            
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/PropertyGrid/Extensions</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/PropertyGrid/PropertyGridExtender.js</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/Editors</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/DIT/Helper</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/DIT/Mixin</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/DIT</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components/Views</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js/Components</ae:parameter>
+            <ae:parameter>%core.module_dir%/LConf/lib/js</ae:parameter>
+            
         </javascript>
     </ae:configuration>
 </ae:configurations>

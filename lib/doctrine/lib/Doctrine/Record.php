@@ -1713,19 +1713,6 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
     public function save(Doctrine_Connection $conn = null)
     {
         if ($conn === null) {
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             $conn = $this->_table->getConnection();
         }
         $conn->unitOfWork->saveGraph($this);

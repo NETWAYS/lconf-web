@@ -103,6 +103,7 @@ class LConf_LDAPHelperModel extends IcingaLConfBaseModel
 				continue;
 				
 			$isAlias = false;
+            
 			foreach($result["objectclass"] as $type) {
 				if($type == "alias") {
 					$isAlias = true;

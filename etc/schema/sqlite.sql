@@ -103,14 +103,11 @@ CREATE TABLE nsm_user_role (
 INSERT INTO nsm_db_version (vers_id,version) VALUES ('1','2');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('7','appkit.access','Access to login-page (which, actually, means no access)','','credential');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('8','lconf.user','Access to lconf','','credential');
-INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('9','appkit.admin.groups','Access to group editor','','credential');
-INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('10','appkit.admin.users','Access to user editor','','credential');
-INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('11','appkit.admin','Access to admin panel ','','credential');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('12','appkit.user.dummy','Basic right for users','','credential');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('13','appkit.api.access','Access to web-based api adapter','','credential');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('14','icinga.demoMode','Hide features like password reset which are not wanted in demo systems','','credential');
-INSERT INTO nsm_target (target_id,target_name,target_description,target_type) VALUES ('15','lconf.user','Allow access to the lconf module','credential');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_type) VALUES ('16','lconf.admin','Allow administration of lconf module','credential');
+INSERT INTO nsm_target (target_id,target_name,target_description,target_type) VALUES ('15','lconf.testcheck','Allow user to test checks on an icinga instance','credential');
 
 
 INSERT INTO nsm_role (role_id,role_name,role_description,role_disabled,role_modified,role_created) VALUES ('1','lconf_user','The default representation of a lconf user','0',date('now'),date('now'));
@@ -131,9 +128,6 @@ INSERT INTO nsm_principal (principal_id,principal_role_id,principal_type,princip
 INSERT INTO nsm_principal (principal_id,principal_role_id,principal_type,principal_disabled) VALUES ('6','5','role','0');
 INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('1','2','8');
 INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('2','2','13');
-INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('3','3','9');
-INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('4','3','10');
-INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('5','3','11');
 INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('6','4','8');
 INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('7','5','7');
 INSERT INTO nsm_principal_target (pt_id,pt_principal_id,pt_target_id) VALUES ('8','6','15');

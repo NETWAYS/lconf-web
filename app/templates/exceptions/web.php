@@ -45,10 +45,10 @@ $fixTips = array(
 // errors with custom messages
 $PDO_CONN_ERR = "PDO Connection Error";
 $PDO_DRIVER_ERR = "Couldn't locate driver named";
-$output = 'html';
-/*if(AgaviContext::getInstance()->getController()) {
+
+if(AgaviContext::getInstance()->getController()) {
 	$output =	AgaviContext::getInstance()->getController()->getOutputType()->getName();
-} else {*/
+} else {
 	// Internal exception of the bootstrap
 	// check if we can give a tip for fixing the error
 	foreach($fixTips as $tip) {
@@ -58,7 +58,7 @@ $output = 'html';
 			break;
 		}
 	}
-//}
+}
 
 switch($output) {
 	case 'html':

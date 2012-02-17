@@ -10,6 +10,8 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
 
     private $provider		= array();
     private $provider_keys	= array();
+    
+    private $currentProvider = null;
 
     /**
      * Loads the provider config into an array for later use
@@ -51,7 +53,7 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
      * @param string $id
      * @return AppKitIAuthProvider
      */
-    private function getProvider($id) {
+    public function getProvider($id) {
         if ($this->providerExists($id)) {
 
             if (!isset($this->provider[$id])) {
@@ -69,14 +71,18 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
 
         throw new AgaviSecurityException('Provider '. $id. ' does not exist!');
     }
-
+    
+    
     public function providerExists($id) {
         return array_key_exists($id, $this->config);
     }
 
     public function initialize(AgaviContext $context, array $parameters=array()) {
-        parent::initialize($context, $parameters);
         $this->loadProviderConfig();
+        
+        $parameters = array_merge_recursive($parameters, $this->config_def);
+        
+        parent::initialize($context, $parameters);
     }
 
     public function guessUsername() {
@@ -115,6 +121,11 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
 
         $this->log('Auth.Dispatch: Starting authenticate (username=%s)', $username, AgaviLogger::DEBUG);
 
+        if ($this->getParameter('auth_lowercase_username', false) == true) {
+            $this->log('Auth.Dispatch: Converting username to lowercase', AgaviLogger::INFO);
+            $username = strtolower($username);
+        }
+        
         $success = false;
 
         $user = $this->findUser($username);
@@ -150,6 +161,7 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
                     // Check password
                     if ($provider->isAuthoritative() && $provider->doAuthenticate($user, $password, $username, $authid)) {
                         $this->log('Auth.Dispatch: Successfull authentication (provder=%s)', $provider->getProviderName(), AgaviLogger::DEBUG);
+                        $this->setCurrentProvider($provider);
                         $success = true;
                     }
 
@@ -169,9 +181,11 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
                 // We can use it later if we want login again (#723)
                 if (AgaviConfig::get('modules.appkit.auth.behaviour.store_loginname', false) === true) {
                     $response = $this->context->getController()->getGlobalResponse();
-                    $response->setCookie('icinga-web-loginname', $user->user_name);
+                    if ($response instanceof AgaviWebResponse) {
+                        $response->setCookie('icinga-web-loginname', $user->user_name);
+                    }
                 }
-
+                
                 return $user;
             }
 
@@ -203,7 +217,7 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
 
                 if ($provider->isAuthoritative() && $provider->doAuthenticate($user, $password)) {
                     $this->log('Auth.Dispatch: Delegate authentication, %s successfully authenticate %s', $pid, $username, AgaviLogger::INFO);
-
+                    $this->setCurrentProvider($provider);
                     return true;
                 }
             }
@@ -283,24 +297,23 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
                             foreach($groups as $group_name) {
                                 $group = Doctrine::getTable('NsmRole')->findOneBy('role_name', $group_name);
                                 if ($group instanceof NsmRole) {
-                                	$user->NsmRole[] = $group;
+                                    $user->NsmRole[] = $group;
                                 } else {
-                                	$this->log('Auth.Dispatch/import: Group %s not found!', $group_name, AgaviLogger::ERROR);
+                                    $this->log('Auth.Dispatch/import: Could not assign group %s', $group_name, AgaviLogger::WARN);
                                 }
                             }
                         }
                         
-                        if ($user->NsmRole->Count() == 0) {
-                        	$this->log('Auth.Dispatch/import: Could not assign any default user, ABORT!', AgaviLogger::FATAL);
-                        	return null;
+                        if (!$user->NsmRole->Count) {
+                            $this->log('Auth.Dispatch/import: No groups available for user, ABORT!', AgaviLogger::FATAL);
+                            return null;
                         }
                         
                         $padmin->updatePrincipalValueData(
-                            $user->NsmPrincipal,
+                            $user->principal,
                             array(),
                             array()
                         );
-
 
                         $user->save();
 
@@ -342,6 +355,14 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
         }
 
         return null;
+    }
+    
+    private function setCurrentProvider(AppKitIAuthProvider $provider) {
+        $this->currentProvider = $provider;
+    }
+    
+    public function getCurrentProvider() {
+        return $this->currentProvider;
     }
 }
 

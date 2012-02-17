@@ -2,11 +2,28 @@ Ext.ns("lconf.Admin");
 
 (function() {
 var __instance;
+
+var getCompatibilityFieldMapping = function(legacyField, newField) {
+    return {
+        name: legacyField,
+        convert: function(v,record) {
+            if(typeof record[legacyField] !== "undefined") {
+                return record[legacyField];
+            } else {
+                return record[newField];
+            }
+        }
+    }
+}
+
 lconf.Admin.getPrincipalEditor = function() {
 	if(<?php echo ($us->hasCredential('lconf.admin') ? 'false' : 'true') ?>)
 		return null;
 	if(__instance)
 		return __instance;
+
+
+
 	/**
 	 * Excludes records selected in store.sourceStore from this store
 	 * 
@@ -51,8 +68,8 @@ lconf.Admin.getPrincipalEditor = function() {
 		root:'roles',
 		url: '<?php echo $ro->gen("modules.appkit.data.groups")?>',
 		fields: [
-			'role_id',
-			'role_name'
+			getCompatibilityFieldMapping('role_id','id'),
+			getCompatibilityFieldMapping('role_name','name')
 		],
 		listeners: {
 			// function to filter out already selected values from the available view
@@ -73,8 +90,8 @@ lconf.Admin.getPrincipalEditor = function() {
 			target: 'groups'
 		},
 		fields: [
-			'role_id',
-			'role_name'
+			getCompatibilityFieldMapping('role_id','id'),
+			getCompatibilityFieldMapping('role_name','name')
 		],
 		writer: new Ext.data.JsonWriter({
 			encode:true
@@ -99,14 +116,12 @@ lconf.Admin.getPrincipalEditor = function() {
 		isStaticSource: true,
 		root: 'users',
 		idProperty: 'user_id',
-		url: '<?php echo $ro->gen("modules.appkit.data.users")?>',
+		url: '<?php echo $ro->gen("modules.appkit.data.users")?>?hideDisabled=false',
 		remoteSort: true,
-		baseParams: {
-			hideDisabled: false
-		},
+		
 		fields: [
-			'user_id',
-			'user_name',
+			getCompatibilityFieldMapping('user_id','id'),
+            getCompatibilityFieldMapping('user_name','name')
 		],
 		listeners: {
 			// function to filter out already selected values from the available view
@@ -128,8 +143,8 @@ lconf.Admin.getPrincipalEditor = function() {
 			target: 'users'	
 		},
 		fields: [
-			'user_id',
-			'user_name'
+			getCompatibilityFieldMapping('user_id','id'),
+			getCompatibilityFieldMapping('user_name','name')
 		],
 		writer: new Ext.data.JsonWriter({
 			encode:true
@@ -241,7 +256,7 @@ Ext.extend(lconf.GridDropZone, Ext.dd.DropZone, {
 });
 
 lconf.Admin.itemGranter = function(config) {
-	this.interface = null;
+	this._interface = null;
 	Ext.apply(this,config);
 	
 	this.notifySelected = function(where) {
@@ -328,11 +343,11 @@ lconf.Admin.itemGranter = function(config) {
 	this.buildInterface = function() {
 		var available = this.gridAvailable;
 		var selected =  this.gridSelected;
-		this.interface = new Ext.Panel({
+		this._interface = new Ext.Panel({
 			layout:'column',	
 			title:this.title,
 			defaults: {
-				cellCls: 'middleAlign',	
+				cellCls: 'middleAlign'
 			},
 			items: [	
 				available,
@@ -380,8 +395,8 @@ lconf.Admin.itemGranter = function(config) {
 	
 
 	this.buildInterface();
-	this.interface.cmp = this;
-	__instance = this.interface;
-	return this.interface;	
+	this._interface.cmp = this;
+	__instance = this._interface;
+	return this._interface;
 }
 })();

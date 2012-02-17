@@ -15,7 +15,7 @@ class AppKit_DataProvider_LogProviderAction extends AppKitBaseAction {
      */
 
     public function getCredentials() {
-        return array('appkit.admin', 'appkit.admin.logs');
+        return array('lconf.admin');
     }
 
     public function executeRead(AgaviRequestDataHolder $rd) {

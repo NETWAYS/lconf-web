@@ -8,20 +8,27 @@ class NsmUser extends BaseNsmUser {
     const HASH_ALGO = 'sha256';
 
     private static $prefCache = array();
+    
+    /**
+     * Reduce database query overhead
+     * @var array
+     */
+    private static $targetValuesCache = array();
 
     /**
-     *
      * @var Doctrine_Collection
      */
     private $principals			= null;
 
     /**
-     *
      * @var array
      */
     private $principals_list	= null;
+    
     private $context = null;
+    
     private $storage = null;
+    
     /**
      * (non-PHPdoc)
      * @see lib/appkit/database/models/generated/BaseNsmUser#setTableDefinition()
@@ -30,13 +37,21 @@ class NsmUser extends BaseNsmUser {
 
         parent::setTableDefinition();
 
-        $this->index('user_unique', array(
+        $this->index('user_name_unique', array(
                          'fields' => array(
                              'user_name'
                          ),
                          'type' => 'unique'
-                     ));
+        ));
 
+           // Removed by #2228
+//         $this->index('user_email_unique', array(
+//                          'fields' => array(
+//                              'user_email'
+//                           ),
+//                           'type' => 'unique'
+//         ));
+        
         $this->index('user_search', array(
                          'fields' => array(
                              'user_name',
@@ -44,7 +59,7 @@ class NsmUser extends BaseNsmUser {
                              'user_authid',
                              'user_disabled'
                          )
-                     ));
+        ));
     }
 
     public function getContext() {
@@ -166,7 +181,7 @@ class NsmUser extends BaseNsmUser {
      * @author Marius Hein
      */
     public function getPrefObject($key) {
-        $res = Doctrine_Query::create()
+        $res = AppKitDoctrineUtil::createQuery()
                ->from('NsmUserPreference p')
                ->where('p.upref_user_id=? and p.upref_key=?', array($this->user_id, $key))
                ->limit(1)
@@ -236,7 +251,7 @@ class NsmUser extends BaseNsmUser {
          * WORKAROUND:
          * Postgresql doesn't support limit, so we must first select a row, then delete it
          */
-        $idToDelete = Doctrine_Query::create()
+        $idToDelete = AppKitDoctrineUtil::createQuery()
                       ->select("upref_id")
                       ->from("NsmUserPreference p")
                       ->where('p.upref_user_id=? and p.upref_key=?', array($this->user_id, $key))
@@ -247,7 +262,7 @@ class NsmUser extends BaseNsmUser {
         }
 
         $upref_id = $idToDelete->get('upref_id');
-        $test = Doctrine_Query::create()
+        $test = AppKitDoctrineUtil::createQuery()
                 ->delete('NsmUserPreference p')
                 ->where('p.upref_id=? and p.upref_user_id=? and p.upref_key=?', array($upref_id,$this->user_id, $key))
                 //->limit(1)  -> not supported by postgresql
@@ -261,7 +276,7 @@ class NsmUser extends BaseNsmUser {
     }
 
     public function getPreferences() {
-        $res = Doctrine_Query::create()
+        $res = AppKitDoctrineUtil::createQuery()
                ->select('p.upref_val, p.upref_key, p.upref_longval')
                ->from('NsmUserPreference p INDEXBY p.upref_key')
                ->where('p.upref_user_id=?', array($this->user_id))
@@ -281,7 +296,7 @@ class NsmUser extends BaseNsmUser {
     }
 
     public function getPreferencesList(array $list=array()) {
-        $res = Doctrine_Query::create()
+        $res = AppKitDoctrineUtil::createQuery()
                ->select('p.upref_val, p.upref_key')
                ->from('NsmUserPreference p INDEXBY p.upref_key')
                ->where('p.upref_user_id=?', array($this->user_id))
@@ -317,16 +332,55 @@ class NsmUser extends BaseNsmUser {
         return $this->principals_list;
     }
 
+    public function getUserPrincipalsList() {
+        return array_keys(AppKitDoctrineUtil::createQuery()
+            ->select('p.*')
+            ->from('NsmPrincipal p INDEXBY p.principal_id')
+            ->orWhere('p.principal_user_id = ?',$this->user_id)
+            ->execute()->toArray());
+    }
+    
+    private function collectChildRoleIdentifier(NsmRole $role, array &$store = array ()) {
+            foreach ($role->getChildren() as $child) {
+                $this->collectChildRoleIdentifier($child, $store);
+                $store[] = $child->role_id;
+            }
+    }
+
     private function getRoleIds() {
+        
+        $use_topdown = AgaviConfig::get('modules.appkit.auth.behaviour.group_topdown');
+        
         $ids = array();
         foreach($this->NsmRole as $role) {
+            if($role->role_disabled)
+                continue;
             $ids[] = $role->role_id;
-            while ($role->hasParent()){
-                $role = $role->parent;
-                $ids[] = $role->role_id;        
+            
+            /*
+             * This is devel classic behaviour. Inheritance
+             * of roles goes top-down. This means the role with all
+             * credentials is the deepest.
+             */
+            if ($use_topdown === true) {
+                while ($role->hasParent()){
+                    $role = $role->parent;
+                    if($role->role_disabled)
+                        continue;
+                    $ids[] = $role->role_id;       
+                }
+            
+            /*
+             * This is more group managing like. The group on top
+             * collects all credentials from underlaying groups
+             */
+            } else {
+                $this->collectChildRoleIdentifier($role, $ids);
             }
         }
-         
+
+        $ids = array_unique($ids);
+        
         return $ids;
     }
     
@@ -335,14 +389,15 @@ class NsmUser extends BaseNsmUser {
      * user
      * @return Doctrine_Collection
      */
-    public function getPrincipals() {
+    public function getPrincipals($userOnly= false) {
 
         if ($this->principals === null) {
             $roles = $this->getRoleIds();
-            $this->principals = Doctrine_Query::create()
+            $this->principals = AppKitDoctrineUtil::createQuery()
                                 ->select('p.*')
                                 ->from('NsmPrincipal p INDEXBY p.principal_id')
                                 ->andWhereIn('p.principal_role_id',$roles)
+
                                 ->orWhere('p.principal_user_id = ?',$this->user_id)
                                 ->execute();
 
@@ -368,23 +423,25 @@ class NsmUser extends BaseNsmUser {
      * @param string $type
      * @return Doctrine_Collection
      */
-    public function getTargets($type=null) {
+    public function getTargets($type=null,$userOnly = false) {
 
-        return $this->getTargetsQuery($type)->execute();
+        return $this->getTargetsQuery($type,$userOnly)->execute();
     }
 
     /**
+     *
      * Returns a DQL providing the user targets
      * @param string $type
      * @return Doctrine_Query
      */
-    protected function getTargetsQuery($type=null) {
-        $q = Doctrine_Query::create()
+    protected function getTargetsQuery($type=null,$userOnly = false) {
+        $principals = $userOnly ? $this->getUserPrincipalsList() : $this->getPrincipalsList();
+        $q = AppKitDoctrineUtil::createQuery()
              ->select('t.*')
              ->distinct(true)
              ->from('NsmTarget t INDEXBY t.target_id')
              ->innerJoin('t.NsmPrincipalTarget pt')
-             ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList());
+             ->andWhereIn('pt.pt_principal_id', $principals);
 
         if ($type !== null) {
             $q->andWhere('t.target_type=?', array($type));
@@ -430,7 +487,7 @@ class NsmUser extends BaseNsmUser {
      * @return Doctrine_Query
      */
     protected function getTargetValuesQuery($target_name) {
-        $q = Doctrine_Query::create()
+        $q = AppKitDoctrineUtil::createQuery()
              ->select('tv.*')
              ->from('NsmTargetValue tv')
              ->innerJoin('tv.NsmPrincipalTarget pt')
@@ -465,36 +522,39 @@ class NsmUser extends BaseNsmUser {
     }
 
     public function getTargetValuesArray() {
-        $tc = Doctrine_Query::create()
-              ->select('t.target_name, t.target_id')
-              ->from('NsmTarget t')
-              ->innerJoin('t.NsmPrincipalTarget pt')
-              ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
-              ->execute();
-
-        $out = array();
-
-        foreach($tc as $t) {
-            $out[ $t->target_name ] = array();
-
-            $ptc = Doctrine_Query::create()
-                   ->from('NsmPrincipalTarget pt')
-                   ->innerJoin('pt.NsmTargetValue tv')
-                   ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
-                   ->andWhere('pt.pt_target_id=?', array($t->target_id))
-                   ->execute();
-
-            foreach($ptc as $pt) {
-                $tmp = array();
-                foreach($pt->NsmTargetValue as $tv) {
-                    $tmp[ $tv->tv_key ] = $tv->tv_val;
-                }
-
-                $out[ $t->target_name ][] = $tmp;
-            }
-        }
+        if (count(self::$targetValuesCache) == 0) {
+            $tc = AppKitDoctrineUtil::createQuery()
+                  ->select('t.target_name, t.target_id')
+                  ->from('NsmTarget t')
+                  ->innerJoin('t.NsmPrincipalTarget pt')
+                  ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
+                  ->execute();
     
-
-        return $out;
+            $out = array();
+    
+            foreach($tc as $t) {
+                $out[ $t->target_name ] = array();
+    
+                $ptc = AppKitDoctrineUtil::createQuery()
+                       ->from('NsmPrincipalTarget pt')
+                       ->innerJoin('pt.NsmTargetValue tv')
+                       ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
+                       ->andWhere('pt.pt_target_id=?', array($t->target_id))
+                       ->execute();
+    
+                foreach($ptc as $pt) {
+                    $tmp = array();
+                    foreach($pt->NsmTargetValue as $tv) {
+                        $tmp[ $tv->tv_key ] = $tv->tv_val;
+                    }
+    
+                    $out[ $t->target_name ][] = $tmp;
+                }
+                
+                self::$targetValuesCache =& $out;
+            }
+        
+        }
+        return self::$targetValuesCache;
     }
 }

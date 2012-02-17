@@ -22,7 +22,7 @@ class AppKit_Admin_ViewLogsAction extends AppKitBaseAction {
     }
 
     public function getCredentials() {
-        return array('appkit.admin');
+        return array('lconf.admin');
     }
 
     public function handleError(AgaviRequestDataHolder $rd) {

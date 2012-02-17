@@ -123,14 +123,14 @@ abstract class BaseNsmUser extends Doctrine_Record {
                              'notnull' => false,
                              'autoincrement' => false,
                          ));
-        $this->hasColumn('user_email', 'string', 40, array(
+        $this->hasColumn('user_email', 'string', 254, array(
                              'type' => 'string',
                              'length' => 40,
                              'fixed' => false,
                              'unsigned' => false,
                              'primary' => false,
                              'notnull' => true,
-                             'autoincrement' => false,
+                             'autoincrement' => false
                          ));
         $this->hasColumn('user_disabled', 'integer', 1, array(
                              'type' => 'integer',
@@ -158,27 +158,35 @@ abstract class BaseNsmUser extends Doctrine_Record {
                              'notnull' => true,
                              'autoincrement' => false,
                          ));
-
-        //	$this->index('user_unique_idx',array('fields'=>array('user_name')));
-        $this->index('user_search_idx',array('fields'=>	array('user_authsrc','user_authid','user_disabled')));
     }
 
 
     public function setUp() {
         parent::setUp();
 
-        $this->hasOne('NsmPrincipal', array(
+        $this->hasOne('NsmPrincipal as principal', array(
                           'local' => 'user_id',
                           'foreign' => 'principal_user_id'
                       ));
-
-        $this->hasMany('NsmUserPreference', array(
+        
+        $this->hasMany('NsmUserPreference as preferences', array(
                            'local' => 'user_id',
                            'foreign' => 'upref_user_id'));
 
-        $this->hasMany('NsmUserRole', array(
+        $this->hasMany('NsmUserRole as roles', array(
                            'local' => 'user_id',
                            'foreign' => 'usro_user_id'));
+        
+        $this->hasMany('Cronk as cronks', array(
+                           'local' => 'user_id',
+                           'foreign' => 'cronk_user_id'
+        ));
+        
+        $this->hasMany('CronkPrincipalCronk as cronkPrincipals', array(
+                           'local' => 'principal_user_id',
+                           'foreign' => 'principal_id',
+                           'refClass' => 'NsmPrincipal'
+        ));
     }
     public static function getInitialData() {
         return  array(

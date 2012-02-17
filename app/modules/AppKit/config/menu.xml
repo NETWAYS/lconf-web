@@ -1,17 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://icinga.org/icinga/config/global/menu/1.0">
     <ae:configuration>
-     
+        <menu id="menu_monitoring">
+            <credential>icinga.user</credential>
+            <preferposition>first</preferposition>
+            <icon>icinga-icon-dot</icon>
+            <caption>Monitoring</caption>
+            <route target="new">modules.icinga.portalView</route>
+        </menu>
+
+        <menu id="menu_help">
+            <preferposition>last</preferposition>
+            <icon>icinga-icon-help</icon>
+            <caption>Help</caption>
+            <items>
+
+                <item id="menu_lconf_about">
+                    <icon>lconf-logo</icon>
+                    <caption>About LConf</caption>
+                    <route target="window" title="About lconf" id="icinga-window-lconf-about">
+                        modules.lconf.about
+                    </route>
+                </item>
+                <item id="icinga_about">
+                    <icon>icinga-icon-information</icon>
+                    <caption>About icinga-web</caption>
+                    <route target="window" id="icinga-window-about">
+                        modules.icinga.about
+                    </route>
+                </item>
+                <item id="icinga_home">
+                    <icon>icinga-icon-world</icon>
+                    <caption>Icinga home</caption>
+                    <url target="new">http://www.icinga.org</url>
+                </item>
+                <item id="nw_home">
+                    <icon>icinga-icon-world</icon>
+                    <caption>Netways home</caption>
+                    <url target="new">http://www.netways.org</url>
+                </item>
+            </items>
+        </menu>
 
         <menu id="menu_admin">
-            <credential>lconf.user;appkit.admin</credential>
+            <credential>lconf.admin</credential>
             
-
+            <preferposition>before:menu_help</preferposition>
             <icon>icinga-icon-wrench</icon>
             <caption>Admin</caption>
             <items>
+                 <item id="menu_lconf_connectionmgr">
+                    <icon>icinga-icon-user</icon>
+                    <caption>LConf Connection Manager</caption>
+                    <credential>lconf.admin</credential>
+                    <route target="new">
+                        modules.lconf.admin
+                    </route>
+                </item>
                 <item id="menu_admin_users">
-                    <credential>appkit.admin.users</credential>
+                    <credential>lconf.admin</credential>
                     <icon>icinga-icon-user</icon>
                     <caption>Users</caption>
                     <route target="new">
@@ -19,14 +66,14 @@
                     </route>
                 </item>
                 <item id="menu_admin_groups">
-                    <credential>appkit.admin.groups</credential>
+                    <credential>lconf.admin</credential>
                     <icon>icinga-icon-group</icon>
                     <caption>Groups</caption>
                     <route target="new">
                         modules.appkit.admin.groups
                     </route>
                 </item>
-             
+        
             </items>
         </menu>
     </ae:configuration>

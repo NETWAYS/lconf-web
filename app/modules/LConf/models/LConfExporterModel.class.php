@@ -24,15 +24,33 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
 			$this->lconfConsole = AgaviContext::getInstance()->getModel('Console.ConsoleInterface',"Api",array("host"=>$instance));
 		return $this->lconfConsole;
 	}
-	
+
+    protected function log($msg) {
+        $log = $this->getContext()->getLoggerManager()->getLogger("icinga-debug");
+        $log->log(new AgaviLoggerMessage("LConf export: ".$msg));
+    }
+
+    public function getExportBase(LConf_LDAPConnectionModel $ldap_config) {
+        $cfg = AgaviConfig::get('modules.lconf.lconfExport');
+        if(isset($cfg['exportDN'])) {
+            
+            return $cfg['exportDN'].",".$ldap_config->getBaseDN();
+        } return null;
+        
+    }
+
 	public function exportConfig(LConf_LDAPConnectionModel $ldap_config,$satellites = array()) {
 		//$satellites = $this->fetchExportSatellites($ldap_config);	
-		$ctx = $this->getContext();
-		$lconfExportInstance = AgaviConfig::get('modules.lconf.lconfExport.lconfConsoleInstance');
+
+        $ctx = $this->getContext();
+		$this->log("Export started for connection ".$ldap_config->getConnectionName());
+        $lconfExportInstance = AgaviConfig::get('modules.lconf.lconfExport.lconfConsoleInstance');
 		$this->prefix = AgaviConfig::get('modules.lconf.prefix');
-		$console = $this->getConsole($lconfExportInstance);
+		$this->log("Setting up consolehandler for ".$lconfExportInstance);
+        $console = $this->getConsole($lconfExportInstance);
 		$this->tm = $ctx->getTranslationManager();
-		$exportCmd =  $ctx->getModel(
+		
+        $exportCmd =  $ctx->getModel(
 			'Console.ConsoleCommand',
 			"Api",
 			array(
@@ -42,22 +60,30 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
 			)
 			
 		);
-	
+        $this->log("Executing export");
 		$console->exec($exportCmd);
+        $this->log("Export finished");
 		if($exportCmd->getReturnCode() != 0) { 
-			throw new LConfExporterErrorException($this->getCommandError($exportCmd));	
+            $err = $this->getCommandError($exportCmd);
+            $this->log("Export failed ".$err);
+			throw new LConfExporterErrorException($err);
 		} else {
+            $this->log("Export suceeded, updating export time");
 			$this->updateExportTime($ldap_config,$satellites);
-	
-			return $this->parseSuccessfulOutput($exportCmd);
+            $this->log("Export time updated");
+
+            return $this->parseSuccessfulOutput($exportCmd);
 		}
 	}
 	
-	public function getChangedSatellites(LConf_LDAPConnectionModel $ldap_config) {	
+	public function getChangedSatellites(LConf_LDAPConnectionModel $ldap_config) {
+        $this->log("Fetching modified satellites");
 		$satellites = $this->fetchExportSatellites($ldap_config);
+        
 		$this->filterSatellites = true;
 		$satellites_new = $this->fetchExportSatellites($ldap_config);
-		return array("Available"=>$satellites, "Updated" => $satellites_new);
+		$this->log(count($satellites)." Satellites found");
+        return array("Available"=>$satellites, "Updated" => $satellites_new);
 	}
 	
 	protected function updateExportTime($conn,$satellites = array()) {
@@ -168,14 +194,21 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
 		));
 		$filterGroup->addFilter($objectClassFilter);
 		$filterGroup->addFilter($filter);
-		$client = $ctx->getModel('LDAPClient','LConf',array($ldap_config));
+
+        $client = $ctx->getModel('LDAPClient','LConf',array($ldap_config));
 		$client->connect();
 		$this->ldapClient = $client;
-		$entries = $client->searchEntries($filterGroup,null,array('dn','description','objectclass','modifytimestamp'));
+        
+        $this->log("Searching for satellites underneath ".$this->getExportBase($ldap_config));
+		$entries = $client->searchEntries($filterGroup,$this->getExportBase($ldap_config),array('dn','description','objectclass','modifytimestamp'));
 		$satellites = array();
-		if($this->filterSatellites) {
+        if($entries == null)
+            $entries = array();
+        $this->log(count($entries)." Satellites found");
+        if($this->filterSatellites) {
 			$entries = $this->removeUnchangedSatellites($entries);	
-		} 
+		}
+
 		foreach($entries as $val=>&$cluster) {
 			if(!is_numeric($val))
 				continue;	

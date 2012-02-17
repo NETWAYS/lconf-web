@@ -1,5 +1,8 @@
-<?xml version="1.0"?>
 
+	.sortable th {
+	    cursor: pointer;
+	}
+	
     .bannercell {
       border: 0px;
       padding: 0px;
@@ -57,6 +60,41 @@
     .small {
        font-size: 9px;
     }
+    td.legendItem {
+      font-weight: bold;
+      padding-bottom: 2px;
+      padding-right: 6px;
+      padding-top: 6px;
+      text-align: right;
+    }
+    td.legendValue {
+      color: #2E3436;
+      font-weight: bold;
+      padding-bottom: 2px;
+      padding-top: 6px;
+      text-align: left;
+    }
+    span.LegendCovered {
+      background-color: #8AE234;
+      margin-right: 2px;
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+    }
+    span.LegendUncovered {
+      background-color: #F0C8C8;
+      margin-right: 2px;
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+    }
+    span.LegendDeadCode {
+      background-color: #D3D7CF;
+      margin-right: 2px;
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+    }
 TD.empty {
     FONT-SIZE: 2px; BACKGROUND: #c0c0c0; BORDER:#9c9c9c 1px solid;
     color: #c0c0c0;
@@ -76,24 +114,40 @@ TD.uncovered {
 PRE.srcLine {
   BACKGROUND: #ffffff; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; 
 }
-PRE.srcLineHighLight {
+    PRE.srcLineUncovered {
   BACKGROUND: #F0C8C8; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; 
 }
+    PRE.srcLineCovered {
+      BACKGROUND: #8AE234; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px;
+    }
+    PRE.srcLineDeadCode {
+      BACKGROUND: #D3D7CF; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px;
+    }
 td.lineCount, td.coverageCount {
       BACKGROUND: #F0F0F0; PADDING-RIGHT: 3px;
       text-align: right;
 }
-td.lineCountHighlight {
-      background: #C8C8F0; PADDING-RIGHT: 3px;
+    td.lineCountCovered, td.coverageCountCovered {
+          background: #8AE234; PADDING-RIGHT: 3px;
       text-align: right;
 }
-td.coverageCountHighlight {
+    td.srcLineCovered {
+          background: #8AE234;
+    }
+    td.lineCountUncovered, td.coverageCountUncovered {
       background: #F0C8C8; PADDING-RIGHT: 3px;
       text-align: right;
 }
-td.srcLineHighlight {
+    td.srcLineUncovered {
       background: #F0C8C8;
 }
+    td.lineCountDeadCode, td.coverageCountDeadCode {
+          background: #D3D7CF; PADDING-RIGHT: 3px;
+          text-align: right;
+    }
+    td.srcLineDeadCode {
+          background: #D3D7CF;
+    }
 td.srcLine {
       background: #C8C8F0;
 }

@@ -27,9 +27,9 @@
 
 					</role>
 					
-					<role name="lconf.user">
+					<role name="icinga_user">
 						<permissions>
-							<permission>lconf.user</permission>
+							<permission>icinga.user</permission>
 						</permissions>
 					</role>
 					

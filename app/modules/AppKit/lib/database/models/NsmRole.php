@@ -9,6 +9,12 @@ class NsmRole extends BaseNsmRole {
     private $children = null;
     private $context = null;
     private $storage = null;
+    
+    /**
+    * Reduce database query overhead
+    * @var array
+    */
+    private static $targetValuesCache = array();
 
     public function setUp() {
 
@@ -39,7 +45,6 @@ class NsmRole extends BaseNsmRole {
         return $this->storage;
     }
 
-
     public function hasParent() {
         if ($this->get('role_parent')) {
             return true;
@@ -58,7 +63,7 @@ class NsmRole extends BaseNsmRole {
 
     public function getChildren() {
         if ($this->children === null) {
-            $this->children = Doctrine_Query::create()
+            $this->children = AppKitDoctrineUtil::createQuery()
                               ->select('r.*')
                               ->from("NsmRole r INDEXBY r.role_id")
                               ->where("r.role_parent = ?",$this->get("role_id"))
@@ -92,7 +97,7 @@ class NsmRole extends BaseNsmRole {
 
         if ($this->principals === null) {
 
-            $this->principals = Doctrine_Query::create()
+            $this->principals = AppKitDoctrineUtil::createQuery()
                                 ->select('p.*')
                                 ->from('NsmPrincipal p INDEXBY p.principal_id')
                                 ->andWhere('p.principal_type = ? AND p.principal_role_id = ?',array('role',$this->get("role_id")))
@@ -112,7 +117,7 @@ class NsmRole extends BaseNsmRole {
      */
     protected function getTargetsQuery($type=null) {
 
-        $q = Doctrine_Query::create()
+        $q = AppKitDoctrineUtil::createQuery()
              ->select('t.*')
              ->distinct(true)
              ->from('NsmTarget t INDEXBY t.target_id')
@@ -174,7 +179,7 @@ class NsmRole extends BaseNsmRole {
      * @return Doctrine_Query
      */
     protected function getTargetValuesQuery($target_name) {
-        $q = Doctrine_Query::create()
+        $q = AppKitDoctrineUtil::createQuery()
              ->select('tv.*')
              ->from('NsmTargetValue tv')
              ->innerJoin('tv.NsmPrincipalTarget pt')
@@ -208,36 +213,42 @@ class NsmRole extends BaseNsmRole {
     }
 
     public function getTargetValuesArray() {
-        $tc = Doctrine_Query::create()
-              ->select('t.target_name, t.target_id')
-              ->from('NsmTarget t')
-              ->innerJoin('t.NsmPrincipalTarget pt')
-              ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
-              ->execute();
-
-        $out = array();
-
-        foreach($tc as $t) {
-            $out[ $t->target_name ] = array();
-
-            $ptc = Doctrine_Query::create()
-                   ->from('NsmPrincipalTarget pt')
-                   ->innerJoin('pt.NsmTargetValue tv')
-                   ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
-                   ->andWhere('pt.pt_target_id=?', array($t->target_id))
-                   ->execute();
-
-            foreach($ptc as $pt) {
-                $tmp = array();
-                foreach($pt->NsmTargetValue as $tv) {
-                    $tmp[ $tv->tv_key ] = $tv->tv_val;
+        
+        if (count(self::$targetValuesCache) == 0) {
+            $tc = AppKitDoctrineUtil::createQuery()
+                  ->select('t.target_name, t.target_id')
+                  ->from('NsmTarget t')
+                  ->innerJoin('t.NsmPrincipalTarget pt')
+                  ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
+                  ->execute();
+    
+            $out = array();
+    
+            foreach($tc as $t) {
+                $out[ $t->target_name ] = array();
+    
+                $ptc = AppKitDoctrineUtil::createQuery()
+                       ->from('NsmPrincipalTarget pt')
+                       ->innerJoin('pt.NsmTargetValue tv')
+                       ->andWhereIn('pt.pt_principal_id', $this->getPrincipalsList())
+                       ->andWhere('pt.pt_target_id=?', array($t->target_id))
+                       ->execute();
+    
+                foreach($ptc as $pt) {
+                    $tmp = array();
+                    foreach($pt->NsmTargetValue as $tv) {
+                        $tmp[ $tv->tv_key ] = $tv->tv_val;
+                    }
+    
+                    $out[ $t->target_name ][] = $tmp;
                 }
-
-                $out[ $t->target_name ][] = $tmp;
             }
+            
+            self::$targetValuesCache =& $out;
+        
         }
         
 
-        return $out;
+        return self::$targetValuesCache;
     }
 }

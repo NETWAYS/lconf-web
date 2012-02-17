@@ -22,7 +22,7 @@ class AppKit_User_PreferencesAction extends AppKitBaseAction {
     }
 
     public function getCredentials() {
-        return array('lconf.user');
+        return array('icinga.user');
     }
 
     public function executeRead(AgaviRequestDataHolder $rd) {

@@ -1,0 +1,62 @@
+;
+;	These are the default attributes displayed for for the customDialogs 
+;	Feel free to modify them until they suit your needs!
+;
+
+[Command]
+objectclass			= "@SCHEMA_PREFIX@Command"
+cn				= ""
+@SCHEMA_PREFIX@Commandline		= ""
+
+[Contact]
+objectclass			= "@SCHEMA_PREFIX@Contact"
+cn				= ""
+@SCHEMA_PREFIX@Alias			= ""
+
+[Contactgroup]
+objectclass			= "@SCHEMA_PREFIX@Contactgroup"
+cn				= ""
+@SCHEMA_PREFIX@Alias			= ""
+
+[Host]
+objectclass			= "@SCHEMA_PREFIX@Host"
+cn				= ""
+@SCHEMA_PREFIX@Address			= ""
+
+[Hostescalation]
+objectclass			= "@SCHEMA_PREFIX@HostEscalation"
+cn				= ""
+@SCHEMA_PREFIX@HostEscalationFirstNotification = ""
+@SCHEMA_PREFIX@HostEscalationLastNotification = ""
+@SCHEMA_PREFIX@HostEscalationNotificationInterval = ""
+
+[Hostgroup]
+objectclass			= "@SCHEMA_PREFIX@Hostgroup"
+cn				= ""
+@SCHEMA_PREFIX@Alias			= ""
+
+[Service]
+objectclass			= "@SCHEMA_PREFIX@Service"
+cn				= ""
+@SCHEMA_PREFIX@ServiceCheckcommand	= ""
+
+[Serviceescalation]
+objectclass			= "@SCHEMA_PREFIX@ServiceEscalation"
+cn				= ""
+@SCHEMA_PREFIX@ServiceEscalationFirstNotification = ""
+@SCHEMA_PREFIX@ServiceEscalationLastNotification = ""
+@SCHEMA_PREFIX@ServiceEscalationNotificationInterval = ""
+
+[Servicegroup]
+objectclass			= "@SCHEMA_PREFIX@Servicegroup"
+cn				= ""
+@SCHEMA_PREFIX@Alias			= ""
+
+[StructuralObject]
+objectclass			= "@SCHEMA_PREFIX@StructuralObject"
+ou				= ""
+
+[Timeperiod]
+objectclass			= "@SCHEMA_PREFIX@Timeperiod"
+cn				= ""
+@SCHEMA_PREFIX@Alias			= ""

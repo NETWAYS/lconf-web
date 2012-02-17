@@ -1,6 +1,7 @@
 <?php
 	$message = $t['message'];
 	$username = isset($t['username']) ? $t['username'] : '';
+	$app_string = AgaviConfig::get('org.icinga.version.release');
 ?>
 <script pe="text/javascript">
 Ext.onReady(function() {
@@ -29,14 +30,15 @@ Ext.onReady(function() {
 			bodyStyle: { padding: '5px 5px', marginTop: '10px' },
 			
 			defaults: {
-				msgTarget: 'side'
+				msgTarget: 'side',
+                width: 200
 			},
 			
 			items: [{
 				fieldLabel: '<?php echo $tm->_("User"); ?>',
 				name: 'username',
 				id: 'username',
-				allowBlank: false 
+				allowBlank: false
 			}, {
 				fieldLabel: '<?php echo $tm->_("Password"); ?>',
 				inputType: 'password',
@@ -49,6 +51,12 @@ Ext.onReady(function() {
 				afterrender: function(p) {
 					pub.resetForm(true);
 					oFormPanel.getForm().findField('username').setValue('<?php echo $username; ?>');
+					
+					Ext.getCmp('menu').destroy();
+					
+					// Disable some borders
+					Ext.getCmp('viewport-center').getEl().addClass('login-page');
+					
 				}
 			},
 			
@@ -66,20 +74,61 @@ Ext.onReady(function() {
 
 		var oBox = new Ext.Panel({
 			id: 'login-dialog',
-			baseCls: 'x-box',
-			frame: true,
+			title : String.format(_('Login ({0})'), '<?php echo $app_string; ?>'),
+			width : 400,
+            style: 'margin:auto',
+			frame : true,
+			border : true,
 			defaults: { border: false },
-			items: [ { bodyCfg: { tag: 'h1', html: _('Login') } }, oFormPanel ]
+			items: [ oFormPanel ]
 		});
 
-		var oContainer = new Ext.Panel({
-			width: 400,
-			style: { margin: '120px auto', padding: '10px 0 0 0' },
-			items: oBox,
-			border: false,
-			id: 'login-container'
-		});
+		var oContainer = new Ext.Container({
+            width: 410,
+            height: 340,
+            style: 'margin:auto;margin-top:-20%;'+
+                '-moz-transition:margin 0.5s ease-in;transition:margin 0.5s ease-in;-webkit-transition:margin 0.5s ease-in;'+
+                'border-radius: 5px;-moz-border-radius:5px;-webkit-border-radius:5px;'+
+                '-o-border-radius:5px; -',
+            
+            layout: 'vbox',
+            listeners: {
+                afterrender: function(me) {
+                    
+                    me.getEl().setStyle("margin-top","00%");
+                }
+            },
+            items: [
+                {
+                    
+                    html: Ext.DomHelper.markup({
+                        tag : 'div',
+                        style : 'margin:auto;'
+                        + 'margin-top:2%;'
+                        + ' height: 150px;'
+                        + ' width : 400px;'
+                        + String.format(' background-image: url(\'{0}/modules/LConf/resources/images/LConf_Logo.jpg\'); background-repeat:no-repeat;', AppKit.util.Config.get('path'))
+                        + ' background-color: #fff; ',
+                        html : '&nbsp;'
+                    })
+                },
+                new Ext.Panel({
+                    width: 400,
 
+                    style: {
+                        margin: 'auto',
+                        padding: '0 0 0 0'
+                    },
+                    items: oBox,
+                    border: true,
+                    id: 'login-container'
+                }), {
+                    style: 'text-align:center',
+                    width: 400,
+                    html: 'This application is based on <a href="http://www.icinga.org">icinga-web</a>'
+                }
+            ]
+        })
 		var messageTip = null;
 
 		<?php if ($message==true): ?>

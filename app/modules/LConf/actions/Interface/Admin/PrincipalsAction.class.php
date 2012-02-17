@@ -18,7 +18,14 @@ class LConf_Interface_Admin_PrincipalsAction extends IcingaLConfBaseAction
 	{
 		return 'Success';
 	}
-	
+
+    public function isSecure() {
+        return true;
+    }
+
+    public function getCredentials() {
+        return 'lconf.admin';
+    }
 
 }
 

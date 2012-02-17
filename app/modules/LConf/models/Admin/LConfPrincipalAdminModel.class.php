@@ -9,8 +9,8 @@ class LConf_Admin_LConfPrincipalAdminModel extends IcingaLConfBaseModel {
 	public function addPrincipals($connection_id,$target,$values) {
 
 		$values = json_decode($values,true);
-        
-		if(isset($values["user_id"]))
+	
+		if(!is_array(@$values[0]))
 			$values = array($values);
 		$this->removeExistingPrincipalsFromValues($connection_id,$target,$values);
 		$field = self::$fieldMap[$target];

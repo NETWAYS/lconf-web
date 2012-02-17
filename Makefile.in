@@ -14,7 +14,7 @@ TAR_DIR_NAME=$(shell basename `pwd`)
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-LOGDIR=@web_log_folder@
+LOGDIR=@web_log_dir@
 CFGDIR=@sysconfdir@
 BINDIR=@bindir@
 CGIDIR=@sbindir@
@@ -35,7 +35,7 @@ WEB_APACHE_PATH=@web_apache_path@
 SED=@SED@
 PHP=@PHP@
 PHING=@PHING@
-PHING_CALL=bin/phing -f etc/build.xml
+PHING_CALL=cd @srcdir@/etc/ && ../bin/phing -f build.xml
 PHPUNIT=@PHPUNIT@
 PHPCS=@PHPCS@
 
@@ -52,16 +52,45 @@ SRC_ETC=@srcdir@/etc
 SRC_BIN=@srcdir@/bin
 SRC_DOC=@srcdir@/doc
 SRC_APP=@srcdir@/app
-SRC_SITE=@srcdir@/etc/sitecfg
+SRC_SITE=@srcdir@/etc/conf.d
 
 none:
 #	@printf "\t%-22s - %s\n" "" ""
 	@printf "Please supply a command line argument (i.e. 'make install').\n\n"
 	@printf "Generic targets: install, clean\n\n"
+	@printf "For updates please use 'upgrade' to avoid overwriting your siteconfig!\n\n"
+	@printf "Other usefull targets:\n"
+	@printf "\t%-22s - %s\n" "testdeps" "test php dependencies"
+	@printf "\t%-22s - %s\n" "create-tarball" "creates a tarball for packaging"
+	@printf "\t%-22s - %s\n" "create-tarball-nightly" "creates a tarball from HEAD for nightly builds"
+	@printf "\t%-22s - %s\n" "cacheclean" "purges the agavi xml cache"
+	
+	@printf "\nDatabase (web) targets:\n"
+	@printf "\t%-22s - %s\n" "db-initialize" "create the db"
+	@printf "\t%-22s - %s\n" "db-deinitialize" "reverse the path (removes all data and drop the relations)"
+	@printf "\t%-22s - %s\n" "db-drop" "drop the entire db"
+	@printf "\t%-22s - %s\n" "db-purge-userprefs" "purge existing user preferences"
+	@printf "\t%-22s - %s\n" "db-doc2sql" "export doctrine db schema"
 
-	@printf "\nWeb targets:\n"
+	@printf "\nIcinga web targets:\n"
+	@printf "\t%-22s - %s\n" "icinga-reset-password" "Reset password for any account on icinga-web"
 	@printf "\t%-22s - %s\n" "install-apache-config" "Install the apache config to configured path"
 
+	@printf "\nI18n targets:\n"
+	@printf "\t%-22s - %s\n" "loc-update-catalog" "Create a initial locale from source (default.po)"
+	@printf "\t%-22s - %s\n" "loc-compile" "Compile language files into mo and json"
+
+	@printf "\nScheduler targets:\n"
+	@printf "\t%-22s - %s\n" "scheduler-install" "Install the icingaScheduler cronjob"
+	@printf "\t%-22s - %s\n" "scheduler-remove" "remove the icingaScheduler cronjob"
+	
+	@printf "\nDevelopment targets:\n"
+	@printf "\t%-22s - %s\n" "devel-inplace-config" "Prepare src tree for running inplace"
+	@printf "\t%-22s - %s\n" "devel-reconfigure" "Clean and reconfigure source"
+	@printf "\t%-22s - %s\n" "devel-update-version" "Upgrades the version file"
+	@printf "\t%-22s - %s\n" "test" "Running tests"
+	@printf "\t%-22s - %s\n" "test-cs" "Running codestyle tests"
+	@printf "\n\n"
 	
 logclean:
 	rm -rf $(LOGDIR)/*.log
@@ -82,40 +111,102 @@ distclean:
 	.build/ \
 	
 	rm -f \
-        Makefile \
-        pub/Makefile \
-        etc/Makefile \
-        doc/Makefile \
-        app/Makefile \
- 	app/config/databases.xml \
-        app/config/icinga.xml \
-        app/config/logging.xml \
-        app/config/settings.xml \
-        app/config/translation.xml \
-    	app/modules/Api/config/access.xml \
-        app/modules/AppKit/config/module.xml \
-        app/modules/AppKit/config/auth.xml \
-        etc/build.properties \
-        etc/apache2/lconf-web.conf \
-        bin/clearcache.sh \
-        pub/.htaccess \
-
+	Makefile \
+	lib/Makefile \
+	lib/icingaScheduler/config.php \
+	pub/Makefile \
+	etc/Makefile \
+	bin/Makefile \
+	doc/Makefile \
+	app/Makefile \
+	app/config.php \
+	app/config/databases.xml \
+	app/config/icinga.xml \
+	app/config/logging.xml \
+	app/config/settings.xml \
+	app/config/translation.xml \
+	app/config/factories.xml \
+	app/modules/Api/config/module.xml \
+	app/modules/Api/config/access.xml \
+	app/modules/AppKit/config/module.xml \
+	app/modules/AppKit/config/auth.xml \
+	app/modules/LConf/config/module.xml \
+	app/modules/LConf/lib/ldapConfig/staticObjects.ini \
+	app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini \
+	etc/build.properties \
+	etc/apache2/lconf-web.conf \
+	etc/scheduler/icingaCron \
+	bin/clearcache.sh \
+	pub/.htaccess \
+	etc/conf.d/access.xml \
+	etc/conf.d/databases.xml \
+	etc/conf.d/Makefile 	
 	
 remove-temp-files:
 	bin/rmtmp-files.sh
+
+create-tarball:
+	#tar -czf ../$(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.gz ../$(TAR_DIR_NAME)
+	./bin/make-tarball --prefix $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)/
+
+create-tarball-nightly:
+	#${MAKE} submodule-update
+	./bin/make-tarball --prefix $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)-`date +%Y%m%d`-`git rev-parse --short HEAD`/
+
+testdeps:
+	 $(PHP) bin/testdeps.php
+
+test-precede:
+	if test ! -d "$(SRC_DIR)/.build"; then mkdir .build; fi
+	
+
+test: test-precede
+	rm -f ./build/test-results.xml
+	$(PHPUNIT) --configuration=$(SRC_DIR)/tests/phpunit/suites.xml
+
+test-cs: test-precede
+	rm -f $(SRC_DIR)/.build/checkstyle.xml
+	touch $(SRC_DIR)/.build/checkstyle.xml
+	$(PHPCS) \
+		--standard=$(SRC_DIR)/tests/phpcs/YACS \
+		--report=checkstyle \
+		--report-file=$(SRC_DIR)/.build/checkstyle.xml \
+		--ignore="cache,\.js$$" \
+		$(SRC_DIR)/app
+
+devel-inplace-config:
+	mkdir -p \
+	$(SRC_DIR)/app/cache/config \
+	$(LOGDIR) \
+	$(SRC_DIR)/app/modules/Reporting/data/tmp
+	chown $(WEB_USER).$(WEB_GROUP) \
+		$(SRC_DIR)/app/cache \
+		$(SRC_DIR)/app/cache/config \
+		$(LOGDIR) \
+		$(SRC_DIR)/app/modules/Reporting/data/tmp
+	@printf "Done.\n"
+
+devel-reconfigure:
+	@EXEC=`head config.log  | grep "$$ configure" | sed -e 's/\s\+\$$\s\+//g'`; \
+	make distclean; \
+	sh $$EXEC
+
+devel-update-version:
+	@VFILE="doc/VERSION"; \
+        VERSION=`printf "%d.%d.%d" "$(VERSION_MAJOR)" "$(VERSION_MINOR)" "$(VERSION_PATCH)"`; \
+        test ! "X$(VERSION_EXTEN)" = "X" && VERSION=`printf "%s-%s" "$$VERSION" "$(VERSION_EXTEN)"`; \
+        echo "$$VERSION" > $$VFILE; \
+        echo "Upgraded $$VFILE to version $$VERSION"
+
 install-javascript:
 	$(INSTALL) -m 755 $(INSTALL_OPTS) -d $(DESTDIR)$(prefix)/pub/js
 	ln -sf $(DESTDIR)$(prefix)/lib/ext3 $(DESTDIR)$(prefix)/pub/js/ext3
 
-install-sqlite-db:
-	$(INSTALL) -m 700 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(prefix)/app/data/db/
-	$(INSTALL) -m 600 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(DESTDIR)$(prefix)/app/data/db/
-
 install-apache-config:
-	${INSTALL} -b -m 664 $(INSTALL_OPTS) etc/apache2/lconf-web.conf $(DESTDIR)$(WEB_APACHE_PATH)/lconf-web.conf
+	${INSTALL} -b -m 664 $(INSTALL_OPTS) etc/apache2/icinga-web.conf $(DESTDIR)$(WEB_APACHE_PATH)/icinga-web.conf
 	@printf "\nInstalled configuration in '%s'.\n" "$(WEB_APACHE_PATH)"
 	@printf "Please make sure that the directory is included or \n"
-	@printf "include %s/lconf-web.conf manually.\n" "$(WEB_APACHE_PATH)"
+	@printf "include %s/icinga-web.conf manually.\n" "$(WEB_APACHE_PATH)"
 	@printf "\nPlease restart your apache in order to complete this step.\n\n"
 
 install-lib:
@@ -136,18 +227,24 @@ install-doc:
 install-app:
 	cd $(SRC_APP) && $(MAKE)
 
+install-siteconfig:
+	cd $(SRC_SITE) && $(MAKE)
+
+install-db:
+	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(prefix)/app/data/db/lconf.db 
+
 install-log:
 	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(LOGDIR)
 
-install-all: install-lib install-pub install-bin install-app install-log install-sqlite-db
+install-all: install-lib install-pub install-etc install-bin install-doc install-app install-log install-db
 
-install: install-all install-done
+install: install-all install-siteconfig install-done
 
 install-done:
 	@printf "\n\n"
-	@printf "Installation if lconf-web succeeded.\n"
+	@printf "Installation if icinga-web succeeded.\n"
 	@printf "\n"
-	@printf	"Please check the new Apache2 configuration (etc/apache2/lconf-web.conf).\n"
+	@printf	"Please check the new Apache2 configuration (etc/apache2/icinga-web.conf).\n"
 	@printf "\n"
 	@printf "You can install it simply by invoking 'make install-apache-config'.\n"
 	@printf "\n"
@@ -155,3 +252,25 @@ install-done:
 	@printf "typing 'make install-javascript'. This will install the old symlinks\n"
 	@printf "\n"
 	@printf "Have fun!\n\n"
+
+upgrade: install-all upgrade-done
+
+upgrade-done:
+	@printf "\n\n"
+	@printf "Upgrade of icinga-web succeeded.\n"
+	@printf "\n"
+	@printf "Please check your site config files if something have to be changed.\n"
+	@printf "\n"
+	@printf "For database upgrades look into etc/schema/updates and import the\n"
+	@printf "appropriate changes into your database\n"
+	@printf "\n"
+	@printf "Have fun!\n\n"
+
+
+make-create-files:
+	$(SED) -i '/^# INSTALL_FILES_BEGIN/,/^# INSTALL_FILES_END/{D}' $(INC_MAKE_FILES) > $(INC_MAKE_FILES).tmp
+	mv $(INC_MAKE_FILES).tmp $(INC_MAKE_FILES)
+	./bin/create-makefile.sh ./ >> $(INC_MAKE_FILES)
+
+icinga-reset-password:
+	$(PHING_CALL) icinga-reset-password

@@ -30,18 +30,7 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
 
     // default config for the icon field
     iconFieldCfg: {
-        id: 'menu-logo',
-		width: 60,
-		height: 30,
-		border: false,
-		cls: 'icinga-link',
-		items: {
-			width: 61,
-			border: false,
-			autoEl: 'div',
-			frame: false,
-		    cls: 'menu-logo-icon'	
-        }
+
     },
 
     constructor: function(cfg) {
@@ -55,7 +44,7 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
         cfg.items = [
             this.navBar,
             this.iconField
-        ]
+        ];
         
         Ext.Container.prototype.constructor.call(this,cfg); 
     }, 
@@ -69,11 +58,35 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
     },
     
     buildIconField : function() {
-        this.iconField = new Ext.Container();
+        this.iconField = new Ext.Container(this.iconFieldCfg);
         // Make the icon funky when loading
-        
+/*        Ext.Ajax.on("beforerequest",function() {
+			try {
+				var icon = Ext.DomQuery.selectNode('.menu-logo-icon');
+				if(!icon)
+					return true;
+				Ext.get(icon).setStyle('');
+			} catch(e) {
+				// ignore any errors
+			}
+		});
+		Ext.Ajax.on("requestcomplete",function() {
+			try {
+				var icon = Ext.DomQuery.selectNode('.menu-logo-icon');
+				if(!icon)
+					return true;
+				Ext.get(icon).setStyle('');
+			} catch(e) {
+				// ignore any errors
+			}
+		});
 
 
+	    this.iconField.on('render', function(c) {
+			c.getEl().on('click', function() {
+				AppKit.changeLocation('http://www.icinga.org');
+			});
+		});*/
     },
 
     initMenuItems : function(cfg) {
@@ -81,14 +94,28 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
         this.addMenuFields(cfg.items,this.menuData); 
         cfg.items.push({xtype : 'tbfill'});
         this.addClock(cfg.items);
-
+        
+        if (AppKit.search.SearchHandler.isReady() === true) {
+            this.addSearchBox(cfg.items);
+        }
+        
         this.addUserFields(cfg.items);
     },
 
     addClock : function(itemsCfg) {
-        //var item = new AppKit.util.Servertime();
-       
-        //itemsCfg.push({xtype: 'container',items:item});
+        var item = new AppKit.util.Servertime();
+        itemsCfg.push({xtype: 'container',items:item});
+    },
+    
+    addSearchBox : function(itemsCfg) {
+    	var item = new AppKit.search.Searchbox();
+    	
+    	AppKit.search.SearchHandler.setSearchbox(item);
+    	
+    	itemsCfg.push({
+    		xtype : 'container',
+    		items : item
+    	});
     },
 
     addMenuFields : function(itemsCfg,menuData) {
@@ -99,13 +126,18 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
                 text: _(menuPoint.caption),
                 iconCls: menuPoint.icon || null,
                 id: menuPoint.id || Ext.id()          
-            }         
+            };         
             if(menuPoint.target) {
                 p.handler = this.createHandlerForTarget(menuPoint.target);
+                
+                // To allow native browser actions e.g. 'open in new tab', ...
+                if (menuPoint.target.target == 'new' && "url" in menuPoint.target) {
+                	p.href = menuPoint.target.url;
+                }
             }
             if(menuPoint.items) {
                 p.menu = [];
-                this.addMenuFields(p.menu,menuPoint.items)
+                this.addMenuFields(p.menu,menuPoint.items);
             }
             itemsCfg.push(p); 
         }
@@ -129,7 +161,7 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
                             params: target.params || null
                         });
                     }
-                }
+                };
 
             case 'window':
                 target.bodyStyle = target.style || "background-color: #ffffff";
@@ -144,7 +176,7 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
         var userField = {
             iconCls: this.hasAuth ? 'icinga-icon-user' : 'icinga-icon-user-delete',
             text: this.username
-        }
+        };
         if(this.hasAuth) {
             
             userField.menu = {};
@@ -159,6 +191,14 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
                     
                 },
                 items: [{
+                    tooltip: _('Preferences'),
+                    iconCls: 'icinga-icon-user-edit',
+                    text: _('Preferences'),
+                    handler: function() { 
+                        AppKit.util.doPreferences(this.preferenceURL);
+                    },
+                    scope: this
+                }, {
                     tooltip: _('Logout'),
                     iconCls: 'icinga-icon-user-go',
                     width: 'auto',
@@ -167,7 +207,7 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
                     },
                     scope:this
                 }]
-            } 
+            }; 
         }
         itemsCfg.push(userField);
     }

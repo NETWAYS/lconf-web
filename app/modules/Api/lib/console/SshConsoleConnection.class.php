@@ -60,7 +60,6 @@ class SshConsoleConnection extends BaseConsoleConnection {
         }
 
         if (!$success || !is_object($this->resource)) {
-            print_r($this->resource->getErrors());
             throw new ApiAuthorisationFailedException("SSH auth for user ".$this->username." failed (using authtype ".$this->authType.') :'.print_r($this->resource->getErrors(),true));
         }
 
@@ -84,15 +83,14 @@ class SshConsoleConnection extends BaseConsoleConnection {
     public function exec(Api_Console_ConsoleCommandModel $cmd) {
         $this->connect();
         $cmdString = $cmd->getCommandString();
-        $out = $this->resource->exec($cmdString);
+        $out = $this->resource->exec($cmdString . '; echo -n "|$?"');
+        $lines = preg_split('/\|/', $out);
+        $ret = (int) array_pop($lines);
+        $out = implode('|', $lines);
         $cmd->setOutput($out);
-        $cmd->setReturnCode($this->getLastReturnValue());
+        $cmd->setReturnCode($ret);
     }
 
-    public function getLastReturnValue() {
-        $retVal = $this->resource->exec("echo $?".PHP_EOL); 
-        return $retVal;
-    }
     public function __construct(array $settings = array()) {
         $settings = $settings["auth"];
         

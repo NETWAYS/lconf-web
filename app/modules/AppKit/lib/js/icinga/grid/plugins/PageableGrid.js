@@ -9,7 +9,7 @@ Icinga.Grid.Plugins.PageableGrid = function(cfg) {
             o[pn.start] = start;
             o[pn.limit] = this.pageSize;
             if(this.fireEvent('beforechange', this, o) !== false){
-                this.ownerCt.super.load.call(this.ownerCt,{params:o});
+                this.ownerCt._super.load.call(this.ownerCt,{params:o});
             }
         },
         onLoad : function(store, r, o) {
@@ -18,26 +18,22 @@ Icinga.Grid.Plugins.PageableGrid = function(cfg) {
         }
     });
     this.constructor = function(descriptor, gridCfg) {
-        descriptor = descriptor.pagination; 
         
-        gridCfg.storeParamNames.start = descriptor.params.offset;
-        gridCfg.storeParamNames.limit = descriptor.params.limit;
-       
 
         this.tbarRef =  new gridPageTbar({
             
             displayInfo:true
         }); 
         gridCfg.bbar = this.tbarRef;
-    }
+    };
     this.init = function(grid) {
         this.target = grid;
-        this.target.super = {
+        this.target._super = {
             load: this.target.load
-        }
+        };
         this.target.load = this.tbarRef.doLoad.createDelegate(this.tbarRef);
         this.tbarRef.bindStore(grid.getStore());
-    }
+    };
     this.constructor.apply(this,arguments);
 
 };

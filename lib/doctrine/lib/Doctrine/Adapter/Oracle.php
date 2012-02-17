@@ -123,13 +123,13 @@ class Doctrine_Adapter_Oracle implements Doctrine_Adapter_Interface
 
 
         if ($this->config['persistent'] == 'true'){ 
-            $this->connection = oci_pconnect($this->config['username'], $this->config['password'], 
+            $this->connection = @oci_pconnect($this->config['username'], $this->config['password'], 
                 $this->config['dbname'], $this->config['charset']); 
         } else { 
-            $this->connection = oci_new_connect($this->config['username'], $this->config['password'], 
+            $this->connection = @oci_new_connect($this->config['username'], $this->config['password'], 
                 $this->config['dbname'], $this->config['charset']); 
         }
-      
+
         if ($this->connection === false) {
             throw new Doctrine_Adapter_Exception(sprintf("Unable to Connect to :'%s' as '%s'", $this->config['dbname'], $this->config['username']));
         }

@@ -4,12 +4,15 @@ class LConf_Backend_Cronks_CustomVarDNCollectorSuccessView extends IcingaLConfBa
 {
 	public function executeJson(AgaviRequestDataHolder $rd)
 	{
+        if(!$this->getContext()->getUser()->hasCredential('lconf.user'))
+            return "{}";
 		try {
 			$ids = json_decode($rd->getParameter('ids'),true);
 			$target = $rd->getParameter('target');
 			$target_field = $rd->getParameter('target_field');
 			
 			$resultSet = $this->fetchDNs();
+
 			$connectionMgr = $this->getContext()->getModel("LDAPConnectionManager","LConf");
 			$connections = $connectionMgr->getConnectionsForUser();
 			if(!$connections)

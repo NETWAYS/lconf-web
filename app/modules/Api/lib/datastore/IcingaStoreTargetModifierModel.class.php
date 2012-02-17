@@ -191,7 +191,10 @@ class IcingaStoreTargetModifierModel extends IcingaBaseModel implements IDataSto
     * @param Boolean Whether to check if an column alias with this name exists
     * @author Jannis Moßhammer <jannis.mosshammer@netways.de>
     **/
-    public function setFields($fields, $useColumnAlias = false) {
+    public function setFields($fields, $useColumnAlias = false, $reset = false) {
+	if ($reset === true) {
+		$this->fields = array ();
+	}
         if (!is_array($fields)) {
             $fields = array($fields);
         }
@@ -208,7 +211,7 @@ class IcingaStoreTargetModifierModel extends IcingaBaseModel implements IDataSto
             }
 
             // check for alias
-            $regExp = "/(?<alias>\w+)\.(?<field>\w+)/";
+            $regExp = "/(?<alias>\w+)\.(?<field>[\*\w]+)/";
             $match = array();
             preg_match($regExp,$field,$match);
 
@@ -225,7 +228,7 @@ class IcingaStoreTargetModifierModel extends IcingaBaseModel implements IDataSto
             * instead of replacing them in the result set
             */
 
-            if ($aliasField) {
+            if ($aliasField && strpos($field,'.*') === false) {
                 $this->fields[] = $field." AS ".$aliasField;
             }
 
@@ -319,10 +322,9 @@ class IcingaStoreTargetModifierModel extends IcingaBaseModel implements IDataSto
         $o->setAliasDefs($this->mainAlias,$this->aliasDefs);
         $o->setDefaultJoinType($this->defaultJoinType);
         foreach($this->fields as $field)
-        $o->addSelect($field);
+            $o->addSelect($field);
         $o->distinct($this->isDistinct());
         $o->from($this->target." ".$this->mainAlias);
-
 
         foreach($this->staticWhereConditions as $cond) {
 
