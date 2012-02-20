@@ -58,6 +58,6 @@
 	<setting name="version.patch">@VERSION_PATCH@</setting>
 	<setting name="version.extension">@VERSION_EXTEN@</setting>
 	<setting name="version.releasedate"><![CDATA[@RELEASE_DATE@]]></setting>
-	<setting name="version.name">icinga-web</setting>
+	<setting name="version.name">lconf</setting>
 
 </settings>

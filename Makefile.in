@@ -50,7 +50,6 @@ SRC_LIB=@srcdir@/lib
 SRC_PUB=@srcdir@/pub
 SRC_ETC=@srcdir@/etc
 SRC_BIN=@srcdir@/bin
-SRC_DOC=@srcdir@/doc
 SRC_APP=@srcdir@/app
 SRC_SITE=@srcdir@/etc/conf.d
 
@@ -59,39 +58,6 @@ none:
 	@printf "Please supply a command line argument (i.e. 'make install').\n\n"
 	@printf "Generic targets: install, clean\n\n"
 	@printf "For updates please use 'upgrade' to avoid overwriting your siteconfig!\n\n"
-	@printf "Other usefull targets:\n"
-	@printf "\t%-22s - %s\n" "testdeps" "test php dependencies"
-	@printf "\t%-22s - %s\n" "create-tarball" "creates a tarball for packaging"
-	@printf "\t%-22s - %s\n" "create-tarball-nightly" "creates a tarball from HEAD for nightly builds"
-	@printf "\t%-22s - %s\n" "cacheclean" "purges the agavi xml cache"
-	
-	@printf "\nDatabase (web) targets:\n"
-	@printf "\t%-22s - %s\n" "db-initialize" "create the db"
-	@printf "\t%-22s - %s\n" "db-deinitialize" "reverse the path (removes all data and drop the relations)"
-	@printf "\t%-22s - %s\n" "db-drop" "drop the entire db"
-	@printf "\t%-22s - %s\n" "db-purge-userprefs" "purge existing user preferences"
-	@printf "\t%-22s - %s\n" "db-doc2sql" "export doctrine db schema"
-
-	@printf "\nIcinga web targets:\n"
-	@printf "\t%-22s - %s\n" "icinga-reset-password" "Reset password for any account on icinga-web"
-	@printf "\t%-22s - %s\n" "install-apache-config" "Install the apache config to configured path"
-
-	@printf "\nI18n targets:\n"
-	@printf "\t%-22s - %s\n" "loc-update-catalog" "Create a initial locale from source (default.po)"
-	@printf "\t%-22s - %s\n" "loc-compile" "Compile language files into mo and json"
-
-	@printf "\nScheduler targets:\n"
-	@printf "\t%-22s - %s\n" "scheduler-install" "Install the icingaScheduler cronjob"
-	@printf "\t%-22s - %s\n" "scheduler-remove" "remove the icingaScheduler cronjob"
-	
-	@printf "\nDevelopment targets:\n"
-	@printf "\t%-22s - %s\n" "devel-inplace-config" "Prepare src tree for running inplace"
-	@printf "\t%-22s - %s\n" "devel-reconfigure" "Clean and reconfigure source"
-	@printf "\t%-22s - %s\n" "devel-update-version" "Upgrades the version file"
-	@printf "\t%-22s - %s\n" "test" "Running tests"
-	@printf "\t%-22s - %s\n" "test-cs" "Running codestyle tests"
-	@printf "\n\n"
-	
 logclean:
 	rm -rf $(LOGDIR)/*.log
 
@@ -221,8 +187,8 @@ install-etc:
 install-bin:
 	cd $(SRC_BIN) && $(MAKE)
 
-install-doc:
-	cd $(SRC_DOC) && $(MAKE)
+
+
 
 install-app:
 	cd $(SRC_APP) && $(MAKE)
@@ -231,12 +197,14 @@ install-siteconfig:
 	cd $(SRC_SITE) && $(MAKE)
 
 install-db:
+	
+	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(prefix)/app/data/db/ 
 	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(prefix)/app/data/db/lconf.db 
 
 install-log:
 	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(LOGDIR)
 
-install-all: install-lib install-pub install-etc install-bin install-doc install-app install-log install-db
+install-all: install-lib install-pub install-etc install-bin install-app install-log install-db
 
 install: install-all install-siteconfig install-done
 
