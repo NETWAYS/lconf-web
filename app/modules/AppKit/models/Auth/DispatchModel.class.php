@@ -304,7 +304,7 @@ class AppKit_Auth_DispatchModel extends AppKitBaseModel implements AgaviISinglet
                             }
                         }
                         
-                        if (!$user->NsmRole->Count) {
+                        if (count($groups) < 1) {
                             $this->log('Auth.Dispatch/import: No groups available for user, ABORT!', AgaviLogger::FATAL);
                             return null;
                         }
