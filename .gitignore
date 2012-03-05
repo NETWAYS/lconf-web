@@ -1,5 +1,5 @@
 app/cache/**/*
-etc/conf.d
+
 log
 .buildpath
 .project

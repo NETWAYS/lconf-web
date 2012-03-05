@@ -10,7 +10,6 @@ INSTALL=@INSTALL@
 INSTALL_OPTS=@INSTALL_OPTS@
 
 install:
-	$(INSTALL) -m 644 $(INSTALL_OPTS) icinga.site.css $(DESTDIR)$(prefix)/pub/styles/icinga.site.css
 	$(INSTALL) -m 755 $(INSTALL_OPTS) -d $(DESTDIR)/$(WEB_CFG_DIR)
 	@files=`find . -type f -name "*.xml"`; \
 	for file in $$files; do \
