@@ -2326,7 +2326,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile lib/Makefile lib/icingaScheduler/config.php pub/Makefile etc/Makefile bin/Makefile app/Makefile app/config.php app/config/databases.xml app/config/icinga.xml app/config/logging.xml app/config/settings.xml app/config/translation.xml app/config/factories.xml app/modules/Api/config/access.xml app/modules/Api/config/module.xml app/modules/AppKit/config/module.xml app/modules/AppKit/config/auth.xml app/modules/LConf/config/module.xml app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini app/modules/LConf/lib/ldapConfig/staticObjects.ini etc/build.properties etc/apache2/lconf-web.conf bin/clearcache.sh pub/.htaccess etc/conf.d/access.xml etc/conf.d/databases.xml etc/conf.d/Makefile"
+ac_config_files="$ac_config_files Makefile lib/Makefile pub/Makefile etc/Makefile bin/Makefile app/Makefile app/config.php app/config/databases.xml app/config/icinga.xml app/config/logging.xml app/config/settings.xml app/config/translation.xml app/config/factories.xml app/modules/Api/config/access.xml app/modules/Api/config/module.xml app/modules/AppKit/config/module.xml app/modules/AppKit/config/auth.xml app/modules/LConf/config/module.xml app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini app/modules/LConf/lib/ldapConfig/staticObjects.ini etc/build.properties etc/apache2/lconf-web.conf bin/clearcache.sh pub/.htaccess etc/conf.d/access.xml etc/conf.d/databases.xml etc/conf.d/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -3030,7 +3030,6 @@ do
   case $ac_config_target in
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;
-    "lib/icingaScheduler/config.php") CONFIG_FILES="$CONFIG_FILES lib/icingaScheduler/config.php" ;;
     "pub/Makefile") CONFIG_FILES="$CONFIG_FILES pub/Makefile" ;;
     "etc/Makefile") CONFIG_FILES="$CONFIG_FILES etc/Makefile" ;;
     "bin/Makefile") CONFIG_FILES="$CONFIG_FILES bin/Makefile" ;;

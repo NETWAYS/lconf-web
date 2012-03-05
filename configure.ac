@@ -176,7 +176,6 @@ AC_SUBST(SCHEMA_PREFIX)
 AC_CONFIG_FILES([
     Makefile
     lib/Makefile
-    lib/icingaScheduler/config.php
     pub/Makefile
     etc/Makefile
     bin/Makefile
