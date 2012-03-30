@@ -14,7 +14,7 @@ class __InternalSudoConsoleInterfaceDecoratorModel extends LocalConsoleConnectio
          if($this->decorates instanceof LocalConsoleConnection) {
             $cmdString = $cmd->getCommandString();
             if($this->sudoUser)
-                $cmdString = "sudo -n -u ".$this->sudoUser." ".$cmdString;
+                $cmdString = "sudo -u ".$this->sudoUser." ".$cmdString;
 
             $this->checkFileExistence($cmd);
             

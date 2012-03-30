@@ -17,6 +17,12 @@ Ext.ns("LConf.PropertyGrid.Extensions").TestCheckCommand = {
     
     handler: function(grid) {
         var checkValue = this.record.get("value");
+        var checkCmd = checkValue.replace(/^(.*?)!.*/,"$1");
+        var argumentRegExp = /!([^!]*)/g
+        var args = [];
+        while(result = argumentRegExp.exec(checkValue)) {
+            args.push(result[1]);
+        }
         var me =  LConf.PropertyGrid.Extensions.TestCheckCommand;
         if(typeof checkValue !== "string")
             return;
@@ -25,7 +31,7 @@ Ext.ns("LConf.PropertyGrid.Extensions").TestCheckCommand = {
         Ext.Ajax.request({
             url: grid.urls.ldapmetaprovider,
             params: {
-                field: Ext.encode({"LDAP":["objectclass=lconfCommand","cn="+checkValue],"Attr":"*"}),
+                field: Ext.encode({"LDAP":["objectclass=lconfCommand","cn="+checkCmd],"Attr":"*"}),
                 connectionId: grid.connId
             },
 
@@ -40,7 +46,8 @@ Ext.ns("LConf.PropertyGrid.Extensions").TestCheckCommand = {
                 me.showCheckCommandWindow(
                     ldapEntry,
                     this.record,
-                    checkValue
+                    checkValue,
+                    args
                 );
             },
             scope: this
@@ -49,7 +56,7 @@ Ext.ns("LConf.PropertyGrid.Extensions").TestCheckCommand = {
 
     
 
-    showCheckCommandWindow: function(ldapEntry,record, directCheckCmd) {
+    showCheckCommandWindow: function(ldapEntry,record, directCheckCmd,args) {
         var commandLine = null;
         var prefix = "";
         var me = LConf.PropertyGrid.Extensions.TestCheckCommand;
@@ -78,7 +85,8 @@ Ext.ns("LConf.PropertyGrid.Extensions").TestCheckCommand = {
             record: record,
             dn: dn,
             prefix: prefix,
-            commandLine: commandLine
+            commandLine: commandLine,
+            args: args
         });
         wnd.show();
       

@@ -48,10 +48,11 @@ class LConf_LConfCheckTestModel extends IcingaBaseModel {
                 "hint"          => ""
             );
         }
-        $cmd = $this->getContext()->getModel("Console.ConsoleCommand","Api");      
         
+
         
         $this->tryResourceCfgParse($console, $tokens);
+        $cmd = $this->getContext()->getModel("ConsoleCommand","LConf");
         foreach($tokens as $token=>$replacement) {
             $commandLine = str_replace($token,$replacement,$commandLine);
         }

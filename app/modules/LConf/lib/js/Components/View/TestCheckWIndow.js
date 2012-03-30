@@ -185,7 +185,14 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
     }
 
     this.resolveToField = function(fieldname) {
-        
+        if(/\$ARG(\d*)\$/.test(fieldname)) {
+           return {
+               xtype: 'textfield',
+               fieldLabel: fieldname,
+               name: fieldname,
+               value: this.args[/\$ARG(\d*)\$/.exec(fieldname)[1]-1]
+           }
+        }
         switch(fieldname) {
             case '$SERVICENAME$':
                 var field = null;

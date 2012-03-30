@@ -55,10 +55,10 @@ Ext.ns("LConf.View").Viewport = function(cfg) {
 	});
     
     if(cfg.connId) {
-        this.eventDispatcher.addCustomListener("connectionsLoaded",function(store,conn) {
+        cfg.eventDispatcher.addCustomListener("connectionsLoaded",function(store,conn) {
             conn.startConnect(store.indexOfId(cfg.connId));
             if(cfg.dn)
-                this.eventDispatcher.addCustomListener("TreeReady",function(tree) {
+                cfg.eventDispatcher.addCustomListener("TreeReady",function(tree) {
                     tree.searchDN(cfg.dn);
                 });
         },this,{single:true});

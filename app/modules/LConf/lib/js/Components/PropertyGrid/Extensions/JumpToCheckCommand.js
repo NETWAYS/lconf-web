@@ -10,6 +10,7 @@ Ext.ns("LConf.PropertyGrid.Extensions").JumpToCheckCommand = {
     handler: function(grid,row,col) {
         var cell = grid.getView().getCell(row,col);
         var checkValue = this.record.get("value");
+        var checkCmd = checkValue.replace(/^(.*?)!.*/,"$1");
         var me =  LConf.PropertyGrid.Extensions.JumpToCheckCommand;
         if(typeof checkValue !== "string")
             return;
@@ -17,7 +18,7 @@ Ext.ns("LConf.PropertyGrid.Extensions").JumpToCheckCommand = {
         Ext.Ajax.request({
             url: grid.urls.ldapmetaprovider,
             params: {
-                field: Ext.encode({"LDAP":["objectclass=lconfCommand","cn="+checkValue],"Attr":"*"}),
+                field: Ext.encode({"LDAP":["objectclass=lconfCommand","cn="+checkCmd],"Attr":"*"}),
                 connectionId: grid.connId
             },
 
