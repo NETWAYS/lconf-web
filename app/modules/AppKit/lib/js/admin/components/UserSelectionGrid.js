@@ -1,3 +1,25 @@
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 /*global Ext: false, Icinga: false, _: false, AppKit: false */
 Ext.ns("AppKit.Admin.Components");
 
@@ -8,12 +30,12 @@ Ext.ns("AppKit.Admin.Components");
     AppKit.Admin.Components.UserSelectionGrid = Ext.extend(Ext.Panel, {
         title: 'Users',
         iconCls: 'icinga-icon-user',
-
+        layout:'fit',
         constructor: function (cfg) {
             this.store = cfg.store;
             this.userProviderURI = cfg.userProviderURI;
 
-            cfg.bbar = this.getBbarDefinition();
+            //cfg.bbar = this.getBbarDefinition();
             cfg.tbar = this.getTbarDefinition();
             cfg.items = this.getItems();
             Ext.Panel.prototype.constructor.call(this, cfg);
@@ -22,35 +44,46 @@ Ext.ns("AppKit.Admin.Components");
             return new Ext.PagingToolbar({
                 store: this.store,
                 displayInfo: true,
-                pageSize: 25,
+                pageSize: 2,
                 displayMsg: _('Displaying users') + ' {0} - {1} ' + _('of') + ' {2}',
-                emptyMsg: _('No roles to display')
+                emptyMsg: _('No user to display')
             });
         },
 
         getItems: function () {
             return [{
-                xtype: 'listview',
+                xtype: 'grid',
+                autoScroll: true,
                 store: this.store,
                 multiSelect: true,
                 columns: [{
                     header: _('User'),
-                    dataIndex: 'name'
+                    dataIndex: 'name',
+                    sortable: true,
+                    width: 200
                 }, {
                     header: _('Firstname'),
-                    dataIndex: 'firstname'
+                    dataIndex: 'firstname',
+                    sortable: true,
+                    width: 200
                 }, {
                     header: _('Lastname'),
-                    dataIndex: 'lastname'
+                    dataIndex: 'lastname',
+                    sortable: true,
+                    width: 300
                 },
-                new(Ext.extend(Ext.list.BooleanColumn, {
+                new(Ext.extend(Ext.grid.BooleanColumn, {
                     trueText: '<div style="width:16px;height:16px;margin-left:25px" class="icinga-icon-accept"></div>',
                     falseText: '<div style="width:16px;height:16px;margin-left:25px" class="icinga-icon-cancel"></div>'
                 }))({
                     header: _('Active'),
+                    sortable: true,
                     dataIndex: 'active',
-                    width: 0.1
-                })]
+                    width: 120
+                })],
+                viewConfig: {
+                    forceFit: true
+                }
             }];
         },
         getTbarDefinition: function () {
@@ -72,11 +105,29 @@ Ext.ns("AppKit.Admin.Components");
 
                 },
                 scope: this
+            },'->',{
+                xtype: 'textfield',
+                iconCls: 'icinga-icon-zoom',
+                emptyText: _('Type to search'),
+                enableKeyEvents: true,
+                listeners: {
+                    keyup: function(field) {
+                        if(field.getRawValue() != _('Type to search'))
+                            this.store.filter("name",field.getRawValue(),true,true);
+                        else
+                            this.store.clearFilter();
+                        
+                    },
+                    scope: this
+                }
+                
             }];
         },
         showUserSelectionDialog: function () {
             var groupsStore = new Ext.data.JsonStore({
                 url: this.userProviderURI,
+                remoteSort: true,
+                totalProperty: 'totalCount',
                 proxy: new Ext.data.HttpProxy({
                     api: {
                         read: {
@@ -85,7 +136,7 @@ Ext.ns("AppKit.Admin.Components");
                         }
                     }
                 }),
-                autoLoad: true,
+
                 autoDestroy: true,
                 root: 'users',
                 fields: [{
@@ -100,43 +151,60 @@ Ext.ns("AppKit.Admin.Components");
                     name: 'active'
                 }, {
                     name: 'disabled_icon',
-                    mapping: 'active',
+                    mapping: 'disabled',
                     convert: function (v) {
-                        return '<div style="width:16px;height:16px;margin-left:25px" class="' + (v === 1 ? 'icinga-icon-cancel' : 'icinga-icon-accept') + '"></div>';
+                        return '<div style="width:16px;height:16px;margin-left:25px" class="' + (v == 1 ? 'icinga-icon-cancel' : 'icinga-icon-accept') + '"></div>';
                     }
                 }]
             });
             var grid = new Ext.grid.GridPanel({
 
                 bbar: new Ext.PagingToolbar({
-                    pageSize: 25,
+                    pageSize: 2,
                     store: groupsStore,
                     displayInfo: true,
                     displayMsg: _('Displaying users') + ' {0} - {1} ' + _('of') + ' {2}',
-                    emptyMsg: _('No users to display')
+                    emptyMsg: _('No users to display'),
+                    listeners: {
+                        render: function(cmp) {
+                            cmp.doRefresh();
+                        }
+                    }
                 }),
                 store: groupsStore,
+                
+                autoScroll:true,
                 viewConfig: {
                     forceFit: true
                 },
-                columns: [{
-                    header: _('Id'),
-                    width: 20,
-                    dataIndex: 'id'
-                }, {
-                    header: _('Name'),
-                    dataIndex: 'name'
-                }, {
-                    header: _('Firstname'),
-                    dataIndex: 'firstname'
-                }, {
-                    header: _('Lastname'),
-                    dataIndex: 'lastname'
-                }, {
-                    header: _('Status'),
-                    width: 50,
-                    dataIndex: 'disabled_icon'
-                }]
+                colModel: new Ext.grid.ColumnModel({
+                    defaults: {
+                        sortable: true
+                    },
+                    columns: [{
+                        header: _('Id'),
+                        width: 20,
+                        dataIndex: 'id',
+                        sortable: true
+                    }, {
+                        header: _('Name'),
+                        dataIndex: 'name',
+                        sortable: true
+                    }, {
+                        header: _('Firstname'),
+                        dataIndex: 'firstname',
+                        sortable: true
+                    }, {
+                        header: _('Lastname'),
+                        dataIndex: 'lastname',
+                        sortable: true
+                    }, {
+                        header: _('Status'),
+                        width: 50,
+                        dataIndex: 'disabled_icon',
+                        sortable: true
+                    }]
+                })
             });
 
             (new Ext.Window({

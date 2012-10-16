@@ -1,4 +1,8 @@
-Ext.ns("LConf.Editors").EditorFieldManager = new function() {
+/*jshint browser:true, curly:false */
+/*global Ext:true */
+Ext.ns("LConf.Editors").EditorFieldManager = new (function() {
+    "use strict";
+    
     this.urls = {};
 
     /**
@@ -15,26 +19,26 @@ Ext.ns("LConf.Editors").EditorFieldManager = new function() {
                 editorField.setBaseRoute(urls.ldapmetaprovider);
             }
         }
-    }
+    };
      /**
      * Private static map of property=>editorfield relations
      */
-    var registeredEditorFields = {}
+    var registeredEditorFields = {};
 
     this.registerEditorField = function(property,editor) {
         registeredEditorFields[property.toLowerCase()] = editor;
-    }
+    };
 
     this.unregisterEditorField = function(property) {
         delete(registeredEditorFields[property.toLowerCase()]);
-    }
+    };
 
     this.getEditorFieldForProperty = function(property,cfg,objectclass) {
         var field;
         objectclass = objectclass || [];
-        if(!Ext.isArray(objectclass))
+        if(!Ext.isArray(objectclass)) {
             objectclass = [objectclass]; 
-
+        }
         for(var i=0;i<objectclass.length;i++) {
             if(!objectclass[i])
                 continue; // skip empty fields
@@ -50,5 +54,5 @@ Ext.ns("LConf.Editors").EditorFieldManager = new function() {
         }
     
         return registeredEditorFields["default"];
-    }
-}
+    };
+})();

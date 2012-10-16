@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 
 /**
@@ -146,26 +168,19 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
      * @author Marius Hein
      */
     public function updateUserroles(NsmUser &$user, array $user_roles) {
-        // first revoke all roles!
-        $user->NsmUserRole->delete();
-
-        // Adding the roles selected
-        foreach($user_roles as $index=>$role_id) {
-            $role = Doctrine::getTable('NsmRole')->find($role_id);
-
-            if ($role instanceof NsmRole) {
-                $user->NsmRole[$index] = $role;
-            }
+        // Doctrine is buggy again, so this is done the hard way
+        $conn = $this->getContext()->getDatabaseConnection("icinga_web");
+        Doctrine_Query::create($conn)
+            ->delete("NsmUserRole")
+            ->where("usro_user_id = ?",$user->user_id)
+            ->execute();
+        foreach($user_roles as $role) {
+            $roleSetting = new NsmUserRole();
+            $roleSetting->usro_role_id = $role;
+            $roleSetting->usro_user_id = $user->user_id;
+            $roleSetting->save();
         }
-
-        // Checking the principal
-        if (!$user ->principal->principal_id) {
-            $user ->principal->principal_type = NsmPrincipal::TYPE_ROLE;
-        }
-
-        // Save the record
-        $user->save();
-
+        
         return true;
     }
 

@@ -131,7 +131,7 @@ Ext.onReady(function() {
 		this.tpl =new Ext.XTemplate(
 			'<tpl for=".">',
 				'<tpl if="is_owner == true">',
-				'<div class="ldap-connection {icon}" ext:qtip="{connection_description}" id="conn_{connection_id}">',
+				'<div class="ldap-connection-float {icon}" ext:qtip="{connection_description}" id="conn_{connection_id}">',
 					'<div class="thumb lconf-icon-{icon}"></div>',
 					'<span class="X-editable"><b>{connection_name}</b></span><br/>',					
 					'<span class="X-editable">',
@@ -148,7 +148,7 @@ Ext.onReady(function() {
 			multiSelect: true,
 			overClass:'x-view-over',
 			selectedClass:'x-view-select',
-			itemSelector: 'div.ldap-connection',
+			itemSelector: 'div.ldap-connection-float',
 			emptyText: _('No connections defined yet'),
 			listeners: {
 				click : function(dview,index,htmlNode,event) {

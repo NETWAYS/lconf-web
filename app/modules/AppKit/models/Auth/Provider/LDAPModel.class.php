@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 class AppKit_Auth_Provider_LDAPModel extends AppKitAuthProviderBaseModel implements AppKitIAuthProvider {
 
@@ -184,7 +206,7 @@ class AppKit_Auth_Provider_LDAPModel extends AppKitAuthProviderBaseModel impleme
         if ($this->getParameter('ldap_start_tls', false) == true) {
             $this->log('Auth.Provider.LDAP: Starting TLS', AgaviLogger::DEBUG);
             $tls = @ldap_start_tls($res);
-            $this->log('Auth.Provider.LDAP: Using TLS on connection %s.', ($tls==true && !$this->isLdapError($res, true) ? 'succeeded' : 'failed'), AgaviLogger::INFO);
+            $this->log('Auth.Provider.LDAP: Using TLS on connection %s %s.',$this->getParameter('ldap_dsn'), ($tls==true && !$this->isLdapError($res, true) ? 'succeeded' : 'failed'), AgaviLogger::INFO);
         }
 
         
@@ -194,7 +216,9 @@ class AppKit_Auth_Provider_LDAPModel extends AppKitAuthProviderBaseModel impleme
             $bindpw = $this->getParameter('ldap_bindpw');
 
             $re = @ldap_bind($res, $binddn, $bindpw);
-
+            if($re != true && $this->getParameter('ldap_allow_anonymous',false)) {
+                $re = @ldap_bind($res);
+            }
             if ($re !== true) {
                 $this->log('Auth.Provider.LDAP Bind failed: (dn=%s)', $binddn, AgaviLogger::ERROR);
                 throw new AgaviSecurityException('Auth.Provider.LDAP: Bind failed');

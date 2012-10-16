@@ -1,4 +1,4 @@
-Ext.ns("LConf.Helper").Debug = (function() {
+Ext.ns("LConf.Helper").Debug = new (function() {
     var LOGLEVEL = {
         DEBUG:  false,
         INFO:   true,

@@ -1,4 +1,7 @@
+/*jshint browser:true, curly:false */
+/*global Ext:true, _:true*/
 Ext.ns("LConf.DIT.Helper").SearchReplaceManager = function(tree) {
+    "use strict";
     this.tree = tree;
 
     var getSearchReplaceForm = function() {
@@ -24,7 +27,7 @@ Ext.ns("LConf.DIT.Helper").SearchReplaceManager = function(tree) {
                 allowBlank: true
             }]
         });
-    }
+    };
 
     this.execute = function() {
         var curid = Ext.id();
@@ -64,7 +67,7 @@ Ext.ns("LConf.DIT.Helper").SearchReplaceManager = function(tree) {
                 scope:this
             }]
         }).show();
-    }
+    };
 
     this.callSearchReplace = function(values,SissyMode) {
         var mask = new Ext.LoadMask(Ext.getBody(),_("Please wait"));
@@ -72,9 +75,9 @@ Ext.ns("LConf.DIT.Helper").SearchReplaceManager = function(tree) {
         Ext.Ajax.request({
             url: tree.urls.searchreplace,
             params: {
-                search: values["search"],
-                fields: values["fields"],
-                replace: values["replace"],
+                search: values.search,
+                fields: values.fields,
+                replace: values.replace,
                 filters: tree.filterState.getActiveFilters(),
                 connectionId: tree.connId,
                 sissyMode: SissyMode
@@ -84,7 +87,7 @@ Ext.ns("LConf.DIT.Helper").SearchReplaceManager = function(tree) {
                 mask.hide();
                 if(SissyMode)
                     Ext.Msg.alert(_("Search/Replace"),_("The following changes would be made:<br/>")+resp.responseText);
-                else if(resp.responseText  != 'success') {
+                else if(resp.responseText  !== 'success') {
                     var error = Ext.decode(resp.responseText);
                     var msg = "<div class='lconf_infobox'><ul>";
                     Ext.each(error,function(err){
@@ -106,6 +109,6 @@ Ext.ns("LConf.DIT.Helper").SearchReplaceManager = function(tree) {
             },
             scope:this
         });
-    }
+    };
 
-}
+};

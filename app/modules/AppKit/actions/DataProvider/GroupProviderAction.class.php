@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 class AppKit_DataProvider_GroupProviderAction extends AppKitBaseAction {
     /**
@@ -29,12 +51,12 @@ class AppKit_DataProvider_GroupProviderAction extends AppKitBaseAction {
         if ($oldBehaviour == true) {
             return array(
                 'role_id' => $r->role_id,
-		'role_name' => $r->role_name,
-		'role_description' => $r->role_description,
-		'role_created' => $r->role_created,
-		'role_modified' => $r->role_modified,
-		'role_parent' => $r->role_parent,
-		'role_disabled' => $r->role_disabled
+                'role_name' => $r->role_name,
+                'role_description' => $r->role_description,
+                'role_created' => $r->role_created,
+                'role_modified' => $r->role_modified,
+                'role_parent' => $r->role_parent,
+                'role_disabled' => $r->role_disabled
             );
         }
 
@@ -50,6 +72,7 @@ class AppKit_DataProvider_GroupProviderAction extends AppKitBaseAction {
     }
     
     private function formatRole(NsmRole $r,$simple = false, $oldBehaviour = false) {
+        
         $roleObject = $this->getGroupAsArray($r, $oldBehaviour);
         if($simple)
             return $roleObject;
@@ -88,12 +111,12 @@ class AppKit_DataProvider_GroupProviderAction extends AppKitBaseAction {
         $limit = $rd->getParameter('limit',false);
         $sort = $rd->getParameter('sort',false);
         $asc = ($rd->getParameter('dir','ASC') == 'ASC');
-	$oldBehaviour = (bool)$rd->getParameter('oldBehaviour', true) ? true : false;
+        $oldBehaviour = $rd->getParameter('oldBehaviour', false);
         $user = $this->getContext()->getUser();
         $groups = null;
         
         // Return roles the user belongs to
-        if ($user->hasCredential('lconf.admin') == false) {
+        if ($user->hasCredential('lconf.admin') == false && $user->hasCredential('lconf.admin') == false) {
             $groups = $roleadmin->getRoleCollectionInRange($disabled,$start,$limit,$sort,$asc, true);
         
         // Global access to all rules
@@ -115,7 +138,7 @@ class AppKit_DataProvider_GroupProviderAction extends AppKitBaseAction {
                 
                 return $this->getDefaultViewName();
 
-            } else {	//return list of all roles if no id is provided
+            } else {    //return list of all roles if no id is provided
 
                 if ($start === false || $limit === false) {
                    
@@ -145,7 +168,7 @@ class AppKit_DataProvider_GroupProviderAction extends AppKitBaseAction {
     public function executeWrite(AgaviRequestDataHolder $rd) {
         $user = $this->getContext()->getUser();
 
-        if($user->hasCredential('lconf.admin') == false)
+        if($user->hasCredential('lconf.admin') == false && $user->hasCredential('lconf.admin.groups') == false)
             throw new AgaviSecurityException (("Not Authorized"), 401);
         try {
             if ($rd->getParameter("role_parent") == -1) {

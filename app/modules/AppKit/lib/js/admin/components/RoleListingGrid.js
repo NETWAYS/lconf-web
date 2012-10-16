@@ -1,9 +1,32 @@
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 Ext.ns("AppKit.Admin.Components");
 AppKit.Admin.Components.RoleListingGrid = Ext.extend(Ext.grid.GridPanel,{
     title: _('Available roles'), 
     region: 'center',
     layout: 'fit',
     stateful: false,
+    autoScroll: true,
     sm: new Ext.grid.RowSelectionModel(),
     iconCls: 'icinga-icon-group',
     
@@ -12,18 +35,34 @@ AppKit.Admin.Components.RoleListingGrid = Ext.extend(Ext.grid.GridPanel,{
     },
     
     initComponent: function() {
-    	this.bbar = [];
-    	
-    	AppKit.Admin.Components.RoleListingGrid.superclass.initComponent.call(this);
-    	
-    	this.counterLabel = this.getBottomToolbar().add({
-    		xtype : 'tbtext',
-    		tpl: new Ext.Template(_('{0} roles loaded.'))
-    	});
-    	
-    	this.store.on('load', function(store, records, o) {
-    		this.counterLabel.update([store.getCount()]);
-    	}, this);
+        this.bbar = [];
+        
+        AppKit.Admin.Components.RoleListingGrid.superclass.initComponent.call(this);
+        
+        this.counterLabel = this.getBottomToolbar().add({
+            xtype : 'tbtext',
+            tpl: new Ext.Template(_('{0} roles loaded.'))
+        });
+        
+        this.store.on('load', function(store, records, o) {
+            this.counterLabel.update([store.getCount()]);
+        }, this);
+        
+        var model = this.getSelectionModel();
+        if (model) {
+            /*
+             * Before this was bound to rowclick event. If we trigger injected selection
+             * rowclick was never fired, bind to rowselect is the better choice I think
+             */
+            model.on('rowselect', function(sm, rowIndex, r) {
+                var id = this.getStore().getAt(rowIndex).get("id");
+                Ext.getCmp('roleEditor').setDisabled(false);
+                Ext.getCmp('btn-save-group').setText(_('Save'));
+                Ext.getCmp('btn-save-group').setIconClass('icinga-icon-disk');
+                Ext.getCmp('progressbar-field').setValue();
+                AppKit.Admin.RoleEditForm.bindRole(id, this.roleProviderURI);
+            }, this);
+        }
     },
     
     deleteSelected: function() {
@@ -61,9 +100,9 @@ AppKit.Admin.Components.RoleListingGrid = Ext.extend(Ext.grid.GridPanel,{
             scope:this,
             text: 'Refresh',
             handler: function(c) {
-            	if (!Ext.isEmpty(c.ownerCt.ownerCt.store) && "reload" in c.ownerCt.ownerCt.store) {
+                if (!Ext.isEmpty(c.ownerCt.ownerCt.store) && "reload" in c.ownerCt.ownerCt.store) {
                     c.ownerCt.ownerCt.store.reload();
-            	}
+                }
             }
 
         },{
@@ -101,22 +140,6 @@ AppKit.Admin.Components.RoleListingGrid = Ext.extend(Ext.grid.GridPanel,{
         }]
 
     },
-   
-    
-
-    listeners: {
-        rowclick: function(grid,index,_e) {
-            var id = grid.getStore().getAt(index).get("id");
-            Ext.getCmp('roleEditor').setDisabled(false);
-            Ext.getCmp('btn-save-group').setText(_('Save'));
-            Ext.getCmp('btn-save-group').setIconClass('icinga-icon-disk');
-            Ext.getCmp('progressbar-field').setValue();
-            AppKit.Admin.RoleEditForm.bindRole(id, grid.roleProviderURI);									
-        }
-      
-
-    },
-
 
     colModel: new Ext.grid.ColumnModel({
         defaults: {

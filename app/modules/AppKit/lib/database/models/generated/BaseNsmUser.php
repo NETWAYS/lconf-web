@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 Doctrine_Manager::getInstance()->bindComponent('NsmUser', 'icinga_web');
 /**
  * BaseNsmUser
@@ -23,9 +45,9 @@ Doctrine_Manager::getInstance()->bindComponent('NsmUser', 'icinga_web');
  * @property Doctrine_Collection $NsmUserPreference
  * @property Doctrine_Collection $NsmUserRole
  *
- * @package    ##PACKAGE##
- * @subpackage ##SUBPACKAGE##
- * @author     ##NAME## <##EMAIL##>
+ * @package    IcingaWeb
+ * @subpackage AppKit
+ * @author     Icinga Development Team <info@icinga.org>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseNsmUser extends Doctrine_Record {
@@ -105,9 +127,9 @@ abstract class BaseNsmUser extends Doctrine_Record {
                              'notnull' => true,
                              'autoincrement' => false,
                          ));
-        $this->hasColumn('user_authid', 'string', 127, array(
+        $this->hasColumn('user_authid', 'string', 512, array(
                              'type' => 'string',
-                             'length' => 127,
+                             'length' => 512,
                              'fixed' => false,
                              'unsigned' => false,
                              'primary' => false,
@@ -199,7 +221,7 @@ abstract class BaseNsmUser extends Doctrine_Record {
                         "user_password" => '42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1',
                         "user_salt" => '0c099ae4627b144f3a7eaa763ba43b10fd5d1caa8738a98f11bb973bebc52ccd',
                         "user_authsrc" => 'internal',
-                        //				"user_authid" => '',
+                        //              "user_authid" => '',
                         "user_email" => 'root@localhost.local',
                         "user_disabled" => 0
                     )

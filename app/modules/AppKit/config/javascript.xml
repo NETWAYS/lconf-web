@@ -26,6 +26,7 @@
             <ae:parameter>%core.module_dir%/AppKit/lib/js/form/action/JSONSubmit.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/request/Ajax.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/ux/DDTabPanel.js</ae:parameter>
+            <ae:parameter>%core.module_dir%/AppKit/lib/js/ux/EllipsisColumn.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/search/AppKitSearchBox.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/search/AppKitSearchHandler.js</ae:parameter>
             
@@ -34,6 +35,7 @@
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/UserListingGrid.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/RoleInheritanceView.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/GroupRestrictionView.js</ae:parameter>
+            <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/ObjectRestrictionView.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/CVGridPanel.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/UserSelectionGrid.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/components/CredentialGrid.js</ae:parameter>
@@ -43,6 +45,8 @@
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/UserManager.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/RoleEditForm.js</ae:parameter>
             <ae:parameter>%core.module_dir%/AppKit/lib/js/admin/RoleManager.js</ae:parameter>
+
+            <ae:parameter>%core.module_dir%/AppKit/lib/js/ux/SmartUpdateGrid.js</ae:parameter>
             
             <!-- jsgettext -->
             <ae:parameter>%core.root_dir%/lib/jsgettext/lib/Gettext.js</ae:parameter>
@@ -51,11 +55,11 @@
 <!--
     * Method is deprecated
          <jactions>
-        	<jaction>
-        		<ae:parameter name="module">AppKit</ae:parameter>
-				<ae:parameter name="action">Ext.initI18n</ae:parameter>
-				<ae:parameter name="output_type">javascript</ae:parameter>
-        	</jaction>
+            <jaction>
+                <ae:parameter name="module">AppKit</ae:parameter>
+                <ae:parameter name="action">Ext.initI18n</ae:parameter>
+                <ae:parameter name="output_type">javascript</ae:parameter>
+            </jaction>
         </jactions>
 -->
         

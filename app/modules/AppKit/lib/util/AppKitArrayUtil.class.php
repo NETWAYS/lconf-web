@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 /**
  * Set of array helper methods
@@ -73,15 +95,54 @@ class AppKitArrayUtil {
 
         return $out;
     }
+    
+    /**
+     * Returns unique collection of a multidimensional
+     * array
+     * @param array $input
+     * @return array
+     */
+    public static function uniqueMultidimensional(array $input) {
+        $check = array();
+        array_multisort($input);
+        foreach ($input as $key=>$array) {
+            $check[md5(json_encode($array))] = $key;
+        }
+        return array_intersect_key($input, array_flip($check));
+    }
 
     /**
      * Splits a string into parts and respects spaces
      * @param string $string
      * @param string $split_char
+     * @param boolean $auto_convert Try to findout the right types for value
      * @return array
      */
-    public static function trimSplit($string, $split_char=',') {
-        return preg_split('/\s*'. preg_quote($split_char). '\s*/', $string);
+    public static function trimSplit($string, $split_char=',', $auto_convert=true) {
+       
+        // Avoid ugly array items 
+        $string = trim($string);
+
+        // Tests of is_array in code
+        if (strlen($string) < 1) {
+            return null;
+        }
+
+        $data = preg_split('/\s*'. preg_quote($split_char). '\s*/', $string);
+   
+        // Some database systems are more type safe (pg) and throws
+        // a bunch of errors if you ignore that
+        if ($auto_convert===true) {
+            foreach ($data as &$val) {
+                if (is_float($val) === true) {
+                    $val = (float)$val;
+                } elseif (is_numeric($val)) {
+                    $val = (integer)$val;
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**
@@ -179,6 +240,98 @@ class AppKitArrayUtil {
         if ($remove_unused) {
             $sect = array_intersect_key($array, array_flip($map));
             $array = $sect;
+        }
+    }
+    
+    /**
+     * replace_recursive proc function
+     * @param mixed $array
+     * @param mixed $array1
+     * @return array
+     */
+    private static function replaceRecursiveProc($array, $array1) {
+        foreach ($array1 as $key => $value) {
+            // create new key in $array, if it is empty or not an array
+            if (!isset($array[$key]) || (isset($array[$key]) && !is_array($array[$key]))) {
+                $array[$key] = array();
+            }
+
+            // overwrite the value in the base array
+            if (is_array($value)) {
+                $value = self::replaceRecursiveProc($array[$key], $value);
+            }
+            $array[$key] = $value;
+        }
+        return $array;
+    }
+    
+    /**
+     * PHP implementation of array_replace_recursive because it
+     * is only available PHP > 5.3
+     * 
+     * It slightly differs from PHP native implementation because
+     * it returns the replacement array
+     * 
+     * @see http://www.de.php.net/array_replace_recursive
+     * @author Gregor[at]der-meyer[dot]de
+     * @deprecated In flavour of PHP 5.3
+     * @param array $array
+     * @param array $array1
+     * @return array The replacement
+     */
+    public static function replaceRecursive($array, $array1) {
+        
+    
+        // handle the arguments, merge one by one
+        $args = func_get_args();
+        $array = $args[0];
+        if (!is_array($array)) {
+            return $array;
+        }
+        for ($i = 1; $i < count($args); $i++) {
+            if (is_array($args[$i])) {
+                $array = self::replaceRecursiveProc($array, $args[$i]);
+            }
+        }
+        return $array;
+    }
+    
+    /**
+     * Checks for item in a string list
+     * @todo Maybe this is slow
+     * @param string $list
+     * @param string $match
+     * @param string $split_char
+     * @return boolean the result
+     */
+    public static function matchAgainstStringList($list, $match, $split_char=',') {
+        return in_array($match, self::trimSplit($list, $split_char));
+    }
+    
+    /**
+     * Converts an array containing ISO-8859-1 string to utf-8
+     * 
+     * @param array $obj
+     */
+    public static function toUTF8_recursive(array &$obj) {
+        foreach($obj as $field=>&$value) {
+            if(is_string($value) && !AppKitStringUtil::isUTF8($value))
+                $value = utf8_encode($value);
+            else if(is_array($value))
+                AppKitArrayUtil::toUTF8_recursive($value);
+        }
+    }
+    /**
+     * Converts an array containing ISO-8859-1 string to utf-8
+     * 
+     * @param array $obj
+     */
+    public static function toISO_recursive(array &$obj) {
+        foreach($obj as $field=>&$value) {
+            if(is_string($value))
+                $value = utf8_decode($value);
+            else if(is_array($value))
+                AppKitArrayUtil::toISO_recursive($value);
         }
     }
 }

@@ -1,4 +1,7 @@
+/*jshint browser:true, curly:false */
+/*global Ext:true, _:true */
 Ext.ns("LConf.Filter").FilterState = function() {
+    "use strict";
     this.activeFilters = [];
     this.eventDispatcher = null;
     this.bypassed = false;
@@ -9,32 +12,32 @@ Ext.ns("LConf.Filter").FilterState = function() {
     this.constructor = function(cfg) {
         this.urls = cfg.urls;
         this.eventDispatcher = cfg.eventDispatcher;
-    }
+    };
 
     this.bypassAll = function() {
         this.bypassed = this.getActiveFilters();
         this.active = false;
         this.deactivateAll();
-    }
+    };
 
     this.removeBypass = function() {
         this.activateFilter(this.bypassed);
         this.bypassed = false;
         this.active = true;
-    }
+    };
 
     this.getActiveFilters = function() {
-		if(this.activeFilters)
-			return this.activeFilters;
-		return [];
-	},
+        if(this.activeFilters)
+            return this.activeFilters;
+        return [];
+    };
     
     this.activateFilter = function(filter) {
         if(!this.activeFilters)
             this.activeFilters = [];
 
         if(Ext.isArray(filter))
-            this.activeFilters = this.activeFilters.concat(filter)
+            this.activeFilters = this.activeFilters.concat(filter);
         else            
             this.activeFilters.push(filter);
 
@@ -42,29 +45,29 @@ Ext.ns("LConf.Filter").FilterState = function() {
     },
 
     this.deactivateFilter = function(filter) {
-		var removed = false;
-		do {
-			removed = false;
-			Ext.each(this.activeFilters,function(curfilter,idx,all) {
-				if(curfilter == filter) {
-					this.activeFilters.splice(idx,1);
-					removed = true;
-				}
-			},this);
-		} while(removed);
-		this.eventDispatcher.fireCustomEvent("filterChanged",this.activeFilters,this);
-	},
+        var removed = false;
+        var deleteFn = function(curfilter,idx) {
+            if(curfilter === filter) {
+                this.activeFilters.splice(idx,1);
+                removed = true;
+            }
+        };
+        do {
+            removed = false;
+            Ext.each(this.activeFilters,deleteFn,this);
+        } while(removed);
+        this.eventDispatcher.fireCustomEvent("filterChanged",this.activeFilters,this);
+    },
 
     this.deactivateAll = function() {
         this.activeFilters = [];
-		this.eventDispatcher.fireCustomEvent("filterChanged",this.activeFilters,this);
-	},
+        this.eventDispatcher.fireCustomEvent("filterChanged",this.activeFilters,this);
+    },
 
     this.getStore = function() {
         if(this.dStore === null) {
             this.dStore = new Ext.data.JsonStore({
                 autoLoad:true,
-                root: 'result',
                 autoSave:false,
                 proxy: new Ext.data.HttpProxy({
                     url: this.urls.modifyfilter,
@@ -74,8 +77,8 @@ Ext.ns("LConf.Filter").FilterState = function() {
                 }),
                 listeners: {
                     // Check for errors
-                    exception : function(prox,type,action,options,response,arg) {
-                        if(response.status == 200)
+                    exception : function(prox,type,action,options,response) {
+                        if(response.status === 200)
                             return true;
                         response = Ext.decode(response.responseText);
                         if(response.error.length > 100)
@@ -90,14 +93,14 @@ Ext.ns("LConf.Filter").FilterState = function() {
                 writer: new Ext.data.JsonWriter(),
                 autoDestroy:true,
                 fields: [
-                    'filter_id','filter_name','filter_json','filter_isglobal'
+                'filter_id','filter_name','filter_json','filter_isglobal'
                 ],
                 idProperty:'filter_id',
                 root: 'filters'
-            })
+            });
         }
         return this.dStore;
-    }
+    };
 
     this.saveFilter = function(obj,text,record) {
         var json = Ext.encode(obj);
@@ -114,7 +117,7 @@ Ext.ns("LConf.Filter").FilterState = function() {
             store.add(record);
         this.deactivateAll();
         store.save();
-    }
+    };
 
     this.constructor.apply(this,arguments);
-}
+};

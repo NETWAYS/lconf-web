@@ -1,18 +1,22 @@
+/*jshint browser:true, curly:false */
+/*global Ext:true, _:true */
 Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
+    "use strict";
+    
     var sm = DITTree.getSelectionModel();
     return new Ext.KeyMap(DITTree.getEl(),[{
         // copy
         key: "c",
         ctrl: true,
         fn: function() {
-            DITTree.clipboardInsert(sm.getSelectedNodes(),DITTree.connId,false)
+            DITTree.clipboardInsert(sm.getSelectedNodes(),DITTree.connId,false);
         },
         scope: this
     },{ // cut
         key: "x",
         ctrl: true,
         fn: function() {
-            DITTree.clipboardInsert(sm.getSelectedNodes(),DITTree.connId,true)
+            DITTree.clipboardInsert(sm.getSelectedNodes(),DITTree.connId,true);
         },
         scope: this
     },{ // insert
@@ -25,15 +29,15 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
                 return false;
             nodes.clipboard.connId = nodes.tree;
             var selected = sm.getSelectedNodes();
-            if(selected.length == 0)
+            if(selected.length === 0)
                 Ext.Msg.confirm(_("No node selected"), _("You haven't selected nodes to copy to"));
 
             // Check if this would be a recursive operation,
             // i.e. the node is at a branch of the current node
             for(var i=0;i<selected.length;i++) {
                 var toNode = selected[i];
-                for(var i=0;i<nodes.clipboard.length;i++)  {
-                    if (toNode == nodes.clipboard[i] || toNode.isAncestor(nodes.clipboard[i])) {
+                for(var x=0;x<nodes.clipboard.length;x++)  {
+                    if (toNode === nodes.clipboard[x] || toNode.isAncestor(nodes.clipboard[x])) {
                         Ext.Msg.alert(_("Invalid operation"), _("Moving or Copying a node below itself is not supported."));
                         return false;
                     }
@@ -41,12 +45,13 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
             }
 
             // Copy the node to the clipboard
-            for(var i=0;i<selected.length;i++) {
-                toNode.connId = DITTree.connId;
+            for(i=0;i<selected.length;i++) {
+                var clNode = selected[i];          
+                clNode.connId = DITTree.connId;
                 DITTree.copyNode("append",nodes.clipboard,selected[i],nodes.cut);
             }
             if(nodes.cut) {
-                DITTree.clearClipboard(true)
+                DITTree.clearClipboard(true);
             }
             return true;
         },
@@ -57,7 +62,7 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
         fn: function(key,ev) {
             
             var selected = sm.getSelectedNodes();
-            if(selected.length == 0)
+            if(selected.length === 0)
                 Ext.Msg.confirm(_("No node selected"), _("You haven't selected a node"));
             var lastSelect = selected[selected.length-1];
             sm.select(lastSelect);
@@ -65,7 +70,7 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
             DITTree.getContextMenu().show(lastSelect,{
                 preventDefault: function() {},
                 getXY: function() {
-                    return [25,Ext.getBody().getHeight()/2-25]
+                    return [25,Ext.getBody().getHeight()/2-25];
                 }
             },true);
             ev.preventDefault();
@@ -77,7 +82,7 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
             Ext.Msg.confirm(_("Remove selected nodes"),_("Do you really want to delete the selected entries?<br/>")+
                                               _("Subentries will be deleted, too!"),
                 function(btn){
-                    if(btn == 'yes') {
+                    if(btn === 'yes') {
                         var toDelete = sm.getSelectedNodes();
                         DITTree.removeNodes(toDelete);
                     }
@@ -85,4 +90,4 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
         },
         scope: this
     }]);
-}
+};

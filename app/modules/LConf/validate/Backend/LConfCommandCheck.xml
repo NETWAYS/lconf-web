@@ -7,10 +7,16 @@
 	<ae:configuration>
 		
 		<validators>
-			<validator class="string" name="commandline" required="true">
-				<argument>commandline</argument>
+			<validator class="string" name="dn" required="true">
+				<argument>dn</argument>
 				<errors>
-					<error>No commandline provided</error>
+					<error>No dn provided</error>
+				</errors>
+			</validator>
+                        <validator class="string" name="connectionId" required="true">
+				<argument>connectionId</argument>
+				<errors>
+					<error>No connectionId provided</error>
 				</errors>
 			</validator>
 			<validator class="string" name="tokens" required="false">
@@ -19,12 +25,7 @@
 					<error>No tokens provided</error>
 				</errors>				
 			</validator>
-			<validator class="string" name="connectionId" required="true">
-				<argument>connectionId</argument>
-				<errors>
-					<error>No connectionId provided</error>
-				</errors>
-			</validator>
+	
 	
 		</validators>
 		

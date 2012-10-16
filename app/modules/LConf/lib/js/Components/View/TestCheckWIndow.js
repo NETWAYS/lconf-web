@@ -1,4 +1,7 @@
+/*jshint browser:true, curly:false */
+/*global Ext:true,LConf:true, _:true */
 Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
+    "use strict";
     this.grid = null;
     this.wnd = null;
     this.dn = null;
@@ -7,25 +10,25 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
 
     var errorTpl = new Ext.XTemplate(
         "<tpl if='.'>",
-            "<div class='lconf_serviceCheck error'>",
-                "<div class='message'>{output}</div>",
+        "<div class='lconf_serviceCheck error'>",
+        "<div class='message'>{output}</div>",
                     
-            "</div>",
+        "</div>",
         "</tpl>"
-    );
+        );
     errorTpl.compile();
 
     var successTpl = new Ext.XTemplate(
         "<tpl>",
-            "<div class='lconf_serviceCheck success'>",
-                _("Servicestatus")+": <div class='statusCode'>",
-                    "{[LConf.Views.TestCheckWindow.getReturnCodeFormat(values.returnCode)]}",
-                "</div>",
-                _("Check output")+"<div class='message'>{output}</div>",
-                "<div class='hint'>{hint}</div>",
-            "</div>",
+        "<div class='lconf_serviceCheck success'>",
+        _("Servicestatus")+": <div class='statusCode'>",
+        "{[LConf.Views.TestCheckWindow.getReturnCodeFormat(values.returnCode)]}",
+        "</div>",
+        _("Check output")+"<div class='message'>{output}</div>",
+        "<div class='hint'>{hint}</div>",
+        "</div>",
         "</tpl>"
-    );
+        );
     successTpl.compile();
 
 
@@ -33,13 +36,13 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
     this.constructor = function(cfg) {
         Ext.apply(this,cfg);
 
-    }
+    };
 
     this.buildForm = function() {
         var insertVars = this.commandLine.match(/(\$.*?\$)/gi);
         var items = [{
             xtype: 'container',
-            html: '<b>Checkcommand: </b><br/> '+this.commandLine
+            html: '<b>Checkcommand (leave fields empty to use defaults from resource.cfg): </b><br/> '+this.commandLine
         }];
         if(insertVars) {
             for(var i =0;i<insertVars.length;i++) {
@@ -56,11 +59,11 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
             items: items
         });
 
-    }
+    };
 
     this.show = function() {
         var form = this.buildForm();
-
+        AppKit.log(this.grid);
         var formWindow = new Ext.Window({
             closable: true,
             closeaction: 'destroy',
@@ -69,7 +72,7 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
             autoHeight:true,
             title: 'Test check',
             items: [
-               form
+            form
             ],
             buttons: [{
                 text: 'Test Check result',
@@ -80,8 +83,8 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
                     Ext.Ajax.request({
                         url: this.grid.urls.checkCommand,
                         params: {
-                            connectionId: this.grid.connId,
-                            commandline: this.commandLine,
+                            connectionId: this.grid.baseParams.connectionId,
+                            dn: this.dn,
                             tokens: jsonVals
                         },
                         success: this.showCheckResult,
@@ -102,7 +105,7 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
             }, {
                 text: 'Cancel',
                 iconCls: 'icinga-icon-cancel',
-                handler:function(btn) {
+                handler:function() {
                     this.ownerCt.ownerCt.close();
                 }
             }]
@@ -111,25 +114,26 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
         var pos = Ext.EventObject.getXY();
         formWindow.setPosition(pos[0],pos[1]);
         formWindow.show();
-    }
+    };
 
     this.showCheckResult = function(response) {
+        var result = {};
         try {
-            var result = Ext.decode(response.responseText);
+            result = Ext.decode(response.responseText);
         } catch(e) {
             return this.showError(response,"Couldn't parse json ("+e+") ");
         }
-        if(result.success == false) {
+        if(result.success === false) {
             this.updateError(result);
         } else {
             this.updateSuccess(result);
         }
 
-    }
+    };
 
     this.updateSuccess = function(result) {
         this.updateResult(result,successTpl);
-    }
+    };
     
     this.updateError = function(result) {
         if(Ext.isArray(result.errors))
@@ -137,7 +141,7 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
                 result.output = _("You need the lconf.testcheck credential to perform this action");
             }
         this.updateResult(result,errorTpl);
-    }
+    };
 
     this.updateResult = function(result,tpl) {
         this.currentWindow.removeAll();
@@ -153,13 +157,13 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
         this.currentWindow.add(cmp);
         this.currentWindow.doLayout();
         this.currentWindow.syncSize();
-    }
+    };
 
 
-   this.showError = function(response,text) {
+    this.showError = function(response,text) {
         Ext.Msg.alert("Error while checking command", (text || "") +
             Ext.util.Format.ellipsis(response.responseText,400));
-    }
+    };
 
     this.progressbar = function() {
         var bar = new Ext.ProgressBar({ 
@@ -176,28 +180,30 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
                 }
             }
         });
-       return new Ext.Container({
+        return new Ext.Container({
             height:300,
             layout: 'fit',
             autoDestroy: true,
             items: bar
         });
-    }
+    };
 
     this.resolveToField = function(fieldname) {
         if(/\$ARG(\d*)\$/.test(fieldname)) {
-           return {
-               xtype: 'textfield',
-               fieldLabel: fieldname,
-               name: fieldname,
-               value: this.args[/\$ARG(\d*)\$/.exec(fieldname)[1]-1]
-           }
+            return {
+                xtype: 'textfield',
+                fieldLabel: fieldname,
+                name: fieldname,
+                value: this.args[/\$ARG(\d*)\$/.exec(fieldname)[1]-1]
+            };
         }
+        var combobox;
         switch(fieldname) {
+            
             case '$SERVICENAME$':
                 var field = null;
                 this.record.store.each(function(entry) {
-                    if(entry.get("property") == "cn") {
+                    if(entry.get("property") === "cn") {
                         field = {
                             xtype: 'textfield',
                             fieldLabel: fieldname,
@@ -209,37 +215,44 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
                     return true;
                 },this);
                 return field;
-                break;
-           case '$HOSTNAME$':
-                var combobox = new (LConf.Editors.ComboBoxFactory.create(
-                    Ext.encode({"LDAP": ["objectclass="+this.prefix+"host"],"Attr": "cn"}),this.grid.urls
-                ))();
+            case '$HOSTNAME$':
+                combobox = new (LConf.Editors.ComboBoxFactory.create(
+                    Ext.encode({
+                        "LDAP": ["objectclass="+this.prefix+"host"],
+                        "Attr": "cn"
+                    }),this.grid.urls
+                    ))();
                 combobox.fieldLabel = fieldname;
                 combobox.name = fieldname;
-                combobox.getStore().setBaseParam("connectionId", this.grid.connId)
+                combobox.getStore().setBaseParam("connectionId", this.grid.connId);
                 return combobox;
-           case '$HOSTADDRESS$':
-                var combobox = new (LConf.Editors.ComboBoxFactory.create(
-                    Ext.encode({"LDAP": ["objectclass="+this.prefix+"host"],"Attr": this.prefix+"address"}),this.grid.urls
-                ))();
+            case '$HOSTADDRESS$':
+                combobox = new (LConf.Editors.ComboBoxFactory.create(
+                    Ext.encode({
+                        "LDAP": ["objectclass="+this.prefix+"host"],
+                        "Attr": this.prefix+"address"
+                        }),this.grid.urls
+                    ))();
                 combobox.fieldLabel = fieldname;
                 combobox.name = fieldname;
-                combobox.getStore().setBaseParam("connectionId", this.grid.connId)
+                combobox.getStore().setBaseParam("connectionId", this.grid.connId);
                 return combobox;
             default:
-               return {
-                   xtype: 'textfield',
-                   fieldLabel: fieldname,
-                   name: fieldname
-               }
+                return {
+                    xtype: 'textfield',
+                    fieldLabel: fieldname,
+                    name: fieldname
+                };
         }
-    }
+    };
 
 
     this.constructor(cfg);
-}
+};
 
 Ext.ns("LConf.Views").TestCheckWindow.getReturnCodeFormat = function(code) {
+    "use strict";
+    
     var html = "Unknown";
     switch(code) {
         case 0:
@@ -261,4 +274,4 @@ Ext.ns("LConf.Views").TestCheckWindow.getReturnCodeFormat = function(code) {
         html: html
     });
 
-}
+};

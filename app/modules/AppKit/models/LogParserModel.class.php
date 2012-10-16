@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 /**
  * Model that parses logfiles and returns it as an array that can be used (for example) for ExtJS DataStores
  *
@@ -20,7 +42,7 @@ class AppKit_LogParserModel extends AppKitBaseModel {
 
     }
 
-    protected function getEntriesFromFiles(array $files,$start=0,$end=100,$dir = "desc") {
+    protected function getEntriesFromFiles(array $files,$start=0,$end=15,$dir = "desc") {
         if ($dir == "desc") {
             rsort($files);
         } else {
@@ -33,13 +55,16 @@ class AppKit_LogParserModel extends AppKitBaseModel {
 
         foreach($files as $file) {
             $currentLog = $base."/".$file;
-            $string = array_merge($string, $this->readFileDesc($currentLog,$start,$end,$this->entriesRead >= $end));
+            $this->readFileDesc($currentLog,$start,$end,$this->entriesRead >= $end,$string);
+            
 
         }
         return $string;
     }
 
-    private function readFileDesc($log, &$start,$end, $justCount = false) {
+   
+    
+    private function readFileDesc($log, &$start,$end, $justCount = false,array &$string) {
         $handle = fopen($log,"r");
         if(!$handle)
             return array();
@@ -53,26 +78,27 @@ class AppKit_LogParserModel extends AppKitBaseModel {
         }
         if($justCount)
             return array();
-        fseek($handle,$pos,SEEK_END);
-        $string = array();
-        while (false !== ($char = fgetc($handle))) {
-
-            if(($char == "\n" ) && ($start-- <= 0)) {
-                  
-                $line = fgets($handle);
-                if($line !== false) {
-                    if($line[0] == "[") {
-                        $string [] = $line;
-                        $this->entriesRead++;
-                    } else if(count($string) > 0) {
-                        $string[count($string)-1] .= " ".$line;
-                    }
-                    if($this->entriesRead == $end)
-                        break;
+        fseek($handle,0,SEEK_SET);
+        $currentLine = "";
+        
+        while (($line = fgets($handle)) !== false) {
+            
+            if($line[0] == "[") {
+                if($currentLine != "" && $start < 0) {
+                    $string[] = $currentLine;
+                    $this->entriesRead++;
                 }
+                $currentLine = "";
+                if($start >= -1)
+                    $start--; 
             }
-            $start = $start < 0 ? 0 : $start; // prevent underflow
-            fseek($handle,--$pos,SEEK_END);
+            $currentLine .= $line;
+            if(count($string) >= $end-1)
+                break;
+        }
+        if($currentLine != "" && $start < 0) {
+            $string[] = $currentLine;
+            $this->entriesRead++;
         }
         fclose($handle);
         return $string;

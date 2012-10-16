@@ -1,11 +1,73 @@
-
+/*jshint browser:true, curly:false */
+/*global Ext:true, _:true, LConf:true */
 Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
-
+    "use strict";
     this.showGeneralNodeDialog = function(node,e,justCreate) {
         e.preventDefault();
-        var tree = node.getOwnerTree();
+        
         var ctx = new Ext.menu.Menu({
-            items: [{
+            ignoreParentClicks: true,
+            items: this.getMenuDefinitionForObject(node,justCreate)
+        });
+        ctx.showAt(e.getXY());
+    };
+    
+    this.getNodeCreationMenu = function(tree,cfg) {
+        return [{
+            iconCls: 'icinga-icon-host',
+            text: 'Add new host',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Host'])
+        },{
+            iconCls: 'icinga-icon-service',
+            text: 'Add new service',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Service'])
+        },'-',{
+            iconCls: 'icinga-icon-hostgroup',
+            text: 'Add new hostgroup',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Hostgroup'])
+        },{
+            iconCls: 'icinga-icon-servicegroup',
+            text: 'Add new servicegroup',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Servicegroup'])
+        },'-',{
+            iconCls: 'lconf-logo',
+            text: 'Add new structural object',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'StructuralObject'])
+        },'-',{
+            iconCls: 'icinga-icon-user',
+            text: 'Add new contact',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Contact'])
+        },{
+            iconCls: 'icinga-icon-group',
+            text: 'Add new contactgroup',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Contactgroup'])
+        },'-',{
+            iconCls: 'icinga-icon-script',
+            text: 'Add new command',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Command'])
+        },{
+            iconCls: 'icinga-icon-clock-red',
+            text: 'Add new timeperiod',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Timeperiod'])
+        },'-',{
+            iconCls: 'lconf-application-lightning',
+            text: 'Add new host escalation',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Hostescalation'])
+        },{
+            iconCls: 'lconf-application-lightning',
+            text: 'Add new service escalation',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Serviceescalation'])
+        },'-',{
+            iconCls: 'icinga-icon-bricks',
+            text: 'Add new custom entry',
+            handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[cfg,'Custom'])
+        }];
+        
+    };
+
+    this.getMenuDefinitionForObject = function(node,justCreate) {
+        var tree = node.getOwnerTree();
+        var base =  [{
                 text: _('Refresh this part of the tree'),
                 iconCls: 'icinga-icon-arrow-refresh',
                 handler: tree.refreshNode.createDelegate(tree,[node,true]),
@@ -14,45 +76,46 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
             },{
                 text: _('Create new node on same level'),
                 iconCls: 'icinga-icon-add',
-                handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[{node:node}]),
+                menu: this.getNodeCreationMenu(tree,{node:node}),
                 scope: this,
                 hidden: !(node.parentNode)
             },{
                 text: _('Create new node as child'),
                 iconCls: 'icinga-icon-sitemap',
-                handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[{node:node,isChild:true}]),
+                hidden: (node.isAlias),      
+                menu: this.getNodeCreationMenu(tree,{node:node,isChild:true}),
+                //handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[),
                 scope: this
             },{
                 text: _('Remove <b>only this</b> node'),
                 iconCls: 'icinga-icon-delete',
                 handler: function() {
                     Ext.Msg.confirm(_("Remove selected nodes"),
-                        _("Do you really want to delete this entry?<br/>")+
+                    _("Do you really want to delete this entry?<br/>")+
                         _("Subentries will be deleted, too!"),
-                        function(btn){
-                            if(btn == 'yes') {
-                                tree.removeNodes([node]);
-                            }
-                        },this);
+                    function(btn){
+                        if(btn === 'yes') {
+                            tree.removeNodes([node]);
+                        }
+                    },this);
                 },
                 hidden: justCreate,
                 scope: this
             },{
                 text: _('Remove <b>all selected</b> nodes'),
                 iconCls: 'icinga-icon-cross',
-                hidden:!(tree.getSelectionModel().getSelectedNodes().length),
                 handler: function() {
                     Ext.Msg.confirm(_("Remove selected nodes"),
-                        _("Do you really want to delete the selected entries?<br/>")+
+                    _("Do you really want to delete the selected entries?<br/>")+
                         _("Subentries will be deleted, too!"),
-                        function(btn){
-                            if(btn == 'yes') {
-                                var toDelete = tree.getSelectionModel().getSelectedNodes();
-                                tree.removeNodes(toDelete);
-                            }
-                        },this);
+                    function(btn){
+                        if(btn === 'yes') {
+                            var toDelete = tree.getSelectionModel().getSelectedNodes();
+                            tree.removeNodes(toDelete);
+                        }
+                    },this);
                 },
-                hidden: justCreate,
+                hidden: !(tree.getSelectionModel().getSelectedNodes().length) || justCreate,
                 scope: this
             },{
                 text: _('Jump to alias target'),
@@ -67,23 +130,30 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
             },{
                 text: _('Display aliases to this node'),
                 iconCls: 'icinga-icon-wand',
-                hidden: node.attributes.isAlias || node.id.match(/\*\d{4}\*/),
-                handler: function(btn) {
+                handler: function() {
                     tree.eventDispatcher.fireCustomEvent("aliasMode",node);
                 },
                 scope:this,
-                hidden: justCreate
+                hidden: node.attributes.isAlias || node.id.match(/\*\d{4}\*/) || justCreate
             },{
                 text: _('Search/Replace'),
                 iconCls: 'icinga-icon-zoom',
                 handler: tree.searchReplaceManager.execute,
                 hidden: (node.parentNode),
                 scope: tree.searchReplaceManager
-            }]
-        });
-        ctx.showAt(e.getXY())
+            }];
+        this.addMenuExtensionsForNode(node,justCreate,base);
+        return base;
     };
 
+    this.addMenuExtensionsForNode = function(node,justCreate,base) {
+        LConf.Extensions.Registry.foreach("DITMenu",function(extension) {
+            if(extension.appliesOnNode(node))
+                base.push(extension.getEntryForNode(node));
+            
+        },this);
+    };
+    
     this.showNodeDroppedDialog = function(e) {
         var containsAlias = false;
         var tree = null;
@@ -99,39 +169,44 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
         var tabPanel = tree.ownerCt;
         var ctx = new Ext.menu.Menu({
             items: [{
-                text: _('Clone node here'),
-                handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),[e.point,e.dropNode,e.target]),
-                scope:this,
-                iconCls: 'icinga-icon-arrow-divide'
-            },{
-                text: _('Move node here'),
-                handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),[e.point,e.dropNode,e.target,true]),
-                scope:this,
-                iconCls: 'icinga-icon-arrow-turn-left'
-            },{
-                text: _('Clone node <b>as subnode</b>'),
-                handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),["append",e.dropNode,e.target]),
-                scope:this,
-                hidden: !e.target.isLeaf(),
-                iconCls: 'icinga-icon-arrow-divide'
-            },{
-                text: _('Move node  <b>as subnode</b>'),
-                handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),["append",e.dropNode,e.target,true]),
-                scope:this,
-                hidden: !e.target.isLeaf(),
-                iconCls: 'icinga-icon-arrow-turn-left'
-            },{
-                text: _('Create alias here'),
-                iconCls: 'icinga-icon-attach',
-                hidden: containsAlias || e.dropNode.connId != e.target.ownerTree.connId,
-                handler: tree.buildAlias.createDelegate(this,[e.point,e.dropNode,e.target])
-            },{
-                text: _('Cancel'),
-                iconCls: 'icinga-icon-cancel'
-            }]
+                    text: _('Clone node here'),
+                    handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),[e.point,e.dropNode,e.target]),
+                    scope:this,
+                    iconCls: 'icinga-icon-arrow-divide'
+                },{
+                    text: _('Move node here'),
+                    handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),[e.point,e.dropNode,e.target,true]),
+                    scope:this,
+                    iconCls: 'icinga-icon-arrow-turn-left'
+                },{
+                    text: _('Clone node <b>as subnode</b>'),
+                    handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),["append",e.dropNode,e.target]),
+                    scope:this,
+                    hidden: !e.target.isLeaf(),
+                    iconCls: 'icinga-icon-arrow-divide'
+                },{
+                    text: _('Move node  <b>as subnode</b>'),
+                    handler: tree.copyNode.createDelegate(tabPanel.getActiveTab(),["append",e.dropNode,e.target,true]),
+                    scope:this,
+                    hidden: !e.target.isLeaf(),
+                    iconCls: 'icinga-icon-arrow-turn-left'
+                },{
+                    text: _('Create alias here'),
+                    iconCls: 'icinga-icon-attach',
+                    hidden: containsAlias || e.dropNode.connId !== e.target.ownerTree.connId,
+                    handler: tree.buildAlias.createDelegate(this,[e.point,e.dropNode,e.target])
+                },{
+                    text: _('Create alias as child'),
+                    iconCls: 'icinga-icon-attach',
+                    hidden: containsAlias || e.dropNode.connId !== e.target.ownerTree.connId,
+                    handler: tree.buildAlias.createDelegate(this,["append",e.dropNode,e.target])
+                },{
+                    text: _('Cancel'),
+                    iconCls: 'icinga-icon-cancel'
+                }]
         });
         ctx.showAt(e.rawEvent.getXY());
         return true;
-    }
+    };
 
-}
+};

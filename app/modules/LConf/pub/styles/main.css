@@ -1,16 +1,53 @@
 @CHARSET "UTF-8";
-.ldap-connection {
+.ldap-connection-float {
+    margin:auto;    
     width:150px;
-    margin:5px;
+    margin:4px;
     padding:5px;
     height:65px;
-    float:left;
     border: 1px solid #cacaca;
     -moz-border-radius:2px;
     -webkit-border-radius:2px;
     text-align:center;
     background-color:#efefef;
+    float:left;
     cursor:pointer;
+}
+.ldap-connection-float.plus {
+	padding-top:30px;
+	background-color: #f3f3f3;
+	color: #acacac;
+	height:40px;
+	float:left;
+	font-size:10px;
+}
+
+.ldap-connection-float .thumb {
+    height:35px;
+    width:35px;
+    background-image:url(../images/world.png);
+    background-repeat:no-repeat;
+    margin:auto;
+}
+.ldap-connection {
+    width: 170px;
+    height: 15px;
+    border: 1px solid #cecece;
+    margin: auto;
+    margin-top:5px;
+    background-color: #efefef;
+    padding: 5px;
+    clear: both;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    cursor:pointer;
+}
+
+.ldap-connection.x-view-over {
+    background-color:#dedede;
+}
+.ldap-connection.x-view-select{
+    background-color:#dddddd;
 }
 
 .ldap-connection.plus {
@@ -28,27 +65,29 @@
 	float:left;
 }
 
-.ldap-connection.x-view-over {
+.ldap-connection-float.x-view-over {
     background-color:#dedede;
 }
-.ldap-connection.x-view-select{
+.ldap-connection-float.x-view-select{
     background-color:#dddddd;
 }
 
 .ldap-connection .thumb {
-    height:35px;
-    width:35px;
-    background-image:url(../images/world.png);
+    height:15px;
+    width:32px;
+    /*background-image:url(../images/world.png);*/
     background-repeat:no-repeat;
-    margin:auto;
+    float:left;
+    
 }
 
 .ldap-filter {
-    margin:2px;
-    width:98%;
+    margin:auto;
+    margin-top:5px;
+    width:170px;
     padding:5px;
-    height:1.5em;
-    float:left;
+    height:15px;
+
     border: 1px solid #cacaca;
     -moz-border-radius:2px;
     -webkit-border-radius:2px;
@@ -88,6 +127,19 @@
 
 .x-tree-node .noMatch *{
     color:grey;
+}
+
+.aliasinfobox {
+    width: 80%;
+    border: 2px solid #898998;
+    background-color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px #dedede;
+    margin: auto;
+    padding: 2em;
+    text-align:center;
+    font-size:14px;
+    margin-top:10%;
 }
 
 .lconf_infobox {

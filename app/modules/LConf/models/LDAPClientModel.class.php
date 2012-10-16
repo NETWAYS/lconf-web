@@ -234,9 +234,10 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         // so we don't need to differ between them and multiple entries
         if(@$newParams["property"])
             $newParams = array($newParams);
-
+        AppKitLogger::debug("Adding property to %s : %s",$dn,$newParams);
         $connId = $this->getConnection();
         $properties = $this->getNodeProperties($dn);
+        
         $this->helper->cleanResult($properties);
 
         foreach($newParams as $parameter) {
@@ -252,7 +253,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
             }
             $properties[$newProperty][] = $newValue;
         }
-
+        AppKitLogger::debug("Calling ldap_modify() with dn: %s and properties %s",$dn,$properties);
         if(!@ldap_modify($connId,$dn,$properties)) {
             throw new AgaviException("Could not modify ".$dn. ":".$this->getError());
         }
@@ -264,6 +265,8 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
             throw new AgaviException("No parameters given!");
 
         $dn = $parentDN;
+        AppKitLogger::debug("Adding node as to parent %s : %s",$dn,$parameters);
+
         //always wrap to array
         if(isset($parameters["property"]))
             $parameters = array($parameters);
@@ -279,6 +282,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
                 $dn = $parameter["property"]."=".$this->helper->escapeString($parameter["value"]).",".$dn;
         }
         $connId = $this->getConnection();
+        AppKitLogger::debug("Calling ldap_add() %s : %s",$dn,$params);
 
         if(!@ldap_add($connId,$dn,$params)) {
             throw new AgaviException("Could not add ".$dn. ":".$this->getError());
@@ -306,6 +310,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
 
     public function recursiveRemoveNode($dn,$killAliases = true) {
         $list = $this->listDN($dn,false,true);
+        AppKitLogger::debug("Removing node %s %s",$dn,$killAliases ? "with aliases" : "");
         $this->helper->cleanResult($list);
         if($list) {
             $result = true;
@@ -315,6 +320,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         }
         if($killAliases) {
             if($aliases = $this->getReferencesToNode($dn)) {
+                AppKitLogger::debug("Removing node aliases for %s: %s",$dn,$aliases);
                 foreach($aliases as $key=>$alias) {
                     if(!is_array($alias))
                         continue;
@@ -322,7 +328,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
                 }
             }
         }
-
+        AppKitLogger::debug("Calling ldap_delete(%s)",$dn);
         return @ldap_delete($this->getConnection(),$dn);
     }
 
@@ -385,8 +391,10 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         $result = @ldap_list($this->getConnection(),$dn,$filter,array("dn","objectclass","aliasedobjectname","modifyTimestamp","description"));
 
         $entries = @ldap_get_entries($this->getConnection(),$result);
+
         if($resolveAlias)
             $entries = $this->helper->resolveAliases($entries);
+        $entries = $this->helper->validateAliases($entries,$this->getConnection(),$this->baseDN);
         if($this->getFilter() && !$ignoreFilter) {
 
             $searchResult = $this->searchEntries($this->getFilter(),null,array("dn","objectclass","aliasedobjectname","modifyTimestamp","description"));
@@ -434,18 +442,22 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         /**
          * Hangle down the dn structure
          */
-
-        for($i=count($dnParts)-1;$i>=1;$i--) {
+        $dnsToCheck = array();
+        for($i=count($dnParts)-1;$i>=0;$i--) {
             $dn = $dnParts[$i];
             $baseDn = $dn.",".$baseDn;
+            $dnsToCheck[] = $baseDn;
+        }
+        $dnsToCheck = array_reverse($dnsToCheck);
+        foreach($dnsToCheck as $baseDn) {
             // check if an inherited object is above this object
             $result = ldap_get_entries($connection,@ldap_read($connection,$baseDn,"objectclass=*",array()));
             foreach($result[0]["objectclass"] as $key=>$obj) {
-
+                
                 // Check if node is inherited
                 $isInherited = false;
                 foreach($inheritance as $inhKey=>$value) {
-                    if(preg_match("/".$inhKey."/",$obj)) {
+                    if(preg_match("/".$inhKey."/i",$obj)) {
                         $isInherited = true;
                         $obj = $inhKey;
                         break;
@@ -462,7 +474,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
 
                     foreach($result[0] as $attribute=>$value) {
 
-                        if(!preg_match("/".$inhAttributes."/",$attribute))
+                        if(!preg_match("/".$inhAttributes."/i",$attribute))
                             continue;
 
                         unset($value["count"]);
@@ -472,10 +484,13 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
                         // Copy attributes
                         if(!isset($entries[$attribute])) {
                             $entries[$attribute] = $value;
-                        } else {
-                            if(!$hasOverwrite)
+                        } /*else {
+                            if(!$hasOverwrite) {
+                                $entries[$attribute]["count"]++;
                                 array_push($entries[$attribute],$value);
-                        }
+                            } else if (!is_string($entries[$attribute]))
+                                $entries[$attribute] = $value;
+                        }*/
                     }
                 }
             }
@@ -644,8 +659,8 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
 
     public function cloneNode($sourceDN, $targetDN,$sourceConnId = null,$newName = null) {
         $connId = $this->getConnection();
+        
         $sourceProperties = $this->getNodeProperties($sourceDN);
-        $targetProperties = $this->getNodeProperties($targetDN,array("dn"));
         $paramToPreserve = explode(",",$sourceProperties["dn"],2);
         $this->helper->cleanResult($sourceProperties);
         $newDN = $newName.",".$targetDN;
@@ -654,34 +669,39 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
             $newDN = $paramToPreserve.",".$targetDN;
         }
         // check if it's on the same level
+
         if($this->listDN($newDN)) {
             $ctr = 0;
             do { // Increase copy counter if there is already a copy of this node
+                
                 $paramToChange = explode("=",$paramToPreserve,2);
                 $newValue = ("copy_of".(($ctr) ? "(".$ctr.")" : '')."_").$paramToChange[1];
                 $finalParamToPreserve = $paramToChange[0]."=".$newValue;
+                AppKitLogger::debug("DN %s already exists, trying %s ",$newDN,$finalParamToPreserve.",".$targetDN);
                 $newDN = $finalParamToPreserve.",".$targetDN;
-
                 $sourceProperties[$paramToChange[0]][0] = $newValue;
                 $ctr++;
             } while($this->listDN($newDN));
         }
 
-        $connId = $this->getConnection();
+        
         /**
          * Check if we're performing a copy/paste to another connection
          */
         if(!$sourceConnId || $sourceConnId == $this->getId()) {
+            AppKitLogger::debug("Source and target is on same connection");
+            AppKitLogger::debug("ldap_add with dn %s and properties : %s",$newDN,$sourceProperties);
             if(!@ldap_add($connId,$newDN,$sourceProperties)) {
                 throw new AgaviException("Could not add ".$newDN. ":".$this->getError());
             }
         } else {
-
+            
             $client = LConf_LDAPClientModel::__fromStore($sourceConnId,$this->getContext()->getStorage());
             if(!$client)
                 throw new AgaviException("Target connection not found!");
             $id = $client->getConnection();
             $existCheck = $this->getNodeProperties($newDN);
+
             if(!empty($existCheck))
                 throw new AgaviException("<br/>DN alredy exists");
             if(!@ldap_add($id,$newDN,$sourceProperties)) {
@@ -694,7 +714,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
                 if(!is_int($key))
                     continue;
 
-                $this->cloneNode((isset($child["aliasdn"]) ? $child["aliasdn"] : $child["dn"]),$newDN);
+                $this->cloneNode((isset($child["aliasdn"]) ? $child["aliasdn"] : $child["dn"]),$newDN,$sourceConnId,$newName);
             }
         }
     }

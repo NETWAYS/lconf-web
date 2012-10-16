@@ -1,9 +1,12 @@
 /**
  * Helper class for the DIT Tree's clipboard data
- *
  * It's kind of a global state container class for all DIT Trees
+ * 
  */
+/*jshint browser:true, curly:false */
+/*global Ext:true, _:true*/
 Ext.ns("LConf.DIT.Mixin").Clipboard = function() {
+    "use strict";
     /**
      * This is intended to be public static, because the clipboard is a kind of
      * global state for all DIT Trees. 
@@ -63,4 +66,4 @@ Ext.ns("LConf.DIT.Mixin").Clipboard = function() {
         }
         return {};
     }
-}
+};
