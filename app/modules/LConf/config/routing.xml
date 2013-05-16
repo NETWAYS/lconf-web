@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
-	xmlns="http://icinga.org/appkit/config/parts/routing/1.0">
-	<ae:configuration context="web">
-		<routes>
-    		<route pattern="^/lconf" name=".lconf" module="LConf">
+    xmlns="http://icinga.org/appkit/config/parts/routing/1.0">
+    <ae:configuration context="web">
+        <routes>
+            <route pattern="^/lconf" name=".lconf" module="LConf">
                 <route name=".ping" pattern="^/ping$" action="Backend.Ping" output_type="json" />
                 <route name=".about" pattern="^/about$" action="Interface.About" output_type="simple"/>
                 <route name="lconfDNs" output_type="json" pattern="^/cronk/dns" action="Backend.Cronks.CustomVarDNCollector"/>
@@ -15,7 +15,7 @@
                 <route name=".data" pattern="^/data" output_type="json">
                     <!-- Directory and Property listing  -->
                     <route name=".directoryprovider" pattern="^/directoryprovider$" action="Backend.listDirectory"/>
-                    <route name=".propertyprovider" pattern="^/properties$" action="Backend.getProperties"/>					
+                    <route name=".propertyprovider" pattern="^/properties$" action="Backend.getProperties"/>                    
                     <route name=".simplesearch" pattern="^/simplesearch$" action="Backend.snippetSearch"/>
                     
                     <route name=".filterlisting" pattern="^/filterprovider$" action="Backend.listFilters"/>

@@ -118,6 +118,14 @@
             record.set("value",value);
 
             this.dirty = true;
+            if(this.currentDN) {
+                if(key == "cn" || key == "ou") {
+                    var baseDN = this.currentDN.split(",");
+                    baseDN.shift();
+                    baseDN = baseDN.join(",");
+                    this.currentDN=key+"="+value+","+baseDN;
+                }
+            }
         },
 
         deleteProperties: function(keys) {
@@ -177,6 +185,9 @@
                 return invalidProperty;
             this.save();
             this.eventDispatcher.fireCustomEvent("refreshTree");
+            this.setBaseParam("node",this.currentDN);
+            if(this.currentDN)
+                this.load();
             return true;
         },
 

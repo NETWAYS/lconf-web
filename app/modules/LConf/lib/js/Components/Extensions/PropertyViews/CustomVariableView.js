@@ -65,7 +65,7 @@
                     bstore.remove(bstore.findProperty(ns+type+"customvar"),true);
                     
                     gridstore.each(function(record) {
-                       bstore.setProperty(ns+type+"customvar",record.get('cv_name')+" _"+record.get('cv_value'),true);
+                       bstore.setProperty(ns+type+"customvar","_"+record.get('cv_name')+" "+record.get('cv_value'),true);
                     },this);
                 }
             }
@@ -86,14 +86,15 @@
                 continue;
             if(!Ext.isArray(value))
                 value = [value];
+            AppKit.log(value);
             for(var x=0;x<value.length;x++) {
                 
-                var cv = value[x].split(" _");
-                if(cv.length !== 2)
+                var cv = value[x].split(" ");
+                if(cv.length < 2)
                     continue;
                 data.push(new store.recordType({
-                    cv_name: cv[0].trim(),
-                    cv_value: cv[1].trim()
+                    cv_name: cv.shift().trim().substr(1),
+                    cv_value: cv.join(" ").trim()
                 }));
             }
         }
@@ -102,13 +103,15 @@
     };
     
     var CVGridToLConfCV = function() {
-    //     AppKit.log(this,arguments)
     };
     var getHandler = function(type) {
         return function(store) {
             var binder = new LConf.Extensions.Helper.LDAPStoreDataBinder();
             binder.hookStore(store);
             var items = [];
+            if(!Ext.isArray(type)) {
+                type = [type];
+            }
             for(var i=0;i<type.length;i++) {
                 items.push(getCVGrid(store,type[i]));
             }
@@ -125,10 +128,15 @@
                 },             
                 items: items
             });
+            
+            var getMatchfn = function(matchType) {
+                return function(cmp) {
+                    return (cmp.bindId === "cvpanel_"+matchType);
+                }
+            };
+            
             for(var i=0;i<type.length;i++) {
-                binder.registerCustomBinding(function(cmp) {
-                    return (cmp.bindId === "cvpanel_"+type[i]);
-                },CVGridToLConfCV,LConfCVToCVGrid); 
+                binder.registerCustomBinding(getMatchfn(type[i]),CVGridToLConfCV,LConfCVToCVGrid); 
             }
             binder.bindCmp(p,true);
             p.addListener("destroy",function() {

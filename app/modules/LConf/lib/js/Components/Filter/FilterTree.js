@@ -382,7 +382,7 @@
                         if(targetNode.isLeaf() && !replace)
                             targetNode = targetNode.parentNode;
 
-                        var	values = form.getForm().getFieldValues();
+                        var    values = form.getForm().getFieldValues();
                         var txt = this.buildTextFromFilter(values);
                         values.filter_parent = targetNode;
                         var node = this.loader.createNode({

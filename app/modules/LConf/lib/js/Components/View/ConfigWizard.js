@@ -69,7 +69,6 @@
                             this.ownerCt.hide();
                         this.getStore().closeOnSave = false;
 
-                        this.eventDispatcher.fireCustomEvent("refreshTree");
                     }
                     return true;
                 },this);
@@ -95,6 +94,7 @@
                 } else {
                     this.getStore().add(new Record());
                 }
+                this.fbar.removeAll();
                 this.fbar.add({
                     xtype: 'button',
                     text: _('Save and close'),

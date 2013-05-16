@@ -14,12 +14,12 @@
     cursor:pointer;
 }
 .ldap-connection-float.plus {
-	padding-top:30px;
-	background-color: #f3f3f3;
-	color: #acacac;
-	height:40px;
-	float:left;
-	font-size:10px;
+    padding-top:30px;
+    background-color: #f3f3f3;
+    color: #acacac;
+    height:40px;
+    float:left;
+    font-size:10px;
 }
 
 .ldap-connection-float .thumb {
@@ -51,18 +51,18 @@
 }
 
 .ldap-connection.plus {
-	padding-top:30px;
-	background-color: #f3f3f3;
-	color: #acacac;
-	height:40px;
-	float:left;
-	font-size:10px;
+    padding-top:30px;
+    background-color: #f3f3f3;
+    color: #acacac;
+    height:40px;
+    float:left;
+    font-size:10px;
 }
 
 .lconf-icon-plus {
-	background-image: url(../../../../images/icons/plus.png) !important;
-	background-repeat: no-repeat;
-	float:left;
+    background-image: url(../../../../images/icons/plus.png) !important;
+    background-repeat: no-repeat;
+    float:left;
 }
 
 .ldap-connection-float.x-view-over {
@@ -97,7 +97,7 @@
 }
 
 .ldap-filter .thumb {
-  	height:20px;
+      height:20px;
     width:35px;
     float:left;
     background-image:url(../../../../images/icons/cross-button.png);
@@ -143,19 +143,19 @@
 }
 
 .lconf_infobox {
-	margin:10px;
-	width:400px;
-	font-size:10px;
-	padding:5px;
-	height:200px;
-	scroll:auto;
-	overflow:scroll;
+    margin:10px;
+    width:400px;
+    font-size:10px;
+    padding:5px;
+    height:200px;
+    scroll:auto;
+    overflow:scroll;
     border:1px solid #ababab;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	background:white;
-	cursor:text;
-	color:'red';
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    background:white;
+    cursor:text;
+    color:'red';
 }
 
 .lconf_infobox ul {
@@ -178,52 +178,52 @@
     color:#787878;
 }
 .lconf-about {
-	width:100%;
-	text-align:center;
-	margin:auto
+    width:100%;
+    text-align:center;
+    margin:auto
 }
 .lconf-about .logo {
-	background-image: url(../images/LConf_Logo.jpg);
-	height:146px;
-	width:406px;
-	margin:auto;
-	text-align:center;
-	background-repeat: no-repeat;	
+    background-image: url(../images/LConf_Logo.jpg);
+    height:146px;
+    width:406px;
+    margin:auto;
+    text-align:center;
+    background-repeat: no-repeat;    
 }
 
 .lconf_cronk_sel.unfinished{
 
-	background-image: url(../../../../images/ajax/circle-ball.gif);
-	height:32;
-	width:32;
-	background-repeat: no-repeat;	
+    background-image: url(../../../../images/ajax/circle-ball.gif);
+    height:32;
+    width:32;
+    background-repeat: no-repeat;    
 }
 
 .lconf_cronk_sel.available{
-	background-image: url(../../../../images/icons/sitemap.png);
-	height:32;
-	width:32;
-	cursor:pointer;
-	background-repeat: no-repeat;	
+    background-image: url(../../../../images/icons/sitemap.png);
+    height:32;
+    width:32;
+    cursor:pointer;
+    background-repeat: no-repeat;    
 }
 
 .lconf_cronk_sel.notAvailable{
-	background-image: none;
-	height:32;
-	width:32;
-	background-repeat: no-repeat;	
+    background-image: none;
+    height:32;
+    width:32;
+    background-repeat: no-repeat;    
 }
 
 li div.italic * span {
-	color: #acacac;
+    color: #acacac;
 }
 
 /**
 * Disable text-selection supression in grid
 **/
 .x-grid3-col-value .dnSelectable  {
-	-moz-user-select:inherit;
-	-khtml-user-select:text;
+    -moz-user-select:inherit;
+    -khtml-user-select:text;
 }
 
 

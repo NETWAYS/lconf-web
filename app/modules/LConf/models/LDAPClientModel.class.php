@@ -42,15 +42,15 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
      * The connection resource over which communication is handled
      * @var resource
      */
-    private $connection		= false;
+    private $connection        = false;
     /**
      * ldap_options, see @link http://de2.php.net/manual/en/ref.ldap.php
      * @var array
      */
     private $ldap_options = array (
-            LDAP_OPT_REFERRALS			=> 0,
-            LDAP_OPT_DEREF				=> LDAP_DEREF_NEVER,
-            LDAP_OPT_PROTOCOL_VERSION	=> 3
+            LDAP_OPT_REFERRALS            => 0,
+            LDAP_OPT_DEREF                => LDAP_DEREF_NEVER,
+            LDAP_OPT_PROTOCOL_VERSION    => 3
     );
 
     /**
@@ -152,7 +152,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         $this->helper = AgaviContext::getInstance()->getModel("LDAPHelper","LConf");
         $ldaps = $connConf->isLDAPS() ? 'ldaps://' : '';
 
-        $connection = ldap_connect($ldaps.$connConf->getHost(),$connConf->getPort());
+        $connection = ldap_connect($ldaps.$connConf->getHost().":".$connConf->getPort());
         if(!is_resource($connection))
             throw new AgaviException("Could not connect to ".$connConf->getConnectionName());
 
@@ -410,8 +410,9 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
      * @param string $dn
      * @return array
      */
-    public function getNodeProperties($dn,$fields=array(),$checkInheritance = false) {
-        $connection = $this->getConnection();
+    public function getNodeProperties($dn,$fields=array(),$checkInheritance = false, $connection = null) {
+        if (empty($connection))
+            $connection = $this->getConnection();
         $result = @ldap_read($connection,$dn,"objectclass=*",$fields);
         if(!$result)
             return array();
@@ -500,9 +501,9 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
     /**
      * Modifies a node $dn so that it's parameters will match $newParams
      * $newParams must be an associative array with the fields
-     * 'id'	 		an id with the format %KEYNAME%_%ENTRYNR%
-     * 'property' 	the new property name
-     * 'value' 		the new value name
+     * 'id'             an id with the format %KEYNAME%_%ENTRYNR%
+     * 'property'     the new property name
+     * 'value'         the new value name
      *
      * @TODO: Yep. like in the add function ldap_mod_replace would make life easier.
      * @TODO: Split it up!
@@ -556,7 +557,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
             $newDN = $affectsDN.",".$dnToPreserve;
 
 
-            $this->rechainAliasesForNode($dn,$newDN);
+            
             if(!@ldap_add($connId,$newDN,$properties)) {
                 throw new AgaviException("Could not modify ".$dn. ":".$this->getError());
             }
@@ -566,10 +567,11 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
                     if(!is_int($key))
                         continue;
 
-                    $this->cloneNode((isset($child["aliasdn"]) ? $child["aliasdn"] : $child["dn"]),$newDN);
+                    $this->moveNode((isset($child["aliasdn"]) ? $child["aliasdn"] : $child["dn"]),$newDN);
                 }
             }
-            $this->removeNodes($dn);
+            $this->rechainAliasesForNode($dn,$newDN);
+            $this->removeNodes($dn, false); // leave broken aliases for safety
         } else {
 
             if(!@ldap_modify($connId,$dn,$properties)) {
@@ -579,27 +581,59 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         return $dn;
     }
 
+    /**
+     * @TODO: Rename the alias only if the name of the alias matched the old linked
+              node (this would allow to keep a special name for an alias)
+     */
     public function rechainAliasesForNode($dn,$newDN) {
         // Rechain aliases
+        $newName = substr($newDN, 0, strpos($newDN, ",")); # get the top name from the dn path
+        $newName = substr($newName, strpos($newName, "=") + 1); # get only the real name without type
         if($aliases = $this->getReferencesToNode($dn)) {
             foreach($aliases as $key=>$alias) {
                 if(!is_array($alias))
                     continue;
-                $splittedAlias = explode(",",$alias["dn"],2);
-                /**
-                 *  for some reason, he doesn't like modifying aliasedobjectname via modifyNode...
-                 *  That's why it's done the more comprehensive way
-                 */
-                $this->addNode($splittedAlias[1],array(
-                        array("property"=>"objectclass","value"=>"extensibleObject"),
-                        array("property"=>"objectclass","value"=>"alias"),
-                        array("property"=>"aliasedObjectName","value"=>$newDN)
-                ));
-                /**
-                 *  It doesn't matter if the new alias creation has completed or not, as the old alias
-                 *  is useless eitherway. That's why there's no check
-                 */
-                $this->removeNodes(array($alias["dn"]));
+               
+                $aliasLocation = substr($alias["dn"], strpos($alias["dn"], ",") + 1);
+                try {
+                    $newAliasDN = "ou=".$newName.",".$aliasLocation;
+                    AppKitLogger::debug("Updating alias %s to %s for target %s", $alias["dn"], $newAliasDN, $newDN);
+                    /**
+                     *  for some reason, he doesn't like modifying aliasedobjectname via modifyNode...
+                     *  That's why it's done the more comprehensive way
+                     */
+                    /**
+                     *  It doesn't matter if the new alias creation has completed or not, as the old alias
+                     *  is useless eitherway. That's why there's no check
+                     */
+
+                    if ($alias["dn"] == $newAliasDN) {
+                        // just set property
+                        $connId = $this->getConnection();
+                        if(!@ldap_mod_replace($connId, $alias["dn"], array("aliasedObjectName" => $newDN))) {
+                            throw new AgaviException("Could not modify ".$alias["dn"]. ":".$this->getError());
+                        }
+                     }
+                    else {
+                        // create a new node
+                        $this->addNode($newAliasDN, array(
+                            array("property"=>"objectclass","value"=>"extensibleObject"),
+                            array("property"=>"objectclass","value"=>"alias"),
+                            array("property"=>"aliasedObjectName","value"=>$newDN)
+                        ));
+                    }
+                    
+                } catch(Exception $e) {
+                    // catching error, but throwing it to Agavi
+                    AppKitLogger::error("Exception occured during rechainAliasForNode: %s", var_export($e->getMessage(), true));
+                    throw $e;
+                }
+
+                // remove alias when no error has occured
+                // but only if new name
+                if ($alias["dn"] != $newAliasDN) {
+                    $this->removeNodes(array($alias["dn"]));
+                }
             }
         }
 
@@ -636,7 +670,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         }
         foreach($properties as &$arr) {
             if(is_array($arr))
-                $arr = 	 array_values($arr);
+                $arr =      array_values($arr);
         }
         if(!@ldap_modify($connId,$dn,$properties)) {
             throw new AgaviException("Could not modify ".$dn. ":".$this->getError());
@@ -661,6 +695,10 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         $connId = $this->getConnection();
         
         $sourceProperties = $this->getNodeProperties($sourceDN);
+        if(!isset($sourceProperties["dn"])) {
+            throw new AppKitException("Clone failed: Source not found!");
+        }
+            
         $paramToPreserve = explode(",",$sourceProperties["dn"],2);
         $this->helper->cleanResult($sourceProperties);
         $newDN = $newName.",".$targetDN;
@@ -668,9 +706,13 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
             $paramToPreserve = $paramToPreserve[0];
             $newDN = $paramToPreserve.",".$targetDN;
         }
-        // check if it's on the same level
+        /**
+         * Check if it's on the same level, and rename the object to copy_of_object
+         * If we're performing a copy/paste to another connection do not attempt
+         * to rename, as the user will expect an "already exists" error in this case
+         */
 
-        if($this->listDN($newDN)) {
+        if($this->listDN($newDN) && (!$sourceConnId || $sourceConnId == $this->getId())) {
             $ctr = 0;
             do { // Increase copy counter if there is already a copy of this node
                 
@@ -700,10 +742,10 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
             if(!$client)
                 throw new AgaviException("Target connection not found!");
             $id = $client->getConnection();
-            $existCheck = $this->getNodeProperties($newDN);
+            $existCheck = $this->getNodeProperties($newDN, array(), false, $id);
 
             if(!empty($existCheck))
-                throw new AgaviException("<br/>DN alredy exists");
+                throw new AgaviException("<br/>DN already exists");
             if(!@ldap_add($id,$newDN,$sourceProperties)) {
                 throw new AgaviException("Could not add ".$newDN. ":".$this->getError());
             }
@@ -720,11 +762,26 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
     }
 
     public function moveNode($sourceDN, $targetDN,$sourceConnId = null) {
-        $this->cloneNode($sourceDN,$targetDN,$sourceConnId);
+        /* cloning nodes can cause problems with constraints etc. */
         if(!$sourceConnId || $sourceConnId == $this->getId()) {
-            $this->rechainAliasesForNode($sourceDN,$targetDN);
+            /* Local move, rename the node (and subnodes) */
+            $connId = $this->getConnection();
+            $sourceProperties = $this->getNodeProperties($sourceDN);
+            $paramToPreserve = explode(",",$sourceProperties["dn"],2);
+            $newName = $paramToPreserve[0];
+
+            if (!@ldap_rename($connId, $sourceDN, $newName, $targetDN, true)) {
+              /* The rename failed - attempt to clone the node anyway */
+              $this->cloneNode($sourceDN,$targetDN,$sourceConnId);
+              $this->removeNodes(array($sourceDN), false); // do not remove aliases here
+            }
+            $this->rechainAliasesForNode($sourceDN,$newName.",".$targetDN);
+
+        } else {
+            /* Remote move, clone and delete original */
+            $this->cloneNode($sourceDN,$targetDN,$sourceConnId);
+            $this->removeNodes(array($sourceDN));
         }
-        $this->removeNodes(array($sourceDN));
     }
 
     public function searchSnippetOccurences($snippet,$unique = false,$isRegExp = false) {
@@ -829,7 +886,7 @@ class LConf_LDAPClientModel extends IcingaLConfBaseModel {
         return $cl;
     }
 
-    public function disableStoring() {
+    public function Storing() {
         $this->dontStoreFlag = true;
     }
     public function enableStoring() {

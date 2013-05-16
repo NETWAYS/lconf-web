@@ -20,7 +20,7 @@ Ext.ns('Cronk.grid.ColumnRenderer');
         },this);
         requestElementsWithDN(idsToCheck,cfg,drawLinks,this);
     });
-		
+        
     var requestElementsWithDN = function(ids,cfg,callback,scope) {
         if(!Ext.isArray(ids))
             return false;
@@ -34,7 +34,7 @@ Ext.ns('Cronk.grid.ColumnRenderer');
             failure: function(resp) {
                 var err = Ext.decode(resp.responseText);
                 AppKit.notifyMessage("LDAP Error",_("Couldn't fetch ldap information")+",<br/> "+err.msg);
-				
+                
             },
             success: function(resp) {
                 var data = Ext.decode(resp.responseText);
@@ -47,7 +47,7 @@ Ext.ns('Cronk.grid.ColumnRenderer');
             }
         });
     };
-	
+    
     var drawLinks = function(data,cfg) {
         var cssSelFn = function(elem) {
             handleCSSSelector(data,elem,id,cfg);
@@ -58,9 +58,9 @@ Ext.ns('Cronk.grid.ColumnRenderer');
                 handleCSSSelector(data,data.elems[id],id,cfg);
             } else 
                 Ext.each(data.elems[id],cssSelFn);
-        }	
+        }    
     };
-	
+    
     var handleCSSSelector = function(data,elem,id,cfg) {
 
         if(!data.dn[id]) {
@@ -85,17 +85,17 @@ Ext.ns('Cronk.grid.ColumnRenderer');
             }).doLayout();
         }
     };
-	
+    
     var showDNMenu = function(e,dnInfo,cfg) {
         var menuItems = [];
-	
+    
         Ext.each(dnInfo.Connections,function(connection) {
             menuItems.push({
                 text: _('Use ')+connection.name,
                 handler: function() {
 
                     var url = AppKit.c.path+"/"+cfg.ldapRoute;
-                    window.location.href = url+"/"+connection.id+"/"+dnInfo.DN;				
+                    window.location.href = url+"/"+connection.id+"/"+dnInfo.DN;                
                 }
             });
         });
@@ -103,9 +103,9 @@ Ext.ns('Cronk.grid.ColumnRenderer');
             items: menuItems
         }).showAt(e.getXY());
     };
-	
+    
     Cronk.grid.ColumnRenderer.ldapColumn = function(cfg) {
-		
+        
         return function(value) {
             ldapColumnSelector.delay(200,null,null,[cfg]);
             
@@ -117,6 +117,6 @@ Ext.ns('Cronk.grid.ColumnRenderer');
             return '<div class="lconf_cronk_sel unfinished" '+flat_attr+' lconf_val="'+value+'"><div style="width:25px;height:25px;display:block;" ></div></div>';
         };
     };
-		
+        
 
 })();

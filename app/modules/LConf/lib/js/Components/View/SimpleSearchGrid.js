@@ -65,7 +65,18 @@ Ext.ns("LConf.View").SimpleSearchGrid = function(cfg) {
         view: new Ext.grid.GroupingView({
             forceFit: true,
             startCollapsed:true,
-            groupTextTpl: '{text} ({[values.rs.length]} {[values.rs.length > 1 ? "Items" : "Item"]})'
+            groupTextTpl: '{text} ({[values.rs.length]} {[values.rs.length > 1 ? "Items" : "Item"]})',
+            listeners: {
+                refresh: function(grid) {
+                    var result = grid.mainBody.query(".x-grid-group")
+                    AppKit.log(result);
+                    for(var i=0;i<result.length;i++) {
+                        var group = result[i];
+                        if(group.children[1].children.length < 10)
+                            grid.toggleGroup(group.id);
+                    };
+                }
+            }
         }),
         frame: true,
         width:800,
@@ -86,6 +97,7 @@ Ext.ns("LConf.View").SimpleSearchGrid = function(cfg) {
                 }).showAt(e.getXY());
 
             },
+
             scope:this
         },
         tbar: new Ext.Toolbar({

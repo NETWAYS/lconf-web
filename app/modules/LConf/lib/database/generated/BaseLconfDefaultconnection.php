@@ -47,30 +47,30 @@ abstract class BaseLconfDefaultconnection extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
           ));
-       	$this->index('defaultconn_unique', array (
-			'fields' => array (
-				'user_id'
-			),
-			'type' => 'unique'
-		));
+           $this->index('defaultconn_unique', array (
+            'fields' => array (
+                'user_id'
+            ),
+            'type' => 'unique'
+        ));
     }
 
-	public function setUp()
+    public function setUp()
     {
         parent::setUp();
         $this->hasOne('NsmUser', array(
              'local' => 'user_id',
              'foreign' => 'user_id',
-        	 'onDelete' => 'CASCADE',
-        	 'onUpdate' => 'CASCADE'
-	        )
+             'onDelete' => 'CASCADE',
+             'onUpdate' => 'CASCADE'
+            )
         );
         $this->hasOne('LconfConnection', array(
              'local' => 'connection_id',
              'foreign' => 'connection_id',
-        	 'onDelete' => 'CASCADE',
-        	 'onUpdate' => 'CASCADE'
-	        )
+             'onDelete' => 'CASCADE',
+             'onUpdate' => 'CASCADE'
+            )
         );
     }
 }

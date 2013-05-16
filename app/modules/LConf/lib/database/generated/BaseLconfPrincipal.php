@@ -2,7 +2,7 @@
 Doctrine_Manager::getInstance()->bindComponent('LconfPrincipal', 'icinga_web');
 abstract class BaseLconfPrincipal extends Doctrine_Record
 {
-	
+    
     public function setTableDefinition()
     {
         $this->setTableName('lconf_principal');
@@ -33,13 +33,13 @@ abstract class BaseLconfPrincipal extends Doctrine_Record
              'autoincrement' => false
              ));
         $this->hasColumn('connection_id','integer',4,array(
-        	'type' => 'integer',
-        	'length' => 4,
-        	'fixed' => false,
-        	'unsigned' => false,
-        	'primary' => false,
-        	'notnull' => false,
-        	'autoincrement' => false
+            'type' => 'integer',
+            'length' => 4,
+            'fixed' => false,
+            'unsigned' => false,
+            'primary' => false,
+            'notnull' => false,
+            'autoincrement' => false
         ));
 
     }
@@ -61,7 +61,7 @@ abstract class BaseLconfPrincipal extends Doctrine_Record
              'local' => 'connection_id',
              'foreign' => 'connection_id',
              'onDelete' => 'CASCADE',
-        	 'onUpdate' => 'CASCADE'
+             'onUpdate' => 'CASCADE'
         ));
     }
 }

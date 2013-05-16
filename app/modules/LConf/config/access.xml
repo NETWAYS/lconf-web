@@ -2,7 +2,10 @@
 <ae:configurations xmlns="http://icinga.org/api/config/parts/access/module/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0">
     <ae:configuration>
         <instances>
-            
+            <instance name="default">localhost</instance>
+            <!--
+            <instance name="myconnection">myconnection</instance>
+            -->
         </instances>
         <defaults>
             <access>
@@ -47,6 +50,23 @@
             </access>
         </defaults>
         <hosts>
+            <host name="localhost">
+                <type>local</type>
+                <access useDefaults="true">
+                </access>
+            </host>
+            <!--
+            <host name="connection1">
+                <type>local</type>
+                <access useDefaults="true">
+                    <execute>
+                        <files>
+                            <resource name="lconf_export">/usr/local/LConf/lconf_deploy.sh connection1</resource>
+                        </files>
+                    </execute>
+                </access>
+            </host>
+            -->
         </hosts>
     </ae:configuration>     
 </ae:configurations>

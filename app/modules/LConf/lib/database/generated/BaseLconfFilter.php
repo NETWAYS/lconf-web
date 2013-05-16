@@ -56,7 +56,7 @@ abstract class BaseLconfFilter extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-     	$this->hasColumn('filter_isglobal', 'integer', 4, array(
+         $this->hasColumn('filter_isglobal', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
              'fixed' => false,
@@ -68,13 +68,13 @@ abstract class BaseLconfFilter extends Doctrine_Record
         ));
     }
 
-	public function setUp()
+    public function setUp()
     {
         parent::setUp();
         $this->hasOne('NsmUser', array(
              'local' => 'user_id',
              'foreign' => 'user_id' 
-	        )
+            )
         );
     }
 }

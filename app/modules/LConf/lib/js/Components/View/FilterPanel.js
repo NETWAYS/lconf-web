@@ -194,7 +194,7 @@
                 layout:'fit',
                 items: {
                     layout:'column',
-                    items:	[{
+                    items:    [{
                         title:_('Filter'),
                         columnWidth:0.8,
                         items: tree

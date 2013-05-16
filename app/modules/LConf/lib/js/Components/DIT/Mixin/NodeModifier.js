@@ -210,7 +210,7 @@ Ext.ns("LConf.DIT.Mixin").NodeModifier = function() {
                 success: function() {
                     this.progressbar.hide();
                     if(to.getOwnerTree())
-                        this.refreshNode(to.parentNode,true);
+                        this.refreshNode(to.parentNode || to,true);
                     if(from.getOwnerTree())
                         this.refreshNode(from.parentNode,true);
                 },

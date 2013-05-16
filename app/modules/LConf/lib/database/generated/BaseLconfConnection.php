@@ -16,14 +16,14 @@ abstract class BaseLconfConnection extends Doctrine_Record
         $this->hasColumn('connection_name', 'string', 32, array(
              'type' => 'string',
              'length' => 32,
-			 'fixed' => false,
+             'fixed' => false,
              'primary' => false,
              'notnull' => true,
           ));
         $this->hasColumn('connection_description', 'string', 256, array(
              'type' => 'string',
              'length' => 256,
-			 'fixed' => false,
+             'fixed' => false,
              'primary' => false,
              'notnull' => false,
           ));
@@ -34,24 +34,24 @@ abstract class BaseLconfConnection extends Doctrine_Record
              'notnull' => false,
           ));
 
-		$this->hasColumn('connection_binddn', 'string', 1024, array(
+        $this->hasColumn('connection_binddn', 'string', 1024, array(
              'type' => 'string',
              'length' => 1024,
-			 'fixed' => false,
+             'fixed' => false,
              'primary' => false,
              'notnull' => true,
           ));
         $this->hasColumn('connection_bindpass', 'string', 64, array(
              'type' => 'string',
              'length' => 256,
-			 'fixed' => false,
+             'fixed' => false,
              'primary' => false,
              'notnull' => false,
         ));
         $this->hasColumn('connection_host', 'string', 64, array(
              'type' => 'string',
              'length' => 128,
-			 'fixed' => false,
+             'fixed' => false,
              'primary' => false,
              'notnull' => true,
              'defaukt' => 'localhost'
@@ -59,10 +59,10 @@ abstract class BaseLconfConnection extends Doctrine_Record
        $this->hasColumn('connection_port', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
-			 'fixed' => false,
+             'fixed' => false,
              'primary' => false,
              'notnull' => true,
-       	     'default' => 389
+                'default' => 389
           ));
           $this->hasColumn('connection_basedn', 'string', 1024, array(
              'type' => 'string',
@@ -80,7 +80,7 @@ abstract class BaseLconfConnection extends Doctrine_Record
              'autoincrement' => false,
              'default' => 0     
         ));
-		$this->hasColumn('connection_ldaps', 'integer', 4, array(
+        $this->hasColumn('connection_ldaps', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
              'unsigned' => 0,
@@ -93,11 +93,11 @@ abstract class BaseLconfConnection extends Doctrine_Record
 
     public function setUp()
     {
-		$this->hasOne('NsmUser as user_owner', array(
-			'local' => 'owner',
-			'foreign' => 'user_id'
-		));
-    	$this->hasMany('LconfPrincipal as principals', array(
+        $this->hasOne('NsmUser as user_owner', array(
+            'local' => 'owner',
+            'foreign' => 'user_id'
+        ));
+        $this->hasMany('LconfPrincipal as principals', array(
              'local' => 'connection_id',
              'foreign' => 'connection_id'
 

@@ -20,9 +20,9 @@
         },
 
         /**
-	* http://extjs.com/forum/showthread.php?t=22218
-	* For non-IE browsers, this is fixed with a CSS addition.
-	*/
+    * http://extjs.com/forum/showthread.php?t=22218
+    * For non-IE browsers, this is fixed with a CSS addition.
+    */
         reenableTextSelection : function(){
             if(Ext.isIE){
                 try {
@@ -114,13 +114,13 @@
                 listeners: {
 
                     beforesave: function () {
-                    //	LConf.LoadingLayer.show();
+                    //    LConf.LoadingLayer.show();
                     },
                     save : function () {
-                    //	LConf.LoadingLayer.hide();
+                    //    LConf.LoadingLayer.hide();
                     },
                     exception: function () {
-                    //	LConf.LoadingLayer.hide();
+                    //    LConf.LoadingLayer.hide();
                     }
                 }
             });
@@ -222,11 +222,11 @@
                 });
                 this.on("rowclick",this.inheritedMenu,this);    
             }
-		
+        
             this.eventDispatcher.addCustomListener("ConnectionClosed",this.disable,this);
             this.eventDispatcher.addCustomListener("invalidNode",this.disable,this);
-		
-		
+        
+        
             this.getStore().on("add",function () {
                 this.getSelectionModel().selectLastRow();
             },this);
@@ -309,8 +309,8 @@
 
 
         /**
-	 * Here's the magic: this function is triggered on beforeEdit and dynamically changes the Editor
-	 */
+     * Here's the magic: this function is triggered on beforeEdit and dynamically changes the Editor
+     */
         setupEditor: function (e) {
             var column = e.grid.getColumnModel().columns[e.column];
             var editor = null;

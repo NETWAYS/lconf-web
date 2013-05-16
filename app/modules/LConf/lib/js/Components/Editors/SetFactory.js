@@ -24,6 +24,7 @@ Ext.ns("LConf.Editors").SetFactory = new (function() {
             displayField: 'entry',
             valueField: 'entry',
             mode:'remote',
+            autoSelect: false,
             store: propertyStore,
             pageSize: 25,
             tpl: '<tpl for="."><div style="padding-left:25px" class="icinga-icon-{cl} x-combo-list-item">{entry}</div></tpl>',

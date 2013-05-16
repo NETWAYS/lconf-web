@@ -26,6 +26,7 @@ Ext.ns("LConf.Editors").ComboBoxFactory = new (function() {
             displayField: 'entry',
             valueField: 'entry',
             enableKeyEvents: true,
+            autoSelect:false,
             mode:'remote',
             store: propertyStore,
             listeners: {

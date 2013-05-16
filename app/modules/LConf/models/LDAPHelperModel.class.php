@@ -116,7 +116,7 @@ class LConf_LDAPHelperModel extends IcingaLConfBaseModel {
             }
             if (!$isAlias)
                 continue;
-            //	$result["aliasdn"] = $result["aliasedobjectname"];
+            //    $result["aliasdn"] = $result["aliasedobjectname"];
             //$result["dn"] = "ALIAS=Alias of:".$result["aliasedobjectname"][0];
         }
         return $resultset;

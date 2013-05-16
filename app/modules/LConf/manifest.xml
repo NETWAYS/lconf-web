@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <IcingaPlugin>
-	
-	<!--  Meta information about the module-->
-	<Meta>
-		<Name>LConf</Name>
-		<Version>1.3.0RC</Version>
-		<Description><![CDATA[Plugin to manage LDAP based configurations.]]></Description>
-		<Author>Jannis Moßhammer (Jannis.Mosshammer@netways.de)</Author>
-		<Company>NETWAYS GmbH</Company>	
-	</Meta>
-	
-	<Dependencies>
-		<Icinga-Web>
-			<Version>1.7.0</Version>
-		</Icinga-Web>
-		<PHP>
-			<Version>5.2</Version>
-			<Extensions>
-				<!-- Check if the ldap lib is installed-->
-				<Extension>ldap</Extension>
-			</Extensions>
-		</PHP>
-		
-	</Dependencies>
+    
+    <!--  Meta information about the module-->
+    <Meta>
+        <Name>LConf</Name>
+        <Version>1.3.1RC</Version>
+        <Description><![CDATA[Plugin to manage LDAP based configurations.]]></Description>
+        <Author>Jannis Moßhammer (Jannis.Mosshammer@netways.de)</Author>
+        <Company>NETWAYS GmbH</Company>    
+    </Meta>
+    
+    <Dependencies>
+        <Icinga-Web>
+            <Version>1.7.0</Version>
+        </Icinga-Web>
+        <PHP>
+            <Version>5.2</Version>
+            <Extensions>
+                <!-- Check if the ldap lib is installed-->
+                <Extension>ldap</Extension>
+            </Extensions>
+        </PHP>
+        
+    </Dependencies>
 
-	
+    
 </IcingaPlugin>

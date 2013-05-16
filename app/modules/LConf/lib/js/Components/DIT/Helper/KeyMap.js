@@ -22,39 +22,7 @@ Ext.ns("LConf.DIT.Helper").KeyMap = function(DITTree) {
     },{ // insert
         key: "v",
         ctrl: true,
-        fn: function() {
-            var nodes = DITTree.getClipboardContent();
-            // no nodes in the clipboard
-            if(!nodes.clipboard)
-                return false;
-            nodes.clipboard.connId = nodes.tree;
-            var selected = sm.getSelectedNodes();
-            if(selected.length === 0)
-                Ext.Msg.confirm(_("No node selected"), _("You haven't selected nodes to copy to"));
-
-            // Check if this would be a recursive operation,
-            // i.e. the node is at a branch of the current node
-            for(var i=0;i<selected.length;i++) {
-                var toNode = selected[i];
-                for(var x=0;x<nodes.clipboard.length;x++)  {
-                    if (toNode === nodes.clipboard[x] || toNode.isAncestor(nodes.clipboard[x])) {
-                        Ext.Msg.alert(_("Invalid operation"), _("Moving or Copying a node below itself is not supported."));
-                        return false;
-                    }
-                }
-            }
-
-            // Copy the node to the clipboard
-            for(i=0;i<selected.length;i++) {
-                var clNode = selected[i];          
-                clNode.connId = DITTree.connId;
-                DITTree.copyNode("append",nodes.clipboard,selected[i],nodes.cut);
-            }
-            if(nodes.cut) {
-                DITTree.clearClipboard(true);
-            }
-            return true;
-        },
+        fn: DITTree.pasteFromClipboard.createDelegate(DITTree),
         scope: this
     },{
         key: "n",
