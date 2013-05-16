@@ -53,11 +53,11 @@ $wizards = AgaviConfig::get("modules.lconf.customDialogs", array());
                             function(btn) {
                                 if(btn == 'yes')
                                     AppKit.changeLocation(urls.loginURL);
-					
+                    
                             }
                         )
-                            killCheck = true;		
-                        }	
+                            killCheck = true;        
+                        }    
                     }
                 });
                 return true;

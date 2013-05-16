@@ -73,8 +73,8 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
                 handler: tree.refreshNode.createDelegate(tree,[node,true]),
                 scope: this,
                 hidden: node.isLeaf() || justCreate
-            },{
-                text: _('Create new node on same level'),
+            },'-',{
+                text: _('Create new node at same level'),
                 iconCls: 'icinga-icon-add',
                 menu: this.getNodeCreationMenu(tree,{node:node}),
                 scope: this,
@@ -82,11 +82,42 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
             },{
                 text: _('Create new node as child'),
                 iconCls: 'icinga-icon-sitemap',
-                hidden: (node.isAlias),      
+                hidden: (node.isAlias),
                 menu: this.getNodeCreationMenu(tree,{node:node,isChild:true}),
                 //handler: tree.wizardManager.callNodeCreationWizard.createDelegate(tree.wizardManager,[),
                 scope: this
+            },'-',{
+                text: _('Copy this node(s)'),
+                iconCls: 'icinga-icon-application-double',
+                hidden: (node.isAlias && node.parentNode),
+                scope:this,
+                handler: tree.clipboardInsert.createDelegate(tree,[tree.getSelectionModel().getSelectedNodes(),tree.connId])
             },{
+                text: _('Paste ')+tree.getNumberOfClipboardElements()+" nodes...",
+                iconCls: 'icinga-icon-application-add',
+                hidden: (tree.getNumberOfClipboardElements() == 0),
+                menu: [{
+                    text: _('...at same level'),
+                    iconCls: 'icinga-icon-add',
+                    handler: tree.pasteFromClipboard.createDelegate(tree,[[node.parentNode]]),
+                    scope: tree
+                }, {
+                    text: _('..as child'+(tree.getNumberOfClipboardElements() ? 'ren' : '')),
+                    iconCls: 'icinga-icon-sitemap',
+                    handler: tree.pasteFromClipboard.createDelegate(tree,[]),
+                    hidden: node.isAlias
+                }, {
+                    text: _('..as alias at same level'),
+                    iconCls: 'icinga-icon-attach',
+                    handler: tree.createAliasesFromClipboard.createDelegate(tree,[[node.parentNode]]),
+                    scope: tree
+                }, {
+                    text: _('..as alias underneath this node'),
+                    iconCls: 'icinga-icon-attach',
+                    handler: tree.createAliasesFromClipboard.createDelegate(tree,[])
+
+                }]
+            },'-',{
                 text: _('Remove <b>only this</b> node'),
                 iconCls: 'icinga-icon-delete',
                 handler: function() {
@@ -117,7 +148,7 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
                 },
                 hidden: !(tree.getSelectionModel().getSelectedNodes().length) || justCreate,
                 scope: this
-            },{
+            },'-',{
                 text: _('Jump to alias target'),
                 iconCls: 'icinga-icon-arrow-redo',
                 hidden: justCreate || !node.attributes.isAlias && !node.id.match(/\*\d{4}\*/),
@@ -135,7 +166,7 @@ Ext.ns("LConf.DIT.Mixin").ContextMenu = function() {
                 },
                 scope:this,
                 hidden: node.attributes.isAlias || node.id.match(/\*\d{4}\*/) || justCreate
-            },{
+            },'-',{
                 text: _('Search/Replace'),
                 iconCls: 'icinga-icon-zoom',
                 handler: tree.searchReplaceManager.execute,

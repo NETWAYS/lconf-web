@@ -66,4 +66,74 @@ Ext.ns("LConf.DIT.Mixin").Clipboard = function() {
         }
         return {};
     }
+
+    this.getNumberOfClipboardElements = function() {
+        if(Ext.isEmpty(clipboard))
+            return 0;
+        return clipboard[0].length;
+    }
+
+    this.pasteFromClipboard = function(selected) {
+        var nodes = this.getClipboardContent();
+        // no nodes in the clipboard
+        if(!nodes.clipboard)
+            return false;
+        nodes.clipboard.connId = nodes.tree;
+        var selected = selected || this.getSelectionModel().getSelectedNodes();
+        if(selected.length === 0)
+            Ext.Msg.confirm(_("No node selected"), _("You haven't selected nodes to copy to"));
+
+        // Check if this would be a recursive operation,
+        // i.e. the node is at a branch of the current node
+        for(var i=0;i<selected.length;i++) {
+            var toNode = selected[i];
+            for(var x=0;x<nodes.clipboard.length;x++)  {
+                if (toNode === nodes.clipboard[x] || toNode.isAncestor(nodes.clipboard[x])) {
+                    Ext.Msg.alert(_("Invalid operation"), _("Moving or Copying a node below itself is not supported."));
+                    return false;
+                }
+            }
+        }
+
+        // Copy the node to the clipboard
+        for(i=0;i<selected.length;i++) {
+            var clNode = selected[i];
+            clNode.connId = this.connId;
+            this.copyNode("append",nodes.clipboard,selected[i],nodes.cut);
+        }
+        if(nodes.cut) {
+            this.clearClipboard(true);
+        }
+        return true;
+    }
+
+    this.createAliasesFromClipboard = function(selected) {
+        var nodes = this.getClipboardContent();
+        // no nodes in the clipboard
+        if(!nodes.clipboard)
+            return false;
+        nodes.clipboard.connId = nodes.tree;
+        var selected = selected || this.getSelectionModel().getSelectedNodes();
+        if(selected.length === 0)
+            Ext.Msg.confirm(_("No node selected"), _("You haven't selected nodes to copy to"));
+
+
+        for(var i=0;i<selected.length;i++) {
+            var toNode = selected[i];
+            for(var x=0;x<nodes.clipboard.length;x++)  {
+                if (toNode === nodes.clipboard[x] || toNode.isAncestor(nodes.clipboard[x])) {
+                    Ext.Msg.alert(_("Invalid operation"), _("Moving or Copying a node below itself is not supported."));
+                    return false;
+                }
+            }
+        }
+
+        for(i=0;i<selected.length;i++) {
+            var clNode = selected[i];
+            clNode.connId = this.connId;
+            this.buildAlias("append",nodes.clipboard,selected[i])
+        }
+
+        return true;
+    }
 };

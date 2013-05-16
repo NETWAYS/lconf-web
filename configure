@@ -572,6 +572,7 @@ PHPCS
 PHPUNIT
 PHING
 CFLAGS
+ldap_prefix
 bin_group
 bin_user
 web_apache_path
@@ -636,6 +637,8 @@ enable_option_checking
 with_app_name
 with_web_user
 with_web_group
+with_ldap_prefix
+with_lconf_path
 with_web_path
 with_web_absolute_path
 with_web_apache_path
@@ -1264,6 +1267,10 @@ Optional Packages:
   --with-app-name=NAME    Application name (default LConf)
   --with-web-user=USER    username for web writable files (default www-data)
   --with-web-group=GROUP  group for web writable files (default www-data)
+  --with-ldap-prefix=name prefix to use for your ldap instances (default
+                          lconf)
+  --with-lconf-path=PATH   location of your lconf installation (containing
+                          the lconf_deploy.sh script)
   --with-web-path=PATH    web sub path (default /lconf)
   --with-web-absolute-path=PATH
                           absolute path to pub (default %core.root_dir%/pub)
@@ -2171,6 +2178,27 @@ fi
 fi
 
 
+# Check whether --with-ldap_prefix was given.
+if test "${with_ldap_prefix+set}" = set; then :
+  withval=$with_ldap_prefix; ldap_prefix=$withval
+else
+  ldap_prefix=lconf
+
+fi
+
+
+
+
+# Check whether --with-lconf_path was given.
+if test "${with_lconf_path+set}" = set; then :
+  withval=$with_lconf_path; lconf_path=$withval
+else
+  lconf_path=/usr/local/LConf
+
+fi
+
+
+
 
 # Check whether --with-web_path was given.
 if test "${with_web_path+set}" = set; then :
@@ -2334,7 +2362,8 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile lib/Makefile pub/Makefile etc/Makefile bin/Makefile app/Makefile app/config.php app/config/databases.xml app/config/icinga.xml app/config/logging.xml app/config/settings.xml app/config/translation.xml app/config/factories.xml app/modules/Api/config/access.xml app/modules/Api/config/module.xml app/modules/AppKit/config/module.xml app/modules/AppKit/config/auth.xml app/modules/LConf/config/module.xml app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini app/modules/LConf/lib/ldapConfig/staticObjects.ini etc/build.properties etc/apache2/lconf-web.conf bin/clearcache.sh pub/.htaccess etc/conf.d/access.xml etc/conf.d/databases.xml etc/conf.d/Makefile"
+
+ac_config_files="$ac_config_files Makefile lib/Makefile pub/Makefile etc/Makefile bin/Makefile app/Makefile app/config.php app/config/databases.xml app/config/icinga.xml app/config/logging.xml app/config/settings.xml app/config/translation.xml app/config/factories.xml app/modules/Api/config/access.xml app/modules/Api/config/module.xml app/modules/AppKit/config/module.xml app/modules/AppKit/config/auth.xml app/modules/LConf/config/module.xml app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini app/modules/LConf/lib/ldapConfig/staticObjects.ini app/modules/LConf/lib/js/Components/Configuration.js etc/build.properties etc/apache2/lconf-web.conf bin/clearcache.sh pub/.htaccess etc/conf.d/access.xml etc/conf.d/databases.xml etc/conf.d/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -3063,6 +3092,7 @@ do
     "app/modules/LConf/config/module.xml") CONFIG_FILES="$CONFIG_FILES app/modules/LConf/config/module.xml" ;;
     "app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini") CONFIG_FILES="$CONFIG_FILES app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini" ;;
     "app/modules/LConf/lib/ldapConfig/staticObjects.ini") CONFIG_FILES="$CONFIG_FILES app/modules/LConf/lib/ldapConfig/staticObjects.ini" ;;
+    "app/modules/LConf/lib/js/Components/Configuration.js") CONFIG_FILES="$CONFIG_FILES app/modules/LConf/lib/js/Components/Configuration.js" ;;
     "etc/build.properties") CONFIG_FILES="$CONFIG_FILES etc/build.properties" ;;
     "etc/apache2/lconf-web.conf") CONFIG_FILES="$CONFIG_FILES etc/apache2/lconf-web.conf" ;;
     "bin/clearcache.sh") CONFIG_FILES="$CONFIG_FILES bin/clearcache.sh" ;;

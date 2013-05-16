@@ -73,6 +73,19 @@ AC_ARG_WITH([web_group],
     web_group=$withval,
     ACICINGA_GROUP_GUESS([www www-data apache httpd nogroup nobody],[web_group], [www-data])
 )
+AC_ARG_WITH([ldap_prefix],
+    AS_HELP_STRING([--with-ldap-prefix=name], [prefix to use for your ldap instances (default lconf)]),
+    ldap_prefix=$withval,
+    ldap_prefix=lconf
+)
+
+
+AC_ARG_WITH([lconf_path],
+    AS_HELP_STRING([--with-lconf-path=PATH], [location of your lconf installation (containing the lconf_deploy.sh script)]),
+    lconf_path=$withval,
+    lconf_path=/usr/local/LConf
+)
+
 
 AC_ARG_WITH([web_path],
     AS_HELP_STRING([--with-web-path=PATH], [web sub path (default /lconf)]),
@@ -156,6 +169,7 @@ AC_SUBST(web_absolute_path)
 AC_SUBST(web_apache_path)
 AC_SUBST(bin_user)
 AC_SUBST(bin_group)
+AC_SUBST(ldap_prefix)
 AC_SUBST(CFLAGS)
 AC_SUBST(PHP)
 AC_SUBST(SQLITE)
@@ -194,6 +208,7 @@ AC_CONFIG_FILES([
     app/modules/LConf/config/module.xml
     app/modules/LConf/lib/ldapConfig/objectDefaultAttributes.ini
     app/modules/LConf/lib/ldapConfig/staticObjects.ini 
+    app/modules/LConf/lib/js/Components/Configuration.js 
     etc/build.properties
     etc/apache2/lconf-web.conf
     bin/clearcache.sh

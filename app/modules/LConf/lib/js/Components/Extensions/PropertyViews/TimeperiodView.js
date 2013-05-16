@@ -621,7 +621,7 @@ var timePeriodPanel = function() {
                 layout: 'card',
                 activeItem: 0,
                 width: 750,
-                height: 300,
+                height: 400,
                 items: [{
                     xtype: 'panel',
                     layout: 'fit',

@@ -109,7 +109,7 @@
             var view = this.getView();
             var store = this.getStore();
             view.addListener("click",this.handleContext,this);
-            
+
             view.addListener(
             "dblclick",
             function (dView,index,node) {
@@ -130,7 +130,8 @@
         },
         
         // handles creation and display of the context menu
-        handleContext : function(dView,index,node,_e)	{
+        handleContext : function(dView,index,node,_e)    {
+            Ext.QuickTips.getQuickTip().hide();
             _e.preventDefault();
             if(!this.ctxMenu)
                 this.ctxMenu = {};

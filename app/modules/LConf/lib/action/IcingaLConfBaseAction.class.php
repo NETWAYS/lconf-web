@@ -5,13 +5,13 @@
  */
 class IcingaLConfBaseAction extends IcingaBaseAction
 {
-	public function isSecure() {
-		return true;
-	}
-	
-	public function getCredentials() {
-		return 'lconf.user';
-	}
+    public function isSecure() {
+        return true;
+    }
+    
+    public function getCredentials() {
+        return 'lconf.user';
+    }
 }
 
 ?>

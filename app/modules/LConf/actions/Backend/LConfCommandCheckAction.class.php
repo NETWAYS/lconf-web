@@ -55,8 +55,8 @@ class LConf_Backend_LConfCommandCheckAction extends IcingaLConfBaseAction {
     }
     
     public function getCredentials() {
-	    return array("lconf.user","lconf.testcheck");
-	}
+        return array("lconf.user","lconf.testcheck");
+    }
     public function isSecure() {
         return true;
     }

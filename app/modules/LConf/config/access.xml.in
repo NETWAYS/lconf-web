@@ -44,7 +44,7 @@
                         <!--
                         <resource name="cat">/bin/cat</resource>
                         -->
-                        <resource name="lconf_export">/usr/local/LConf/lconf_deploy.sh</resource>
+                        <resource name="lconf_export">@lconf_path@/lconf_deploy.sh</resource>
                     </files>
                 </execute>
             </access>

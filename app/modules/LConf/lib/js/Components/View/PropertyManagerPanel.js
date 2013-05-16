@@ -118,7 +118,9 @@
             if(this.getStore().isValid() !== true) {
                 Ext.Msg.alert(_("Property ")+this.getStore().isValid()+_(" is invalid"),_("Please review your entries "));
             }
-            return this.getStore().saveChanges();
+            this.getStore().saveChanges();
+            
+            
         },
         
         setupPropertyStore: function() {
@@ -156,6 +158,7 @@
 
             store.setNode(id);
             store.setConnection(connection);
+            
             store.load();
             this.disable(false);
             return true;
