@@ -199,30 +199,6 @@ class AppKit_UserAdminModel extends AppKitBaseModel {
 
     public function removeUser(NsmUser &$user) {
         try {
-            
-            /*
-            * These are our connections to any cronks
-            */
-        
-            foreach($user->cronkPrincipals as $cp) {
-                $re = AppKitDoctrineUtil::createQuery()->delete('CronkPrincipalCronk cpc')
-                ->andWhere('cpc.cpc_cronk_id=? and cpc.cpc_principal_id=?', array($cp->cpc_cronk_id, $cp->cpc_principal_id))
-                ->execute();
-            }
-            /*
-             * Our cronks
-            */
-            foreach ($user->cronks as $cronk) {
-                /*
-                 * All connections to our cronks
-                */
-                AppKitDoctrineUtil::createQuery()->delete('CronkPrincipalCronk cpc')
-                ->andWhere('cpc.cpc_cronk_id=?', array($cronk->cronk_id))
-                ->execute();
-            
-                $cronk->delete();
-            }
-            
             AppKitDoctrineUtil::getConnection()->beginTransaction();
             
             $this->updateUserroles($user,array());
