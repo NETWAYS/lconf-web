@@ -170,7 +170,7 @@
             this.each(function(rec) {
                 var prop = rec.get("property");
 
-                if(!rec.data.value) {
+                if (rec.data.value === null || rec.data.value === '') {
                     valid = prop;
                     return false;
                 }

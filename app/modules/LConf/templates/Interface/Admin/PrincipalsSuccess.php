@@ -66,6 +66,7 @@ lconf.Admin.getPrincipalEditor = function() {
         idProperty: 'role_id',
         remoteSort: true,
         root:'roles',
+        totalProperty:'totalCount',
         fields: [
             getCompatibilityFieldMapping('role_id','id'),
             getCompatibilityFieldMapping('role_name','name')
@@ -143,7 +144,7 @@ lconf.Admin.getPrincipalEditor = function() {
             start: 0,
             limit: 25
         },
-        remoteSort: true,
+        remoteSort: false,
         fields: [
             getCompatibilityFieldMapping('user_id','id'),
             getCompatibilityFieldMapping('user_name','name')
@@ -193,8 +194,8 @@ lconf.Admin.getPrincipalEditor = function() {
             title: _('Users'),
             id: "userPanel",
             columns:[
-                {header:_('Id'),name:'user_id'},
-                {header:_('User'),name:'user_name'}
+                {header:_('Id'),name:'user_id',dataIndex:'user_id'},
+                {header:_('User'),name:'user_name',dataIndex:'user_name'}
             ],
             targetColumns:[
                 {header:_('Id'),name:'user_id',dataIndex:'user_id'},
@@ -209,8 +210,8 @@ lconf.Admin.getPrincipalEditor = function() {
             iconCls: 'icinga-icon-users',
             id: "groupPanel",
             columns: [
-                {header:_('Id'),name:'role_id'},
-                {header:_('Group'),name:'role_name'}
+                {header:_('Id'),name:'role_id',dataIndex:'role_id'},
+                {header:_('Group'),name:'role_name',dataIndex:'role_name'}
             ],
             targetColumns:[
                 {header:_('Id'),name:'role_id',dataIndex:'role_id'},

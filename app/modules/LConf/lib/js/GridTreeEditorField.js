@@ -26,7 +26,8 @@ Ext.onReady(function() {
         startValue: "",
     
         field: {
-            focus: function () {}
+            focus: function () {},
+            isXType: function () {}
         },
     
         setValue: function (v) {    
@@ -82,10 +83,12 @@ Ext.onReady(function() {
         hideEdit: function (remainVisible) {
             if(remainVisible !== true) {
                 this.editing = false;
-                if(this.tree)        
+                if (this.tree) {
                     this.tree.destroy();
-                if(this.tree.editorTxt)
-                    this.tree.editorTxt.destroy();
+                    if (this.tree.editorTxt) {
+                        this.tree.editorTxt.destroy();
+                    }
+                }
                 this.grid.resumeEvents();
             }
         },

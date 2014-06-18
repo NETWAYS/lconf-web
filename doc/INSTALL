@@ -19,3 +19,14 @@ Installing the lconf-web standalone package is almost like icinga-web, altough y
 3.) check your permissions on app/data/lconf.db, www-user needs write permissions (to both the file AND the folder!)
 
 
+Release Checklist
+=================
+
+Import the Icinga Web module source
+
+$ cp -rv ../icinga-module/src/LConf app/modules/
+
+Update version
+
+$ vim etc/make/version.m4
+$ autoconf
