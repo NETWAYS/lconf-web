@@ -4,6 +4,8 @@ PACKAGE_TARNAME=@PACKAGE_TARNAME@
 PACKAGE_NAME=@PACKAGE_NAME@
 PACKAGE_VERSION=@PACKAGE_VERSION@
 
+TARBALL_NAME=lconf-web
+
 VERSION_MAJOR=@VERSION_MAJOR@
 VERSION_MINOR=@VERSION_MINOR@
 VERSION_PATCH=@VERSION_PATCH@
@@ -230,6 +232,11 @@ upgrade-done:
 	@printf "appropriate changes into your database\n"
 	@printf "\n"
 	@printf "Have fun!\n\n"
+
+create-tarball:
+	$(eval version := $(shell git describe --tags HEAD | sed 's/^v//'))
+	git archive -o "../${TARBALL_NAME}-$(version).tar.gz" --prefix="${TARBALL_NAME}-$(version)/" HEAD
+	@echo "You find your tarball here: ../${TARBALL_NAME}-$(version).tar.gz"
 
 
 make-create-files:

@@ -1,4 +1,4 @@
-LConf-Web
+# LConf Web
 
 Web-based graphical LDAP Editor for managing LDAP Configurations.
 
