@@ -1,0 +1,12 @@
+README for RHEL Packages
+
+This package contains the Standalone Web for LConf.
+
+The configuration files will be installed in
+/usr/share/lconf-web/app/modules/LConf/config/
+and not overwritten on package upgrades.
+
+If you made any changes to the XML configuration, run the clearcache script afterwards to put them into effect.
+
+/usr/share/lconf-web/bin/clearcache.sh
+
