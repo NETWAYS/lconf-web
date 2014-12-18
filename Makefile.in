@@ -197,8 +197,8 @@ install-siteconfig:
 
 install-db:
 	
-	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(prefix)/app/data/db/ 
-	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(prefix)/app/data/db/lconf.db 
+	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(prefix)/app/data/db/ 
+	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) etc/schema/lconf.db $(DESTDIR)$(prefix)/app/data/db/lconf.db 
 
 install-log:
 	$(INSTALL) -m 755 $(INSTALL_OPTS_WEB) -d $(DESTDIR)$(LOGDIR)
