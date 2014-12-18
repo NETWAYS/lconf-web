@@ -38,3 +38,9 @@ Update version
 
     vim etc/make/version.m4
     autoconf
+
+Create tarball
+
+    VERSION=1.4.0
+    git archive --format=tar --prefix=lconf-web-$VERSION/ tags/v$VERSION | gzip >lconf-web-$VERSION.tar.gz
+
