@@ -168,6 +168,7 @@ install-javascript:
 	ln -sf $(DESTDIR)$(prefix)/lib/ext3 $(DESTDIR)$(prefix)/pub/js/ext3
 
 install-apache-config:
+	$(INSTALL) -m 755 $(INSTALL_OPTS) -d $(DESTDIR)$(WEB_APACHE_PATH)
 	${INSTALL} -b -m 664 $(INSTALL_OPTS) etc/apache2/lconf-web.conf $(DESTDIR)$(WEB_APACHE_PATH)/lconf-web.conf
 	@printf "\nInstalled configuration in '%s'.\n" "$(WEB_APACHE_PATH)"
 	@printf "Please make sure that the directory is included or \n"
