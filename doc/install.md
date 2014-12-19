@@ -33,6 +33,8 @@ Import the Icinga Web module source
     git checkout support/1.4 && git pull origin support/1.4
 
     cp -rv ../icinga-module/src/LConf app/modules/
+    echo "# Icinga Standalone Web Changelog" > doc/CHANGELOG
+    cat ../icinga-module/doc/CHANGELOG >> doc/CHANGELOG
 
 Update version
 
@@ -41,6 +43,6 @@ Update version
 
 Create tarball
 
-    VERSION=1.4.0
+    VERSION=1.4.1
     git archive --format=tar --prefix=lconf-web-$VERSION/ tags/v$VERSION | gzip >lconf-web-$VERSION.tar.gz
 

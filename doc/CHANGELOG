@@ -1,4 +1,259 @@
 # LConf Standalone Web Changelog
 
 Please check the LConf Icinga Web Module Changelog
+imported below.
+
+# LConf Icinga Web Changelog
+
+
+## 1.4.1 - 19/12/2014
+
+### CHANGES
+
+* Bug #2421: Structural Objects: Remove Contact Settings Tab
+* Bug #2688: Properly parse the Icinga2 output and present a nice table
+* Bug #2002: Remove servicegroup members from settings (broken feature)
+* Feature #2330: Add button for disabling hosts and services
+* Feature #2497: Add additional fields: notes, notes_url, action_url
+
+### FIXES
+
+* Bug #2002: graphical tab does not ask for host for service group host
+* Bug #2175: LCONF->EXPORT->CLUSTER only allows [a-zA-Z0-9_]
+* Bug #2396: Contact notification settings for service are wrong
+* Bug #2421: Unsupported contact settings on Structural Objects: Remove Contact Settings Tab
+* Bug #2619: LDAP search string not encoded correctly
+* Bug #2688: Validation of icinga2 output fails
+* Bug #2799: lconfHostEscalation- and lconfServiceEscalation-properties cause Object class violation
+* Bug #2801: Missing host display_name attribute: wrong lconfHostDisplayNotes
+* Feature #2330: Disabling hosts and services / GUI
+* Feature #2497: Add notes, notes_url, action_url as additional fields in graphical tab
+
+## 1.4.0 - 18/06/2014
+
+### FIXES
+
+* Fix LDAPPropertyStore detecting "0" as an empty field #2561
+* Fix that fields in the PropertyKeyValueGrid do not expand #2513
+* Fix sorting of available users and groups in the Connection Manager
+* Fix: Paging of access groups in the Connection Manager
+* spec: Fix phpname on SLES.
+* spec: Fix el5 php detection.
+* spec: add dist tag
+* install: remove useless -C #2250
+* spec: detect php53-ldap properly
+* spec: add missing (build)requires php, php-ldap
+
+
+## 1.3.2 - 28/05/2013
+
+### FIXES
+
+* spec: update for configure/make, fix issues
+* Makefile: add install-basic to none output
+* Makefile: add install-basic and call that from install (next to clearcache)
+* Makefile: add DESTDIR support for make install
+* Fix make directly installing when no options are give
+* Fix configure placeholder not encapsulated as string
+* Fix suggestion box not being displayed
+* Use case insensitive natural sorting for group information
+* Add sqlite script
+* Added makefile and configure script for installation
+* Remove phing build system
+* Add update script for foreing key removal
+* Main layout fixes
+* Add autoexpand for small groups in search
+* Drop foreign key constraints for connections
+* Fix dots not being recognized in exports
+* Remove save button in favor of 'save and close'
+* Fix whitespaces not being recognized in cv tab
+* add timeperiod exclude property
+* add is_volatile host/service attribute
+* Added attributes for high/low_flap_threshold
+* Fix LDAPS support with non-standard host
+* Fix connection order
+* Fix popup hiding contextmenu in connection overview
+* Add Copy/Paste via contextmenu
+* Added host|service notes and display_name
+* Added Escalations
+* fix typo; remove sql-templates from distribution differentiation
+* Fix move of a aliasedObject when rename failed
+* Better Fix for alias update
+* fix alt name for lconf icon (s/Event DB/LConf/) if integrated via LConfExport DN in mid.pl
+* Fix alias update when the aliased object is cn
+* Added oracle sql create script
+* Fixed pagination not working in principaleditor
+* add initial spec file for suse and rhel
+* add package specific READMEs
+* drop duplicate inserts (leave the credentials.sql still there)
+* add initial mysql script for icinga-web tables
+* Fixed additional reload causing use after free issues on object creation
+
+
+## 1.3.1rc - 19/11/2012
+
+### FIXES
+
+* Fixed customvar issue
+* Fixed wrong downtime states in serviceview
+* Fixed wrong underscore in cvs
+
+
+## 1.3.0rc - 23/10/2012
+
+* Timeperiod ui fix (panel was too small)
+* Additional alias resolve check
+* tree now sorts alphabetically
+* Frontend now recognizes dn changes
+* fixed tab-key behaviour in masks
+* Alias update fixes
+* Fixed missing comma that could crash an installation under certain circumstances
+* Fixed customvariablepanel priority
+* Commands are now selected server-side to prevent injection attacks
+* Fixed test checkcommand definition
+* fixed @@SCHEMA_PREFIX@@ for #1600 changes
+* Fixed several reference issues (fixes #1618), new entry window now properly scales
+* Added Customvar tabs (fixes #1600), added progress indicator
+* context menu now stays on click
+* Fixed js bug when clicking fast on sttructuralobjects, fixed inheritanceissues
+* Fixed GridTreeEditor not accepting input
+* Static code analysis with JSHint
+* Fixed TypeError in logs
+* Added group dd and fixed scrolling behaviour in group views
+* Fixed currently changed form element not being used when saving without leaving field
+* Structuralview now has service, host and contact settings, fixed contextmenu not showing submenu, jslint fixes
+* Added "only assigned" optin to hostgroups
+* Fixed buggy PagingStore constructor overwriting global behaviour
+* Search is now case insensitive
+* Readded clean version of pagingstore
+* Fixed bug in timeperiodview, fixed unneccessary and buggy PagingStore
+* Added create alias as child
+* Bugfix in AliasView
+* UI Updates, abandoned-event bugfixes, moved create-node selection to contextMenu,added detection of broken aliases
+* Added updated javascript.xml
+* UI Changes, preparations for v1.3
+
+
+## 1.2.2 - 19/08/2012
+
+* Fixed installation routine for icinga-web 1.7 (Doctrine.compiled has been kicked out)
+* Disabled inheritance until it's properly configured
+* Removed unneeded files
+* added additional credential
+* Updated inheritance definitions
+* Fixed workaround for dirname() issue in icinga-web, fixed arguments stopping on non \w char
+* Removed non-interactive sudo flag not available on all sudo versions
+* Fixed arguments being recognized in grid check extensions
+* added small snippet for testing resource parsing
+* Fixed jump-to-lconf, fixed import order
+* Added extra values to module.xml, fixed tab/spaces mix
+* Version update
+* Added Jump to Check definition grid extension
+* Added ability to check commands
+* Added gridExtension Facility and added interface for servicecheck tests
+* Refactor part 2, fixed icons and style issues
+* Code cleanup, round 1
+
+## 1.2.1 - 18/11/2011
+
+* Had incorrect system timestamp, commit is just for time correction
+* Added qTips to ldapColumn
+* Added Ping class
+* Fixed groupview issues, fixed IE issues, fixed ldap-column target
+* Added logging to exporter
+* Removed hard-coded path in ldapColumn, fixed users not showing in icinga-web > 1.6
+* Made connection editor more restrictive
+* Fixed lconf Column throwing Security Exceptions when user without lconf.user credentials logs in
+* Prevented dit tree collapse
+* Fixed capitalized property causing errors on some AD providers
+* Added db column size update scripts
+* Fixed trailing comma of death
+* Added optional exportDN to configuration
+* fixed connection-id bug in class LConf_Backend_LConfExportTaskAction
+* Updated configs
+* Increased binddn length
+* Removed hardcoded lconf entires
+* Switched to version for icinga 1.5
+* Moved update to own path
+* created update script
+* expand alias doesn't rename now
+* Added resolve alias to nodes function
+* Added sql update script
+* Added ownership to connections, removed possibility to modify not-owned connections and removed users/groups editor for * non lconf.admins
+
+
+## Archive
+
+* 49ded2- (tag: for_install) * Fixed a postgresql installation error and a error fallback for category overview (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* 6f45c3c- * Fixed several bugs, see Testprotocol in wiki (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* e5e9b50- * Changed version to -dev (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* 6509a4f- * SQL will now be executed line-by-line, fixes #609 (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* 2215135- * Fixed attributes not selectable, fixed postgres 'save connection' error (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* ba54ea3- * Allowed dn to be selected (fixes #438), added session expiration check (fixes #445), removed "&nbsp;" from treeeditor (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* 671c2b6- * Added exporter route (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* e78862f- * Cache clean fix (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* 118b83f- * Added Hostgroup selection via combobox (fixes #440), fixed static prefix in objectDefaultAttributes * Therefore, additional fields where added in the module.xml (vor 3 Jahren, und 1 Monat) <jmossham
+* b8bdee9- * Improved model load routine, doctrines "loadModel" only loads base classes (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* 14f1b41- * Fixed typo in installer (vor 3 Jahren, und 1 Monat) <jmosshammer>
+* d194f5d- * Added change recognition via timestamps to exporter and option to select export satellites,  Updated module Installer version * Also fixed prefixes in filters (fixes #485) (vor 3 Jahren, und 2 Monat
+* ca02ae6- * Removed vim trash (vor 3 Jahren, und 2 Monaten) <jmosshammer>
+* f81a15b- * Added Export-Config which calls and handles lconf_deploy (vor 3 Jahren, und 2 Monaten) <jmosshammer>
+* 2913dbc- * Intermediate push, almost finished calling icinga export script (vor 3 Jahren, und 2 Monaten) <jmosshammer>
+* bbb9283- * Fixed tree selector (vor 3 Jahren, und 2 Monaten) <jmosshammer>
+* d122323- * ReAdded dynamic prefix to schema (vor 3 Jahren, und 2 Monaten) <jmosshammer>
+* ad523cc- * Added tree based objects (fixes #482) (vor 3 Jahren, und 2 Monaten) <jmosshammer>
+* 9f54581- * Fixed inheritance problems (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* f4a0704- * Inheritance debug change removed (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* f07c782- * Added stylesheet (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* 91577b2- * Added new admin interface (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* bb1a22a- * Fixed multi-connection delete (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* 5e361ca- * Added anonymous binding (#fixes 398) (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* 20ebea5- * updated manifest (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* 172ef80- * Fixed tree collapse regression, Fixed CronkIntegration not showing items (fixes #465), updated structure for icinga 1.3.0 (vor 3 Jahren, und 3 Monaten) <jmosshammer>
+* 687d871- * Added key navigation for copying/cutting/deleting in tree (#fixes 437) (vor 3 Jahren, und 6 Monaten) <jmosshammer>
+* 3a6351d- * Removed debug output (vor 3 Jahren, und 6 Monaten) <jmosshammer>
+* ea90983- * Fixed delete/create problems on properties with multiple occurences (vor 3 Jahren, und 6 Monaten) <jmosshammer>
+* f812e66- * Fixed IE Bug in Prinicpals editor (Trailing comma) (vor 3 Jahren, und 7 Monaten) <jmosshammer>
+* 90e527b- * Fixed collapsing tree bug (Tree re-expands now (#fixes 422) (vor 3 Jahren, und 7 Monaten) <jmosshammer>
+* d3667e7- * Fixed Postgresql issues: Session error after connection open, connection save error. Added Loading bars (vor 3 Jahren, und 7 Monaten) <jmosshammer>
+* c5b2f47- * Renamed manifest (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 12359fe- * Tagged version 1.0.0 (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* afe2169- * Improved Combobox behaviour, added final property set (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 38c45a0- * Doc update (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 411f1ea- * Added installscript for Cronk Integration (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 237b3c5- * Code review and fixed interface/filter issues before release (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 5d31373- * Fixed dirty index check causing multiple attribute changes to fail (#fixes 399) (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 6d4ad27- * added schema prefix for staticObjects (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 75059e6- * Prefixes for lconf schema can now be set dynamically, added install.sh (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* f08f993- * Fixed stylesheets (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 53b4b17- * Default filter added (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* bd91069- * Several bugfixes, works now with the new exception handler (vor 3 Jahren, und 9 Monaten) <jmosshammer>
+* 30beab5- * Made one fix a little bit nicer than before :) (vor 3 Jahren, und 10 Monaten) <jmosshammer>
+* 359c3a9- * ComboBox stores now are case insensitive, Save error fixed when adding new objects, fixed missing connectionId in NodeWizard comboboxes (vor 3 Jahren, und 10 Monaten) <jmosshammer>
+* 704590c- * Finished CronkIntegration, now it's ready for icinga 1.0.3! (vor 3 Jahren, und 10 Monaten) <jmosshammer>
+* 851e7df- * Added save request (vor 3 Jahren, und 10 Monaten) <jmosshammer>
+* b22edb9- * Added Integration in cronks (Fixes #366) (vor 3 Jahren, und 10 Monaten) <jmosshammer>
+* c3734d3- * Bugfixes, mass-movement, new icinga-paths (vor 3 Jahren, und 10 Monaten) <jmosshammer>
+* f978321- * Removed set fields due to usability issues (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* bb932b4- * OU change now only clones subnodes (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* b6629d3- * Fixed clone issues (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* 41db66e- * Installation doc now contains principal settings (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* 9c1e2ba- * DB installation fixes, about screen, doku (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* dd9f929- * Changed menu name (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* a42f944- Created documentation (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* 36897a5- * Fixed several issues (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* 51bf7ab- * Who needs database definitions? (vor 3 Jahren, und 11 Monaten) <jmosshammer>
+* 1c01a3b- * Changed size of alert windows and node-creation windows (fixes Safari display bugs) (vor 4 Jahren) <jmosshammer>
+* 4766b30- * fixed menuextender position (vor 4 Jahren) <jmosshammer>
+* 1d477b9- * Installation fixes (manifest) (vor 4 Jahren) <jmosshammer>
+* c2c1870- * Added db credentials (vor 4 Jahren) <jmosshammer>
+* 0ae1a31- * Added phing package (vor 4 Jahren) <jmosshammer>
+* d15c1ef- * Finished most features (fixes #317, fixes #318, fixes #320, fixes #321. fixes #322. fixes 336) (vor 4 Jahren) <jmosshammer>
+* 4f035e6- * Alias detection and correction system, search dn, search/replace, improved alias handling (vor 4 Jahren) <jmosshammer>
+* 826c473- * Copy/Paste via DD, Alias resolve fixes, finished filtering, rfc4514 conform escaping (vor 4 Jahren) <jmosshammer>
+* 4597706- * Added a bunch of features (Default node wizard, filter tree, some yet unused search functions) (vor 4 Jahren) <jmosshammer>
+* 1e5f41f- * Added several feature stubs (vor 4 Jahren) <jmosshammer>
+* 8a2a2ea- Updated to module-loader install package (vor 4 Jahren) <jmosshammer>
+* 347d722- Initial import (vor 4 Jahren, und 4 Monaten) <jmosshammer>
+
 
