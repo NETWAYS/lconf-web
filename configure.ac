@@ -5,13 +5,13 @@
 m4_include([etc/make/version.m4])
 
 # Which version of AC
-AC_PREREQ(2.61)
+AC_PREREQ(2.67)
 
 # Init project
-AC_INIT(lconf, [LCONF_VERSION], [netways.org])
+AC_INIT(lconf-web, [LCONF_WEB_VERSION], [netways.org])
 
 # Release date
-RELEASE_DATE=LCONF_RELEASE_DATE
+RELEASE_DATE=LCONF_WEB_RELEASE_DATE
 
 AC_PREFIX_DEFAULT(/usr/local/lconf-web)
 
