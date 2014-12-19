@@ -155,7 +155,7 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
         $output = utf8_encode($exportCmd->getOutput());
         $matches = array();
         $result = array();
-        preg_match_all("/[\t ]*?Checked[\t ]*?(?P<number>\d+)[\t ]*?(?P<category>[ \w]+)\./",$output,$matches);
+	preg_match_all("/[\t ]*?Checked[\t ]*?(?P<number>\d+)[\t ]*?(?P<category>[ \w\(\)]+)\./",$output,$matches);
         for($i=0;$i<count($matches["number"]);$i++) {
             $result[] = array(
                 "type" => trim($matches["category"][$i]),
@@ -229,7 +229,7 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
                     continue;
                 $matches = array();
     
-                preg_match_all('/^LCONF->EXPORT->CLUSTER[\t ]*?=[\t ]*?(?P<satellite>[\w \.]+?[ \t]*?$)/i',$val,$matches);
+		preg_match_all('/^LCONF->EXPORT->CLUSTER[\t ]*?=[\t ]*?(?P<satellite>((?=.{1,254}$)((?:(?!\d|-)[a-zA-Z0-9\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})))[ \t]*?$)/i',$val,$matches);
             
                 if(is_array($matches['satellite'])) {
                     foreach($matches['satellite'] as &$s) {

@@ -209,28 +209,57 @@
                                     var icon = "";
                                     switch(v) {
                                         case 'services':
+                                        case 'Service(s)':
                                             icon = 'service';
                                             break;
                                         case 'hosts':
+                                        case 'Host(s)':
                                             icon = 'host';
                                             break;
+                                        case 'HostGroup(s)':
                                         case 'host groups':
                                             icon = 'hostgroup';
                                             break;
+                                        case 'ServiceGroup(s)':
                                         case 'service groups':
                                             icon = 'servicegroup';
                                             break;
+                                        case 'User(s)':
                                         case 'contacts':
                                             icon = 'user';
                                             break;
+                                        case 'UserGroup(s)':
                                         case 'contact groups':
                                             icon = 'group';
                                             break;
+                                        case 'CheckCommand(s)':
+                                        case 'NotificationCommand(s)':
+                                        case 'EventCommand(s)':
                                         case 'commands':
                                             icon = 'script';
                                             break;
+                                        case 'TimePeriod(s)':
                                         case 'time periods':
                                             icon = 'clock-red';
+                                            break;
+                                        case 'Notification(s)':
+                                            icon = 'notify';
+                                            break;
+                                        case 'NotificationComponent(s)':
+                                        case 'CheckerComponent(s)':
+                                            icon = 'bricks';
+                                            break;
+                                        case 'IcingaApplication(s)':
+                                            icon = 'dot';
+                                            break;
+                                        case 'Zone(s)':
+                                            icon = 'organisation';
+                                            break;
+                                        case 'FileLogger(s)':
+                                            icon = 'report';
+                                            break;
+                                        case 'Endpoint(s)':
+                                            icon = 'world';
                                             break;
                                     }
                                     if(icon)

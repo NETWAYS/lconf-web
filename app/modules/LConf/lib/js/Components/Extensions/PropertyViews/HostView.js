@@ -119,6 +119,15 @@ var getHostInfoPanel = function(store) {
         hostgroupBox.updateFieldValues = updateFieldValues;
         
     }
+
+    var onTristateToggle = function(cmp,state) {
+        if(state === "true") {
+            store.setProperty(this.lconfProperty,"1");
+        } else {
+            store.deleteProperties(store.findProperty(this.lconfProperty));
+        }
+    };
+
     fn.defer(200,null,[fn]);
     
     return {
@@ -167,7 +176,24 @@ var getHostInfoPanel = function(store) {
             },
             hostgroupBox,
             contactgroupBox ,
-            contactBox]
+            contactBox,
+            {
+                xtype: 'tristatebutton',
+                enableToggle: true,
+                pressed: "disabled",
+                fieldLabel: "Disable",
+                text: 'Default',
+                stateText: {
+                    "true": 'Yes',
+                    "false": 'No',
+                    "disabled": 'Default'
+                },
+                lconfProperty: prefix+'HostDisable',
+                updateFieldValues: updateTristateButtonValues,
+                listeners: {
+                    toggle: onTristateToggle
+                }
+            }]
         }
     };
     
@@ -691,7 +717,7 @@ var getFlappingPreferences = function(store) {
     
     return {   
         xtype:'form',
-        height: 400,
+        autoHeight: true,
         flex: 1,
         padding: "1em 1em 1em 1em",
         items: [{
@@ -795,6 +821,68 @@ var getFlappingPreferences = function(store) {
     };
 };
 
+var getOptionalInfosPanel = function(store) {
+
+    // these helperfunctions are defined inline as we need the store
+    // @TODO: not nice and a lot of copy&paste
+    var onFieldChange = function(cmp,value) {
+        if(value === "" && cmp.allowBlank !== false) {
+            store.deleteProperties(store.findProperty(cmp.lconfProperty));
+        } else {
+            store.setProperty(cmp.lconfProperty,value);
+        }
+    };
+
+    return {
+        xtype:'form',
+        height: 400,
+        flex: 1,
+        padding: "1em 1em 1em 1em",
+        items:{
+            xtype: 'fieldset',
+            iconCls: 'icinga-icon-servicegroup',
+            title: 'Optional infos',
+            labelWidth: 200,
+            anchor: '90% ',
+            defaults: {
+                updateFieldValues: updateFieldValues,
+                listeners: {
+                    change: onFieldChange,
+                    invalid: function(cmp) {
+                        if(!cmp.activeError)
+                            store.markInvalid(true);
+                    },
+                    valid: function() {
+                        store.markInvalid(false);
+                    }
+                }
+            },
+            items: [{
+                fieldLabel: 'Notes',
+                xtype: 'textfield',
+                lconfProperty: prefix+"hostnotes",
+                anchor: '90%'
+            },{
+                fieldLabel: 'Notes URL',
+                xtype: 'textfield',
+                lconfProperty: prefix+"hostnotesurl",
+                anchor: '90%'
+            },{
+                fieldLabel: 'Action URL',
+                xtype: 'textfield',
+                lconfProperty: prefix+"hostactionurl",
+                anchor: '90%'
+            },{
+                fieldLabel: 'Description',
+                xtype: 'textfield',
+                lconfProperty: "description",
+                anchor: '90%'
+            }]
+        }
+    };
+
+};
+
 var updateFormValues = function() {
     var ldapMap = {};
     this.store.each(function(r) {
@@ -843,7 +931,8 @@ LConf.Extensions.Registry.registerPropertyView({
                 getHostInfoPanel(store),
                 getCheckPreferences(store),
                 getNotificationPreferences(store),
-                getFlappingPreferences(store)
+                getFlappingPreferences(store),
+		        getOptionalInfosPanel(store)
             ]
         });
  
