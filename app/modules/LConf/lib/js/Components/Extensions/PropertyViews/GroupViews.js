@@ -370,8 +370,7 @@ LConf.Extensions.Registry.registerPropertyView({
 
             },
             items: [
-                getGroupView("Servicegroup",store),
-                getGroupMembersView("Servicegroup",store,"service")
+                getGroupView("Servicegroup",store)
             ]
         });
         return p;

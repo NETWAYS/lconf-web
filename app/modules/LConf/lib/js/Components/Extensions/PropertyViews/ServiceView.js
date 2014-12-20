@@ -111,6 +111,14 @@ var getServiceInfoPanel = function(store) {
         
     }
 
+    var onTristateToggle = function(cmp,state) {
+        if(state === "true") {
+            store.setProperty(this.lconfProperty,"1");
+        } else {
+            store.deleteProperties(store.findProperty(this.lconfProperty));
+        }
+    };
+
     fn.defer(200,null,[fn]);
     return {
         xtype:'form',
@@ -146,7 +154,24 @@ var getServiceInfoPanel = function(store) {
             },
             servicegroupBox,
              contactgroupBox ,
-             contactBox]
+             contactBox,
+            {
+                xtype: 'tristatebutton',
+                enableToggle: true,
+                pressed: "disabled",
+                fieldLabel: "Disable",
+                text: 'Default',
+                stateText: {
+                    "true": 'Yes',
+                    "false": 'No',
+                    "disabled": 'Default'
+                },
+                lconfProperty: prefix+'ServiceDisable',
+                updateFieldValues: updateTristateButtonValues,
+                listeners: {
+                    toggle: onTristateToggle
+                }
+	    }]
         }
     };
     

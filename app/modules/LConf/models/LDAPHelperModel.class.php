@@ -52,6 +52,54 @@ class LConf_LDAPHelperModel extends IcingaLConfBaseModel {
     }
 
     /**
+     * Quote a string that should be used in a DN
+     *
+     * Special characters will be escaped
+     *
+     * @param  string DN-component
+     * @return string
+     */
+    public static function quoteForDN($str)
+    {
+        return self::quoteChars($str, array(
+            ',', '=', '+', '<', '>', ';', '\\', '"', '#'
+        ));
+    }
+
+    /**
+     * Quote a string that should be used in an LDAP search
+     *
+     * Special characters will be escaped
+     *
+     * @param  string String to be escaped
+     * @return string
+     */
+    public static function quoteForSearch($str)
+    {
+        return self::quoteChars($str, array('*', '(', ')', '\\', chr(0)));
+    }
+
+    /**
+     * Escape given characters in the given string
+     *
+     * Special characters will be escaped
+     *
+     * @param  string String to be escaped
+     * @return string
+     */
+    public static function quoteChars($str, $chars)
+    {
+        $quotedChars = array();
+        foreach ($chars as $k => $v) {
+            $quotedChars[$k] = ',' . str_pad(dechex(ord($v)), 2, '0');
+        }
+        $str = str_replace($chars, $quotedChars, $str);
+        // Workaround, str_replace behaves pretty strange with leading backslash
+        $str = preg_replace('~,~', '\\', $str);
+        return $str;
+    }
+
+    /**
      * Method that tries to guess the baseDN if none is set in the options
      * @param string $dn
      * @return string
@@ -138,7 +186,7 @@ class LConf_LDAPHelperModel extends IcingaLConfBaseModel {
                         $result["valid"] = false;
                     } else {
                         $search = explode(",", $result["aliasedobjectname"][0], 2);
-                        $rs = @ldap_get_entries($conn, @ldap_search($conn, $search[1], "(" . $search[0] . ")"));
+                        $rs = @ldap_get_entries($conn, @ldap_search($conn, $search[1], "(" . self::quoteForSearch($search[0]) . ")"));
                         if ($rs["count"] == 0)
                             $result["valid"] = false;
                     }
