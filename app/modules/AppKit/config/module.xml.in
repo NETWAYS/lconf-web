@@ -65,8 +65,8 @@
                     <ae:parameter name="org.icinga.version.release"></ae:parameter>
                 </setting>
                 
-                <!-- Ajax default request timeout (ms), 4 minutes == 240000 -->
-                <setting name="ajax.timeout">240000</setting>
+                <!-- Ajax default request timeout (ms), 40 minutes == 2400000 -->
+                <setting name="ajax.timeout">2400000</setting>
 
                 <setting name="agavi.include.css">
                     <ae:parameter>%core.module_dir%/AppKit/config/css.xml</ae:parameter>
