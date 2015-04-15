@@ -56,7 +56,9 @@ Ext.onReady(function() {
             
             //this.fireEvent("canceledit",this,this.getValue,this.startValue);
             this.hideEdit(remainVisible);    
-            this.targetNode.update(this.getValue());    
+            if(this.targetNode) {
+                this.targetNode.update(this.getValue());
+            }
             this.fireEvent("complete",this,this.getValue(),this.startValue);    
             return true    ;
         },

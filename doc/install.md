@@ -39,7 +39,18 @@ Import the Icinga Web module source
 Update version
 
     vim etc/make/version.m4
+    vim lconf-web.spec
     autoconf
+
+Commit the release
+
+    git commit -v -m "Release <VERSION>"
+
+Add a git tag
+
+MF:
+
+    git tag -u D14A1F16 -m "Version <VERSION>" v<VERSION>
 
 Create tarball
 

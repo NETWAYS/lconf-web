@@ -224,7 +224,7 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
                     ))();
                 combobox.fieldLabel = fieldname;
                 combobox.name = fieldname;
-                combobox.getStore().setBaseParam("connectionId", this.grid.connId);
+                combobox.getStore().setBaseParam("connectionId", this.grid.connId || this.grid.store.baseParams.connectionId);
                 return combobox;
             case '$HOSTADDRESS$':
                 combobox = new (LConf.Editors.ComboBoxFactory.create(
@@ -235,7 +235,7 @@ Ext.ns("LConf.Views").TestCheckWindow = function(cfg) {
                     ))();
                 combobox.fieldLabel = fieldname;
                 combobox.name = fieldname;
-                combobox.getStore().setBaseParam("connectionId", this.grid.connId);
+                combobox.getStore().setBaseParam("connectionId", this.grid.connId || this.grid.store.baseParams.connectionId);
                 return combobox;
             default:
                 return {

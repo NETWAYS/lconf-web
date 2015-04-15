@@ -4,7 +4,7 @@
         echo $tm->_('<h2>LConf management tool for Icinga 1.x.</h2>').'<br/>';
         echo $tm->_('<b>Version ').AgaviConfig::get('modules.lconf.version')."</b><br/>";
     ?>
-    Copyright &copy; Netways 2010-2014<br/>
+    Copyright &copy; Netways 2010-2015<br/>
     <?php 
         echo $tm->_('<p>LConf for Icinga Web is licensed under the GNU General Public License and is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE.<br/>
                 All other trademarks are the property of their respective owners.</p> 

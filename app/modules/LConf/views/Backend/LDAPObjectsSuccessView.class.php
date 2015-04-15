@@ -36,7 +36,7 @@ class LConf_Backend_LDAPObjectsSuccessView extends IcingaLConfBaseView
                 $filterModel = $ctx->getModel("LDAPFilter","LConf",array($filter[0],$filter[1]));
                 $filtergr->addFilter($filterModel);
             }
-            
+
             foreach($client->searchEntries($filtergr,null,array(isset($field["Attr"]) ? $field["Attr"] : null)) as $entry) {
                 if(is_int($entry))
                     continue;
@@ -63,12 +63,13 @@ class LConf_Backend_LDAPObjectsSuccessView extends IcingaLConfBaseView
 
         return json_encode($response);
     }
-    
+
     protected function buildTreeResponse($field, $result) {
         if(!$field)
             $field = "properties";
         $defs = $result["DEFINITIONS"][$field];
         $cats = $result["CATEGORIES"];
+        $excludes = isset($result["EXCLUDES"]) ? $result["EXCLUDES"] : array();
         $categoryListing = array();
         foreach($cats as $name=>$currentCategory) {
             $viewAndPattern = explode("|",$currentCategory);
@@ -81,6 +82,14 @@ class LConf_Backend_LDAPObjectsSuccessView extends IcingaLConfBaseView
             }
             $entry = array("text" => $name,"objclasses" => $objClassDefault, "leaf"=>false, "children" => array());
             foreach($matches as $match) {
+                if (array_key_exists($name, $excludes)) {
+                    $excludePatterns = str_replace(';', '|', $excludes[$name]);
+                    if (preg_match('/'. $excludePatterns .'/', $match))
+                    {
+                        continue;
+                    }
+                }
+
                 $entry["children"][] = array(
                     "text" => $match,
                     "leaf" => true

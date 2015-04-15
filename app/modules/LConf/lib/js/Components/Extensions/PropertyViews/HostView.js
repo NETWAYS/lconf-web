@@ -12,14 +12,14 @@ var prefix = LConf.Configuration.prefix;
 
 /**
  * Eventhandler function for syncing properties defined in the ldap editor with this editor
- * 
+ *
  * @param {Object} a (lconf-)property->value map
  **/
-var updateFieldValues = function(map) {   
+var updateFieldValues = function(map) {
     if(!this.lconfProperty) {
         return;
     }
-    
+
     var lconfProperty = this.lconfProperty.toLowerCase();
     if(this.hideOn) {
         if(new RegExp(".*"+this.hideOn+"$","i").test(map.objectclass)) {
@@ -28,7 +28,7 @@ var updateFieldValues = function(map) {
         }
     }
     for(var i in map) {
-        
+
         if(lconfProperty === i.toLowerCase())
             this.setValue(map[i]);
     }
@@ -36,7 +36,7 @@ var updateFieldValues = function(map) {
 
 /**
  * Special helper for syncing TriStateButtons
- * 
+ *
  * @param {Object} a (lconf-)property->value map
  **/
 var updateTristateButtonValues = function(map) {
@@ -49,17 +49,20 @@ var updateTristateButtonValues = function(map) {
 };
 
 /**
- * Returns the general host information FormPanel 
- * 
+ * Returns the general host information FormPanel
+ *
  * @param {Ext.data.Store}  The (possibly yet unpopulated) store containing the hosts information
- * 
+ *
  * @return {Ext.form.FormPanel}
  **/
 var getHostInfoPanel = function(store) {
-    
+
     // these helperfunctions are defined inline as we need the store
     // @TODO: not nice and a lot of copy&paste
     var onFieldChange = function(cmp,value) {
+
+        additiveInheritanceBox.updateStates();
+
         if(value === "" && cmp.allowBlank !== false) {
             store.deleteProperties(store.findProperty(cmp.lconfProperty));
         } else {
@@ -68,7 +71,7 @@ var getHostInfoPanel = function(store) {
     };
 
     //
-    // Define specific comboboxes for groups with the fatory classes 
+    // Define specific comboboxes for groups with the fatory classes
     var contactgroupBox = LConf.Editors.EditorFieldManager.getEditorFieldForProperty(
         prefix+"HostContactGroups",{
             fieldLabel: 'Contactgroups',
@@ -102,22 +105,102 @@ var getHostInfoPanel = function(store) {
             }
         },[prefix+"host"]
     );
-        
-        
+
+    var parentBox = LConf.Editors.EditorFieldManager.getEditorFieldForProperty(
+        prefix+"Parent",{
+            fieldLabel: 'Parent',
+            lconfProperty: prefix+"Parent",
+            xtype: 'combo',
+            anchor: '90%' ,
+            listeners: {
+                change: onFieldChange
+            }
+        },[prefix+"host"]
+    );
+
+    var additiveInheritanceBox = new Ext.ButtonGroup({
+        xtype: 'buttongroup',
+        fieldLabel: 'Additive Inheritance',
+        listeners: {
+            toggle: function(button) {
+
+                if (! button.box.getValue() || 0 === button.box.getValue().length) {
+                    button.toggle(false, false);
+                    return;
+                }
+
+                var values = button.box.getValue();
+
+                if (values.charAt(0) != "+" && values.length > 0 && button.pressed == true) {
+                    values = "+" + values;
+                }
+
+                if (values.charAt(0) == "+" && values.length > 0 && button.pressed == false) {
+                    values = values.substring(1);
+                }
+
+                button.box.setValue(values);
+                store.setProperty(button.box.lconfProperty, values);
+            },
+            render: function() {
+                this.items.each(function(button) {
+                    if ( /\+/i.test(button.box.getValue()) ) {
+                        button.toggle(true, true);
+                    }
+                });
+            }
+        },
+        autoHeight: true,
+        anchor: '90%',
+        defaults: {
+            bubbleEvents: ["toggle","change"],
+            xtype: 'button'
+        },
+        layout: 'column',
+        disabled: false,
+        border: false,
+        items: [{
+            text: 'Hostgroups',
+            style: 'margin-right:2px',
+            enableToggle: true,
+            box: hostgroupBox
+        },{
+            text: 'Contactgroups',
+            style: 'margin-right:2px',
+            enableToggle: true,
+            box: contactgroupBox
+        },{
+            text: 'Contacts',
+            style: 'margin-right:2px',
+            enableToggle: true,
+            box: contactBox
+        }],
+        updateStates: function() {
+            this.items.each(function(button) {
+                if ( /\+/i.test(button.box.getValue()) ) {
+                    button.toggle(true, true);
+                } else {
+                    button.toggle(false, false);
+                }
+            });
+        }
+    });
+
     // the store maybe unpopulated, so we have to get a bit out of sync
     var fn = function(me) {
-        if(!contactgroupBox.store ||!contactBox.store || !hostgroupBox.store) {
+        if(!contactgroupBox.store ||!contactBox.store || !hostgroupBox.store || !parentBox.store) {
             me.defer(200,null,[me])
             return;
         }
         contactgroupBox.store.setBaseParam("connectionId",store.getConnection());
         contactgroupBox.updateFieldValues = updateFieldValues;
-        
+
         contactBox.store.setBaseParam("connectionId",store.getConnection());
         contactBox.updateFieldValues = updateFieldValues;
         hostgroupBox.store.setBaseParam("connectionId",store.getConnection());
         hostgroupBox.updateFieldValues = updateFieldValues;
-        
+        parentBox.store.setBaseParam("connectionId",store.getConnection());
+        parentBox.updateFieldValues = updateFieldValues;
     }
 
     var onTristateToggle = function(cmp,state) {
@@ -129,7 +212,7 @@ var getHostInfoPanel = function(store) {
     };
 
     fn.defer(200,null,[fn]);
-    
+
     return {
         xtype:'form',
         layout: 'form',
@@ -173,10 +256,18 @@ var getHostInfoPanel = function(store) {
                 xtype: 'textfield',
                 lconfProperty: prefix+"Address",
                 anchor: '90%'
+            },{
+                fieldLabel: 'Address6',
+                hideOn: 'structuralObject',
+                xtype: 'textfield',
+                lconfProperty: prefix+"Address6",
+                anchor: '90%'
             },
             hostgroupBox,
             contactgroupBox ,
             contactBox,
+            additiveInheritanceBox,
+            parentBox,
             {
                 xtype: 'tristatebutton',
                 enableToggle: true,
@@ -196,16 +287,16 @@ var getHostInfoPanel = function(store) {
             }]
         }
     };
-    
+
 };
 
 /**
  * Returns the FormPanel for specifying the hosts check information
- * 
+ *
  * @param {Ext.data.Store}  The (possibly yet unpopulated) store containing the hosts information
- * 
+ *
  * @return {Ext.form.FormPanel}
- * 
+ *
  **/
 var getCheckPreferences = function(store) {
     // these helperfunctions are defined inline as we need the store
@@ -217,7 +308,7 @@ var getCheckPreferences = function(store) {
             store.setProperty(cmp.lconfProperty,value);
         }
     };
-    
+
     var onTristateToggle = function(cmp,state) {
         if(state === "true") {
             store.setProperty(this.lconfProperty,"1");
@@ -227,7 +318,7 @@ var getCheckPreferences = function(store) {
             store.deleteProperties(store.findProperty(this.lconfProperty));
         }
     };
-    
+
     // specific comboboxes for groups
     var checkCommandBox = LConf.Editors.EditorFieldManager.getEditorFieldForProperty(
         prefix+"HostCheckCommand",{
@@ -235,7 +326,7 @@ var getCheckPreferences = function(store) {
             lconfProperty: prefix+"HostCheckCommand",
             xtype: 'combo',
             emptyText: 'Default host check command',
-            anchor: '90%',            
+            anchor: '90%',
             listeners: {
                 change: onFieldChange
             }
@@ -263,7 +354,7 @@ var getCheckPreferences = function(store) {
                 listeners: {
                     change: onFieldChange
                 }
-                
+
             },
             items: [checkCommandBox,{
                 xtype:'compositefield',
@@ -271,10 +362,10 @@ var getCheckPreferences = function(store) {
                 anchor: '90%',
                 defaults: {
                     updateFieldValues: updateFieldValues,
-                    listeners: {    
+                    listeners: {
                         change: onFieldChange
                     }
-                
+
                 },
                 updateFieldValues: function(ldapMap) {
                     this.items.each(function(field) {
@@ -286,7 +377,7 @@ var getCheckPreferences = function(store) {
                     xtype: 'numberfield',
                     fieldLabel:'Check Interval',
                     lconfProperty: prefix+'HostCheckInterval',
-                    width: 30
+                    width: 35
                 },{
                     xtype: 'label',
                     text: 'Retry Interval',
@@ -296,10 +387,20 @@ var getCheckPreferences = function(store) {
                 },{
                     xtype: 'numberfield',
                     lconfProperty: prefix+'HostCheckRetryInterval',
-                    width: 30                      
+                    width: 35
+                },{
+                    xtype: 'label',
+                    text: 'Max Check Attempts',
+                    style: {
+                        'margin-top' : "4px"
+                    }
+                },{
+                    xtype: 'numberfield',
+                    lconfProperty: prefix+'HostCheckMaxCheckAttempts',
+                    width: 35
                 }]
             },{
-                // Little hack for populating buttons, as they are not defined in the items list 
+                // Little hack for populating buttons, as they are not defined in the items list
                 // and are not seen as form elements by ExtJS
                 xtype: 'hidden',
                 updateFieldValues: function() {
@@ -308,7 +409,7 @@ var getCheckPreferences = function(store) {
                     for(var i=0;i<btnGroups.length;i++) {
                         btnGroups[i].updateFieldValues.apply(btnGroups[i],arguments);
                     }
-                
+
                     var tristateBtns = this.ownerCt.findByType('tristatebutton');
                     for(i=0;i<tristateBtns.length;i++) {
                         tristateBtns[i].updateFieldValues.apply(tristateBtns[i],arguments);
@@ -319,7 +420,7 @@ var getCheckPreferences = function(store) {
                 fieldLabel:'Freshness threshold',
                 lconfProperty: prefix+'HostFreshnessThreshold',
                 updateFieldValues: updateFieldValues,
-                width: 30
+                width: 35
             },{
                 xtype: 'tristatebutton',
                 enableToggle: true,
@@ -333,11 +434,11 @@ var getCheckPreferences = function(store) {
                 },
                 lconfProperty: prefix+'HostCheckFreshness',
                 updateFieldValues: updateTristateButtonValues,
-                listeners: {    
+                listeners: {
                     toggle: onTristateToggle
                 }
-            },{ 
-                xtype:'buttongroup',     
+            },{
+                xtype:'buttongroup',
                 anchor: '90%',
                 labelwidth: 100,
                 align: 'center',
@@ -346,10 +447,10 @@ var getCheckPreferences = function(store) {
                 border: false,
                 defaults: {
                     updateFieldValues: updateFieldValues,
-                    listeners: {    
+                    listeners: {
                         change: onFieldChange
                     }
-                
+
                 },
                 items: [{
                     xtype: 'tristatebutton',
@@ -361,7 +462,7 @@ var getCheckPreferences = function(store) {
                         "disabled": 'Active: Default'
                     },
                     updateFieldValues: updateTristateButtonValues,
-                    listeners: {    
+                    listeners: {
                         toggle: onTristateToggle
                     },
                     pressed: "disabled",
@@ -377,7 +478,7 @@ var getCheckPreferences = function(store) {
                         "disabled": 'Passive: Default'
                     },
                     updateFieldValues: updateTristateButtonValues,
-                    listeners: {    
+                    listeners: {
                         toggle: onTristateToggle
                     },
                     pressed: "disabled",
@@ -388,7 +489,7 @@ var getCheckPreferences = function(store) {
                     text: 'Perfdata: Default',
                     width:100,
                     updateFieldValues: updateTristateButtonValues,
-                    listeners: {    
+                    listeners: {
                         toggle: onTristateToggle
                     },
                     stateText: {
@@ -404,18 +505,18 @@ var getCheckPreferences = function(store) {
         }]
     };
 };
- 
+
  /**
  * Returns the FormPanel for specifying the hosts notification information
- * 
+ *
  * @param {Ext.data.Store}  The (possibly yet unpopulated) store containing the hosts information
- * 
+ *
  * @return {Ext.form.FormPanel}
- * 
+ *
  **/
 var getNotificationPreferences = function(store) {
     // these helperfunctions are defined inline as we need the store
-    // @TODO: not nice and a lot of copy&paste       
+    // @TODO: not nice and a lot of copy&paste
     var onFieldChange = function(cmp,value) {
         if(value === "" && cmp.allowBlank !== false) {
             store.deleteProperties(store.findProperty(cmp.lconfProperty));
@@ -439,7 +540,7 @@ var getNotificationPreferences = function(store) {
             lconfProperty: prefix+"HostNotificationPeriod",
             xtype: 'combo',
             emptyText: 'Default timeperiod',
-            anchor: '90%',         
+            anchor: '90%',
             listeners: {
                 change: onFieldChange
             }
@@ -451,7 +552,7 @@ var getNotificationPreferences = function(store) {
         tpCommandBox.store.setBaseParam("connectionId",store.getConnection());
         tpCommandBox.updateFieldValues = updateFieldValues;
     }).defer(200);
-    
+
     var btnGroup = new Ext.ButtonGroup({
         xtype: 'buttongroup',
         autoHeight: true,
@@ -516,8 +617,8 @@ var getNotificationPreferences = function(store) {
             }
         },this);
     };
-    
-    
+
+
     var defaultBtn =  new Ext.Button({
         xtype: 'button',
         text: 'Use default rules',
@@ -526,7 +627,7 @@ var getNotificationPreferences = function(store) {
         enableToggle: true,
         lconfProperty: prefix+'HostNotificationOptions',
         toggleHandler: function(btn,state) {
-            
+
             for(var i=1;i<this.ownerCt.items.length;i++) {
                 this.ownerCt.items.items[1].setDisabled(state);
             }
@@ -540,24 +641,24 @@ var getNotificationPreferences = function(store) {
         updateFieldValues: function(map) {
             if(typeof map[this.lconfProperty.toLowerCase()] === "undefined") {
                 this.toggle(true,true);
-                
+
                 btnGroup.setDisabled(true);
-                
+
             } else {
-                this.toggle(false,true); 
+                this.toggle(false,true);
                 btnGroup.setDisabled(false);
-                
+
             }
         }
     });
 
     return {
         xtype:'form',
-        autoHeight: true,        
+        autoHeight: true,
         flex: 1,
         layout: 'form',
         padding: "1em 1em 1em 1em",
-        
+
         items: {
             xtype: 'fieldset',
             flex:1,
@@ -566,11 +667,11 @@ var getNotificationPreferences = function(store) {
             border: true,
             anchor: '90%',
             defaults: {
-               
+
                 listeners: {
                     change: onFieldChange
                 }
-        
+
             },
             items: [
                 defaultBtn,
@@ -589,7 +690,7 @@ var getNotificationPreferences = function(store) {
                 },
                 lconfProperty: prefix+'HostNotificationInterval',
 
-                width:30
+                width:35
             },{
                 xtype: 'tristatebutton',
                 fieldLabel: 'Enable notifications',
@@ -601,7 +702,7 @@ var getNotificationPreferences = function(store) {
                     "disabled": 'Use default'
                 },
                 updateFieldValues: updateTristateButtonValues,
-                listeners: {    
+                listeners: {
                     toggle: onTristateToggle
                 },
                 pressed: 'disabled'
@@ -612,11 +713,11 @@ var getNotificationPreferences = function(store) {
 
 /**
  * Returns the FormPanel for specifying the hosts flapping information
- * 
+ *
  * @param {Ext.data.Store}  The (possibly yet unpopulated) store containing the hosts information
- * 
+ *
  * @return {Ext.form.FormPanel}
- * 
+ *
  **/
 var getFlappingPreferences = function(store) {
      var onFieldChange = function(cmp,value) {
@@ -643,7 +744,7 @@ var getFlappingPreferences = function(store) {
             xtype: 'button',
             width:75,
             bubbleEvents: ["toggle","change"]
-        }, 
+        },
         lconfProperty: prefix+'HostFlapDetectionOptions',
         listeners: {
             toggle: function() {
@@ -671,7 +772,7 @@ var getFlappingPreferences = function(store) {
             enableToggle: true
         }]
     });
-    
+
     btnGroup.updateFieldValues = function(map) {
         var p = this.lconfProperty.toLowerCase();
         if(typeof map[p] === "undefined")
@@ -685,7 +786,7 @@ var getFlappingPreferences = function(store) {
             }
         },this);
     };
-    
+
     var defaultBtn = new Ext.Button({
         xtype: 'button',
         text: 'Use default rules',
@@ -694,9 +795,9 @@ var getFlappingPreferences = function(store) {
         lconfProperty: prefix+'HostFlapDetectionOptions',
         enableToggle: true,
         toggleHandler: function(btn,state) {
-            this.ownerCt.items.items[1].setDisabled(state);     
+            this.ownerCt.items.items[1].setDisabled(state);
             if(state === false) {
-                btnGroup.items.each(function(btn) { 
+                btnGroup.items.each(function(btn) {
                     btn.toggle(false,true);
                 });
                 store.deleteProperties(store.findProperty(btn.lconfProperty));
@@ -706,16 +807,16 @@ var getFlappingPreferences = function(store) {
             if(typeof map[this.lconfProperty.toLowerCase()] === "undefined") {
                 this.toggle(true,true);
                 btnGroup.setDisabled(true);
-                
+
             } else {
-                this.toggle(false,true); 
+                this.toggle(false,true);
                 btnGroup.setDisabled(false);
-                
+
             }
         }
     });
-    
-    return {   
+
+    return {
         xtype:'form',
         autoHeight: true,
         flex: 1,
@@ -727,12 +828,12 @@ var getFlappingPreferences = function(store) {
             title: 'Flap detection',
             border: true,
             anchor: '90%',
-            defaults: {                
+            defaults: {
                 listeners: {
                     change: onFieldChange
                 },
                 border: false
-        
+
             },
             items: [{
                 // buttons are ignored by forms...
@@ -742,7 +843,7 @@ var getFlappingPreferences = function(store) {
                     this.ownerCt.cascade(function() {
                         if(this.xtype !== 'hidden' && this.updateFieldValues)
                             this.updateFieldValues.apply(this,args);
-                        
+
                     });
                 }
             },{
@@ -757,7 +858,7 @@ var getFlappingPreferences = function(store) {
                     "disabled": 'Use default'
                 },
                 updateFieldValues: updateTristateButtonValues,
-                listeners: {    
+                listeners: {
                     toggle: onTristateToggle
                 },
                 pressed: 'disabled'
@@ -769,7 +870,7 @@ var getFlappingPreferences = function(store) {
                     listeners: {
                         change: onFieldChange
                     }
-            
+
                 },
                 items: [defaultBtn,btnGroup]
             }/* Not implemented in lconf backend
@@ -780,7 +881,7 @@ var getFlappingPreferences = function(store) {
                     xtype:'numberfield',
                     id: 'txtnumberfield_min',
                     value:0,
-                    width:30,
+                    width:35,
                     listeners: {
                         change: function(cmp,val) {
                             Ext.getCmp('txtnumberfield_sld').thumbs[0].value = val;
@@ -797,7 +898,7 @@ var getFlappingPreferences = function(store) {
                     values: [0,100],
                     constrainThumbs: true,
                     listeners: {
-               
+
                         drag: function(cmp,x) {
                             console.log(cmp);
                             Ext.getCmp('txtnumberfield_min').setValue(cmp.thumbs[0].value);
@@ -808,7 +909,7 @@ var getFlappingPreferences = function(store) {
                     xtype:'numberfield',
                     id: 'txtnumberfield_max',
                     value:0,
-                    width:30,
+                    width:35,
                     listeners:{
                         change: function(cmp,val) {
                             Ext.getCmp('txtnumberfield_sld').thumbs[1].value = val;
@@ -816,7 +917,7 @@ var getFlappingPreferences = function(store) {
                         }
                     }
                 }]
-            }*/]        
+            }*/]
         }]
     };
 };
@@ -889,7 +990,7 @@ var updateFormValues = function() {
         ldapMap[r.get('property').toLowerCase()] = r.get('value');
     });
     if(this.rendered) {
-        
+
         this.items.each(function(item) {
             if(!item)
                 return false;
@@ -916,7 +1017,7 @@ LConf.Extensions.Registry.registerPropertyView({
 
     objectclass: ".*(host|structuralobject)$",
     handler: function(store) {
-        
+
         var p = new Ext.Panel({
             autoDestroy:true,
             autoScroll: true,
@@ -935,12 +1036,12 @@ LConf.Extensions.Registry.registerPropertyView({
 		        getOptionalInfosPanel(store)
             ]
         });
- 
+
         p.store = store;
         var storeFn = updateFormValues.createDelegate(p);
         store.on("update",storeFn);
         store.on("load",storeFn);
-        
+
         p.addListener("destroy",function() {
             store.removeListener("update",storeFn);
             store.removeListener("load",storeFn);

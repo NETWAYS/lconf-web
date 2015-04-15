@@ -2,11 +2,9 @@
 /*global Ext:true, LConf: true */
 (function() {
     "use strict";
-    
-    
+
     var getCVGrid = function(bstore,type) {
         var ns = Ext.ns("LConf").Configuration.prefix;
-        
         var grid = new Ext.grid.EditorGridPanel({
             bindId: 'cvpanel_'+type,
             bindType: type,
@@ -55,20 +53,27 @@
             store: new Ext.data.JsonStore({
                 data: {},
                 idProperty:'id',
-                fields: ['id','cv_name','cv_value']
-                
-            }),
-            listeners: {
-                'afteredit': function(e) {
-                    var gridstore = e.grid.getStore();
-                    
-                    bstore.remove(bstore.findProperty(ns+type+"customvar"),true);
-                    
-                    gridstore.each(function(record) {
-                       bstore.setProperty(ns+type+"customvar","_"+record.get('cv_name')+" "+record.get('cv_value'),true);
-                    },this);
+                fields: ['id','cv_name','cv_value'],
+                listeners: {
+                    update: function(store, record, operation)  {
+                        var idx = bstore.find('value', "_" + record.get('cv_name') + " ");
+
+                        if (idx === -1) {
+                            bstore.setProperty(ns + type + "customvar", "_" + record.get('cv_name') + " " + record.get('cv_value'), true);
+                        } else {
+                            bstore.remove(bstore.getAt(idx));
+                            bstore.setProperty(ns + type + "customvar", "_" + record.get('cv_name') + " " + record.get('cv_value'), true);
+                        }
+                    },
+                    remove: function(store, record, index) {
+                        var idx = bstore.find('value', "_" + record.get('cv_name') + " ");
+
+                        if (idx > -1) {
+                            bstore.remove(bstore.getAt(idx));
+                        }
+                    }
                 }
-            }
+            })
         });
         return grid;
     };
@@ -86,7 +91,6 @@
                 continue;
             if(!Ext.isArray(value))
                 value = [value];
-            AppKit.log(value);
             for(var x=0;x<value.length;x++) {
                 
                 var cv = value[x].split(" ");

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ae:configurations xmlns="http://agavi.org/agavi/config/parts/module/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0">
     <ae:configuration>
-        
+
         <module enabled="true">
             <settings>
                 <setting name="title">Lconf Module</setting>
-                <setting name="version">1.4.0</setting>
+                <setting name="version">1.5.0</setting>
 <!--
                 <setting name="authors">
                     <ae:parameter name="joe.cool@peanuts.com">Snoopy</ae:parameter>
@@ -13,7 +13,7 @@
                 <setting name="homepage">http://www.agavi.org</setting>
                 <setting name="update_url" />
                 <setting name="description">An example module</setting>
--->                
+-->
                 <setting name="connectionSource">DB</setting>
                 <!-- Adding styles -->
 
@@ -27,7 +27,7 @@
                     <ae:parameter>%core.module_dir%/LConf/lib/js/MultiSelectTree.js</ae:parameter>
                     <ae:parameter>%core.module_dir%/LConf/lib/js/GridTreeEditorField.js</ae:parameter>
                 </setting>
-                
+
                 <setting name="icons">
                     <ae:parameter name="organizationalUnit">icinga-icon-organisation</ae:parameter>
                     <ae:parameter name="@ldap_prefix@StructuralObject">@ldap_prefix@-logo</ae:parameter>
@@ -41,10 +41,10 @@
                     <ae:parameter name="@ldap_prefix@Service">icinga-icon-cog</ae:parameter>
                     <ae:parameter name="@ldap_prefix@ServiceEscalation">@ldap_prefix@-application-lightning</ae:parameter>
                     <ae:parameter name="@ldap_prefix@Servicegroup">icinga-icon-servicegroup</ae:parameter>
-                    
+
                     <ae:parameter name="alias">icinga-icon-attach</ae:parameter>
                 </setting>
-                <setting name="prefix">@ldap_prefix@</setting>        
+                <setting name="prefix">@ldap_prefix@</setting>
                 <setting name="customDialogs">
                     <ae:parameter>
                         <ae:parameter name="view">Command</ae:parameter>
@@ -118,14 +118,14 @@
                         <ae:parameter name="iconCls">icinga-icon-bricks</ae:parameter>
                     </ae:parameter>
                 </setting>
-                
+
                 <setting name="propertyPresets">
                     <!-- base stuff -->
                     <ae:parameter name="property">
                         <ae:parameter name="factory">ComboBox</ae:parameter>
                         <ae:parameter name="parameter">"properties"</ae:parameter>
                     </ae:parameter>
-                    
+
                     <ae:parameter name="objectclass">
                         <ae:parameter name="factory">ComboBox</ae:parameter>
                         <ae:parameter name="parameter">"objectclass"</ae:parameter>
@@ -133,14 +133,15 @@
 
                     <!-- multiple times used -->
                     <ae:parameter name="@ldap_prefix@Members">
+
                         <ae:parameter name="@ldap_prefix@Hostgroup">
                             <ae:parameter name="factory">Set</ae:parameter>
-                            <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Host"],"Attr": "cn"}</ae:parameter> 
+                            <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Host"],"Attr": "cn"}</ae:parameter>
                         </ae:parameter>
 
                         <ae:parameter name="@ldap_prefix@Contactgroup">
                             <ae:parameter name="factory">Set</ae:parameter>
-                            <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contact"],"Attr": "cn"}</ae:parameter> 
+                            <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contact"],"Attr": "cn"}</ae:parameter>
                         </ae:parameter>
 
                         <ae:parameter name="@ldap_prefix@Servicegroup">
@@ -151,11 +152,22 @@
                         <!-- Default values -->
                         <ae:parameter name="factory">Set</ae:parameter>
                             <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Host"],"Attr": "cn"}</ae:parameter>
-                        </ae:parameter>
 
-                        <ae:parameter name="@ldap_prefix@HostgroupMembers">
+                    </ae:parameter>
+
+                    <ae:parameter name="@ldap_prefix@HostgroupMembers">
                         <ae:parameter name="factory">Set</ae:parameter>
                         <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Hostgroup"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
+
+                    <ae:parameter name="@ldap_prefix@ServicegroupMembers">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Servicegroup"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
+
+                    <ae:parameter name="@ldap_prefix@ContactgroupMembers">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contactgroup"],"Attr": "cn"}</ae:parameter>
                     </ae:parameter>
 
                     <!-- contacts -->
@@ -282,23 +294,39 @@
                         <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Timeperiod"],"Attr": "cn"}</ae:parameter>
                     </ae:parameter>
 
+                    <ae:parameter name="@ldap_prefix@HostEscalationHostGroups">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Hostgroup"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
+
                     <!-- serviceescalations -->
-                                        <ae:parameter name="@ldap_prefix@ServiceEscalationContacts">
-                                                <ae:parameter name="factory">Set</ae:parameter>
-                                                <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contact"],"Attr": "cn"}</ae:parameter>
-                                        </ae:parameter>
+                    <ae:parameter name="@ldap_prefix@ServiceEscalationContacts">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contact"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
 
-                                        <ae:parameter name="@ldap_prefix@ServiceEscalationContactgroups">
-                                                <ae:parameter name="factory">Set</ae:parameter>
-                                                <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contactgroup"],"Attr": "cn"}</ae:parameter>
-                                        </ae:parameter>
+                    <ae:parameter name="@ldap_prefix@ServiceEscalationContactgroups">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Contactgroup"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
 
-                                        <ae:parameter name="@ldap_prefix@ServiceEscalationPeriod">
-                                                <ae:parameter name="factory">ComboBox</ae:parameter>
-                                                <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Timeperiod"],"Attr": "cn"}</ae:parameter>
-                                        </ae:parameter>
+                    <ae:parameter name="@ldap_prefix@ServiceEscalationPeriod">
+                        <ae:parameter name="factory">ComboBox</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Timeperiod"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
+
+                    <ae:parameter name="@ldap_prefix@ServiceEscalationHostGroups">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Hostgroup"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
+
+                    <ae:parameter name="@ldap_prefix@ServiceEscalationServiceGroups">
+                        <ae:parameter name="factory">Set</ae:parameter>
+                        <ae:parameter name="parameter">{"LDAP":["objectclass=@ldap_prefix@Servicegroup"],"Attr": "cn"}</ae:parameter>
+                    </ae:parameter>
+
                 </setting>
-                
+
                 <setting name="searchCategories">
                     <ae:parameter>
                         <ae:parameter name="objectclass">@ldap_prefix@Host</ae:parameter>
@@ -360,9 +388,9 @@
                         <ae:parameter name="iconCls">icinga-icon-clock-red</ae:parameter>
                     </ae:parameter>
                 </setting>
-                
+
                 <setting name="inheritance">
-           <!--    
+           <!--
                     <ae:parameter name="@ldap_prefix@Host">
                         <ae:parameter name="(@ldap_prefix@Host|@ldap_prefix@StructuralObject)">
                             <ae:parameter name="attributes">
@@ -399,7 +427,7 @@
 
                 <setting name="ldap_definition_ini">%core.module_dir%/LConf/lib/ldapConfig/staticObjects.ini</setting>
                 <setting name="ldap_object_presets_ini">%core.module_dir%/LConf/lib/ldapConfig/objectDefaultAttributes.ini</setting>
-                
+
                 <setting name="lconfTestCheck">
                     <!--
                         the user which to use when performing test run on a local machine.
@@ -410,7 +438,7 @@
                     <ae:parameter name="checkInstance">default</ae:parameter>
 
                 </setting>
-                
+
 
                 <setting name="lconfExport">
                     <!-- DN which should be used for exporting
@@ -446,8 +474,8 @@
                 </setting>
 
 
-            </settings>    
+            </settings>
         </module>
-        
+
     </ae:configuration>
 </ae:configurations>

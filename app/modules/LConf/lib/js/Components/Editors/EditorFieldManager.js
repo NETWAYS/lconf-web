@@ -26,11 +26,15 @@ Ext.ns("LConf.Editors").EditorFieldManager = new (function() {
     var registeredEditorFields = {};
 
     this.registerEditorField = function(property,editor) {
-        registeredEditorFields[property.toLowerCase()] = editor;
+        if(property) {
+            registeredEditorFields[property.toLowerCase()] = editor;
+        }
     };
 
     this.unregisterEditorField = function(property) {
-        delete(registeredEditorFields[property.toLowerCase()]);
+        if(property) {
+            delete(registeredEditorFields[property.toLowerCase()]);
+        }
     };
 
     this.getEditorFieldForProperty = function(property,cfg,objectclass) {
@@ -47,12 +51,12 @@ Ext.ns("LConf.Editors").EditorFieldManager = new (function() {
                 break;
         }
 
-        if(!Ext.isDefined(field))
+        if(!Ext.isDefined(field) && property)
             field = registeredEditorFields[property.toLowerCase()];
         if(Ext.isDefined(field)) {
             return new field(cfg);
         }
-    
+
         return registeredEditorFields["default"];
     };
 })();

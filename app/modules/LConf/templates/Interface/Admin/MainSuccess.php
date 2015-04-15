@@ -177,6 +177,8 @@ Ext.onReady(function() {
                 
                 Ext.getCmp('form_lconfUserPanel').items.items[0].getForm().reset();
                 Ext.getCmp('form_lconfUserPanel').items.items[0].getForm().setValues({connection_id: -1,connection_name:_('New connection'),is_owner:true});
+                Ext.getCmp('form_lconfUserPanel').items.items[0].getForm().setValues({connection_id: -1,connection_host:_('localhost'),is_owner:true});
+                Ext.getCmp('form_lconfUserPanel').items.items[0].getForm().setValues({connection_id: -1,connection_port:_('389'),is_owner:true});
                 return false;
             })
         }, this, {single:true});

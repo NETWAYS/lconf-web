@@ -123,7 +123,7 @@
                 this.closeConnection(id,true);
             },this);
         },
-        
+
         initComponent: function() {
             Ext.Panel.prototype.initComponent.apply(this,arguments);
             this.add(this.getView());
@@ -147,7 +147,7 @@
                             iconCls: 'icinga-icon-wrench-screwdriver',
                             text: 'Export config',
                             handler: function() {
-                                this.exportPreflight(index,node);
+                                this.checkBeforeExportPreflight(index, node)
                             },
                             scope: this
                         }]
@@ -285,6 +285,30 @@
             });
             
             infoWnd.show();
+        },
+
+        checkBeforeExportPreflight: function(index, node) {
+            if(this.store.hasPendingChanges()) {
+                Ext.Msg.confirm(_("Unsaved changes pending"),_("Save changes?"),function (btn) {
+                    if(btn === 'yes') {
+                        this.store.save();
+                        this.store.on("save",function () {
+                            this.exportPreflight(index, node);
+                        },this,{
+                            single:true
+                        });
+                    } else {
+                        this.store.load();
+                        this.store.on("load",function () {
+                            this.exportPreflight(index, node);
+                        },this,{
+                            single:true
+                        });
+                    }
+                },this);
+            } else {
+                this.exportPreflight(index, node);
+            }
         },
         
         exportPreflight: function(index) {

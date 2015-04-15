@@ -1,18 +1,18 @@
 /**
  * Simple Editor view for Contact definitions
- * 
+ *
  */
 /*jshint browser:true, curly:false */
 /*global Ext:true, LConf: true */
 (function() {
 "use strict";
-    
+
 var prefix = LConf.Configuration.prefix;
 
 /**
- * Eventhandler function for ldap-editor sync 
+ * Eventhandler function for ldap-editor sync
  */
-var updateFieldValues = function(map) {   
+var updateFieldValues = function(map) {
     if(!this.lconfProperty) {
         return;
     }
@@ -42,7 +42,7 @@ var updateTristateButtonValues = function(map) {
 /**
  * Returns the panel for entering a contacts generic details like name, alias, etc.
  * @param {Ext.data.Store} The store containing the nodes information (WARNING: May not be populated yet)
- * 
+ *
  * @return {Ext.form.FormPanel}
  */
 var getContactPanel = function(store) {
@@ -67,7 +67,7 @@ var getContactPanel = function(store) {
             }
         },[prefix+"contact"]
     );
-    
+
     // current store is being populated while this field is set, so we have to wait a few ms
     var setupFn = function(fn) {
         if(!contactgroupBox.store) {
@@ -78,7 +78,7 @@ var getContactPanel = function(store) {
         }
     }
     setupFn.defer(200,null,[setupFn]);
-    
+
     return {
         xtype:'form',
         layout: 'form',
@@ -131,17 +131,17 @@ var getContactPanel = function(store) {
             },
             contactgroupBox]
         }
-    }; 
+    };
 };
 
 /**
  * The Host notification panel, like in the host editor
  * @param {Ext.data.Store} The store containing the nodes information (WARNING: May not be populated yet)
- * 
+ *
  * @return {Ext.form.FormPanel}
  */
 var getContactHostNotificationPreferences = function(store) {
-        
+
     var onFieldChange = function(cmp,value) {
         if(value === "") {
             store.deleteProperties(store.findProperty(cmp.lconfProperty));
@@ -165,7 +165,7 @@ var getContactHostNotificationPreferences = function(store) {
             lconfProperty: prefix+"ContactHostNotificationPeriod",
             xtype: 'combo',
             emptyText: 'Default contact timeperiod',
-            anchor: '90%',         
+            anchor: '90%',
             listeners: {
                 change: onFieldChange
             }
@@ -177,7 +177,7 @@ var getContactHostNotificationPreferences = function(store) {
         tpCommandBox.store.setBaseParam("connectionId",store.getConnection());
         tpCommandBox.updateFieldValues = updateFieldValues;
     }).defer(200);
-    
+
     var btnGroup = new Ext.ButtonGroup({
         xtype: 'buttongroup',
         autoHeight: true,
@@ -242,8 +242,8 @@ var getContactHostNotificationPreferences = function(store) {
             }
         },this);
     };
-    
-    
+
+
     var defaultBtn =  new Ext.Button({
         xtype: 'button',
         text: 'Use default rules',
@@ -252,7 +252,7 @@ var getContactHostNotificationPreferences = function(store) {
         enableToggle: true,
         lconfProperty: prefix+'ContactHostNotificationOptions',
         toggleHandler: function(btn,state) {
-            
+
             for(var i=1;i<this.ownerCt.items.length;i++) {
                 this.ownerCt.items.items[1].setDisabled(state);
             }
@@ -266,24 +266,24 @@ var getContactHostNotificationPreferences = function(store) {
         updateFieldValues: function(map) {
             if(typeof map[this.lconfProperty.toLowerCase()] === "undefined") {
                 this.toggle(true,true);
-                
+
                 btnGroup.setDisabled(true);
-                
+
             } else {
-                this.toggle(false,true); 
+                this.toggle(false,true);
                 btnGroup.setDisabled(false);
-                
+
             }
         }
     });
 
     return {
         xtype:'form',
-        autoHeight: true,        
+        autoHeight: true,
         flex: 1,
         layout: 'form',
         padding: "1em 1em 1em 1em",
-        
+
         items: {
             xtype: 'fieldset',
             flex:1,
@@ -292,43 +292,36 @@ var getContactHostNotificationPreferences = function(store) {
             border: true,
             anchor: '90%',
             defaults: {
-               
+
                 listeners: {
                     change: onFieldChange
                 }
-        
+
             },
             items: [
                 defaultBtn,
                 btnGroup,{
                     xtype: 'spacer',
                     height: 20
-                },tpCommandBox,{
-                    xtype: 'numberfield',
-                    fieldLabel: 'Interval',
-                    updateFieldValues: function() {
-                        updateFieldValues.apply(this,arguments);
-                        btnGroup.updateFieldValues.apply(btnGroup,arguments);
-                        defaultBtn.updateFieldValues.apply(defaultBtn,arguments);
+                },
+                tpCommandBox,
+                {
+                    xtype: 'tristatebutton',
+                    fieldLabel: 'Enable notifications',
+                    lconfProperty: prefix+'ContactHostNotificationsEnabled',
+                    text: 'Use default',
+                    stateText: {
+                        "true": 'Yes',
+                        "false": 'No',
+                        "disabled": 'Use default'
                     },
-                lconfProperty: prefix+'ContactHostNotificationInterval',
-                width:30
-            },{
-                xtype: 'tristatebutton',
-                fieldLabel: 'Enable notifications',
-                lconfProperty: prefix+'ContactHostNotificationsEnabled',
-                text: 'Use default',
-                stateText: {
-                    "true": 'Yes',
-                    "false": 'No',
-                    "disabled": 'Use default'
-                },
-                updateFieldValues: updateTristateButtonValues,
-                listeners: {    
-                    toggle: onTristateToggle
-                },
-                pressed: 'disabled'
-            }]
+                    updateFieldValues: updateTristateButtonValues,
+                    listeners: {
+                        toggle: onTristateToggle
+                    },
+                    pressed: 'disabled'
+                }
+            ]
         }
     };
 };
@@ -338,11 +331,11 @@ var getContactHostNotificationPreferences = function(store) {
 /**
  * The Service notification panel, like in the service editor
  * @param {Ext.data.Store} The store containing the nodes information (WARNING: May not be populated yet)
- * 
+ *
  * @return {Ext.form.FormPanel}
  */
 var getContactServiceNotificationPreferences = function(store) {
-        
+
     var onFieldChange = function(cmp,value) {
         if(value === "") {
             store.deleteProperties(store.findProperty(cmp.lconfProperty));
@@ -366,7 +359,7 @@ var getContactServiceNotificationPreferences = function(store) {
             lconfProperty: prefix+"ContactServiceNotificationPeriod",
             xtype: 'combo',
             emptyText: 'Default service notification timeperiod',
-            anchor: '90%',         
+            anchor: '90%',
             listeners: {
                 change: onFieldChange
             }
@@ -378,7 +371,7 @@ var getContactServiceNotificationPreferences = function(store) {
         tpCommandBox.store.setBaseParam("connectionId",store.getConnection());
         tpCommandBox.updateFieldValues = updateFieldValues;
     }).defer(200);
-    
+
     var btnGroup = new Ext.ButtonGroup({
         xtype: 'buttongroup',
         autoHeight: true,
@@ -447,8 +440,8 @@ var getContactServiceNotificationPreferences = function(store) {
             }
         },this);
     };
-    
-    
+
+
     var defaultBtn =  new Ext.Button({
         xtype: 'button',
         text: 'Use default rules',
@@ -457,7 +450,7 @@ var getContactServiceNotificationPreferences = function(store) {
         enableToggle: true,
         lconfProperty: prefix+'ContactServiceNotificationOptions',
         toggleHandler: function(btn,state) {
-            
+
             for(var i=1;i<this.ownerCt.items.length;i++) {
                 this.ownerCt.items.items[1].setDisabled(state);
             }
@@ -471,20 +464,20 @@ var getContactServiceNotificationPreferences = function(store) {
         updateFieldValues: function(map) {
             if(typeof map[this.lconfProperty.toLowerCase()] === "undefined") {
                 this.toggle(true,true);
-                btnGroup.setDisabled(true);             
+                btnGroup.setDisabled(true);
             } else {
-                this.toggle(false,true); 
-                btnGroup.setDisabled(false);             
+                this.toggle(false,true);
+                btnGroup.setDisabled(false);
             }
         }
     });
 
     return {
         xtype:'form',
-        autoHeight: true,        
+        autoHeight: true,
         flex: 1,
         layout: 'form',
-        padding: "1em 1em 1em 1em", 
+        padding: "1em 1em 1em 1em",
         items: {
             xtype: 'fieldset',
             flex:1,
@@ -495,55 +488,46 @@ var getContactServiceNotificationPreferences = function(store) {
             defaults: {
                 listeners: {
                     change: onFieldChange
-                }  
+                }
             },
             items: [
                 defaultBtn,
                 btnGroup,
-            {
-                xtype: 'hidden',
-                updateFieldValues: function() {
-                    // required for button update
-                    var btnGroups = this.ownerCt.findByType('buttongroup');
-                    for(var i=0;i<btnGroups.length;i++) {
-                        btnGroups[i].updateFieldValues.apply(btnGroups[i],arguments);
-                    }
-                
-                    var tristateBtns = this.ownerCt.findByType('tristatebutton');
-                    for(i=0;i<tristateBtns.length;i++) {
-                        tristateBtns[i].updateFieldValues.apply(tristateBtns[i],arguments);
-                    }
-                }
-            },{
-                xtype: 'spacer',
-                height: 20
-            },tpCommandBox,{
-                xtype: 'numberfield',
-                fieldLabel: 'Interval',
-                updateFieldValues: function() {
-                    updateFieldValues.apply(this,arguments);
-                    btnGroup.updateFieldValues.apply(btnGroup,arguments);
-                    defaultBtn.updateFieldValues.apply(defaultBtn,arguments);
+                {
+                    xtype: 'hidden',
+                    updateFieldValues: function() {
+                        // required for button update
+                        var btnGroups = this.ownerCt.findByType('buttongroup');
+                        for(var i=0;i<btnGroups.length;i++) {
+                            btnGroups[i].updateFieldValues.apply(btnGroups[i],arguments);
+                        }
 
-                },
-                lconfProperty: prefix+'ContactServiceNotificationInterval',
-                width:30
-            },{
-                xtype: 'tristatebutton',
-                fieldLabel: 'Enable notifications',
-                lconfProperty: prefix+'ContactServiceNotificationsEnabled',
-                text: 'Use default',
-                stateText: {
-                    "true": 'Yes',
-                    "false": 'No',
-                    "disabled": 'Use default'
-                },
-                updateFieldValues: updateTristateButtonValues,
-                listeners: {    
-                    toggle: onTristateToggle
-                },
-                pressed: 'disabled'
-            }]
+                        var tristateBtns = this.ownerCt.findByType('tristatebutton');
+                        for(i=0;i<tristateBtns.length;i++) {
+                            tristateBtns[i].updateFieldValues.apply(tristateBtns[i],arguments);
+                        }
+                    }
+                },{
+                    xtype: 'spacer',
+                    height: 20
+                },tpCommandBox,
+                {
+                    xtype: 'tristatebutton',
+                    fieldLabel: 'Enable notifications',
+                    lconfProperty: prefix+'ContactServiceNotificationsEnabled',
+                    text: 'Use default',
+                    stateText: {
+                        "true": 'Yes',
+                        "false": 'No',
+                        "disabled": 'Use default'
+                    },
+                    updateFieldValues: updateTristateButtonValues,
+                    listeners: {
+                        toggle: onTristateToggle
+                    },
+                    pressed: 'disabled'
+                }
+            ]
         }
     };
 };
@@ -554,7 +538,7 @@ var updateFormValues = function() {
         ldapMap[r.get('property').toLowerCase()] = r.get('value');
     });
     if(this.rendered) {
-        
+
         this.items.each(function(item) {
             if(!item)
                 return false;
@@ -597,7 +581,7 @@ LConf.Extensions.Registry.registerPropertyView({
 
             ]
         });
- 
+
         p.store = store;
         var storeFn = updateFormValues.createDelegate(p);
         store.on("update",storeFn);

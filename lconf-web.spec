@@ -40,7 +40,7 @@
 
 Name:           lconf-web
 Summary:        Standalone Web Module for LConf
-Version:        1.4.0
+Version:        1.5.0
 Release:        1%{?dist}%{?custom}
 Url:            https://www.netways.org/projects/lconf-web
 License:        GPL v2 or later

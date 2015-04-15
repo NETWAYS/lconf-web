@@ -1,9 +1,48 @@
 # LConf Standalone Web Changelog
 
+Additional Changes
+
+## 1.5.0 - 15/04/2015
+
+### FEATURES
+
+* Feature #2841: Increase Ajax timeout
+* Feature #2871: Add support for Apache 2.4
+
 Please check the LConf Icinga Web Module Changelog
 imported below.
 
 # LConf Icinga Web Changelog
+
+## 1.5.0 - 15/04/2015
+
+### CHANGES
+
+* Requires LConf Backend 1.5.x!
+
+* New object attributes (see below)
+* Export checks for unsaved settings
+* Exclude not supported attributes in properties tab
+
+### FEATURES
+
+* Feature #1568: Notify to save last changes before export
+* Feature #1727: Parent settings for Hosts via GUI
+* Feature #2096: connection manager: add the default 389 port and localhost as default
+* Feature #2425: Add "Max check attempts" to check settings
+* Feature #2517: ServiceEscalationServiceGroups and ServiceEscalationHostGroups dropdown missing
+* Feature #2645: Add an option to define override or add for specific attribute values (groups, contacts, etc)
+* Feature #2875: Add attributes: host address6, {contact,service}group_members, contact address1-6
+* Feature #2877: Add inherits_parents (dependencies 1.x) and first_notification_delay (host/service) attributes
+
+### FIXES
+
+* Bug #2177: Quicklinks from grid to access the hostObject directly in LConf don't work
+* Bug #2410: delete customvar not possible
+* Bug #2553: Testcheck fails at expanding macros
+* Bug #2643: Contacts can not have an interval
+* Bug #2811: Find a way to hide StructObj attributes in Properties tab
+* Bug #2839: Add property not possible
 
 
 ## 1.4.1 - 19/12/2014
