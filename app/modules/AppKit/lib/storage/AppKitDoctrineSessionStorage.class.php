@@ -2,20 +2,20 @@
 // {{{ICINGA_LICENSE_CODE}}}
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
-// 
-// Copyright (c) 2009-2012 Icinga Developer Team.
+//
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
-// 
+//
 // icinga-web is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // icinga-web is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
 // -----------------------------------------------------------------------------
@@ -53,7 +53,7 @@ class AppKitDoctrineSessionStorage extends AgaviSessionStorage {
 
     public function sessionClose() {
         // Hm, the same as sessionOpen?!
-
+        return true;
     }
 
     /**
@@ -63,16 +63,19 @@ class AppKitDoctrineSessionStorage extends AgaviSessionStorage {
      */
     public function sessionDestroy($id) {
 
-        $result = AppKitDoctrineUtil::createQuery()
-                  ->delete('NsmSession')
-                  ->andWhere('session_name=? and session_id=?', array($this->getParameter('session_name'), $id))
-                  ->execute();
+        AppKitLogger::verbose("Destroying session (%s)", $id);
 
-        if ($result > 0) {
-            return true;
-        }
+        // loading the session and clearing its data
+        // please be aware, we are not really deleting the session
+        // from the database, but emptying its data
+        // this helps with proper session handling on logon
 
-        return false;
+        $this->sessionRead($id);
+
+        $data = '';
+        $this->sessionWrite($id, $data);
+
+        return true;
 
     }
 
@@ -113,6 +116,7 @@ class AppKitDoctrineSessionStorage extends AgaviSessionStorage {
      */
     public function sessionOpen($path, $name) {
         // Hm should we do anything here?
+        return true;
     }
 
     /**
@@ -134,6 +138,10 @@ class AppKitDoctrineSessionStorage extends AgaviSessionStorage {
             $this->NsmSession = new NsmSession();
             $this->NsmSession->session_id = $id;
             $this->NsmSession->session_name = $session_name;
+
+            // Immediately saving it empty
+            $data = '';
+            $this->sessionWrite($id, $data);
 
             return '';
         } else {
@@ -162,13 +170,38 @@ class AppKitDoctrineSessionStorage extends AgaviSessionStorage {
      * @param string $id
      * @param mixed $data
      */
-    public function sessionWrite($id, &$data) {
-        AppKitLogger::verbose("Writing new session information (checksum=%s)",md5($data));
+    public function sessionWrite($id, $data) {
+        $max = ini_get('session.gc_maxlifetime');
+        $update = false;
+
+        if (! $max) {
+            $max = 1440;
+        }
+
+        $date = DateTime::createFromFormat('Y-m-d H:i:s', $this->NsmSession->session_modified);
+        $m = md5($data);
+
+        if ($date === false || (time() - $date->getTimestamp()) >= $max) {
+            $update = true;
+        }
+
+        if (! $update && $this->NsmSession->session_checksum === $m) {
+            return true;
+        }
+
+        AppKitLogger::verbose("Writing new session information (checksum=%s)", $m);
+
         $this->NsmSession->session_data = $data;
-        $this->NsmSession->session_checksum = md5($data);
+        $this->NsmSession->session_checksum = $m;
         $this->NsmSession->session_modified = date('Y-m-d H:i:s');
+
         $this->NsmSession->save();
+
+        AppKitLogger::debug("Write session update: %s", $id);
+
         AppKitLogger::verbose("Writing new session information successful");
+
+        return true;
     }
 
 }
