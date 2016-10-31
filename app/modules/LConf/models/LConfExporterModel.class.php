@@ -70,6 +70,8 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
             
         );
         $this->log("Executing export");
+	// Change: Add Timer for Export Duration meassure
+	$lconf_export_duration_start = microtime(true);
         $console->exec($exportCmd);
         $this->log("Export finished");
         if($exportCmd->getReturnCode() != 0) { 
@@ -80,8 +82,8 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
             $this->log("Export suceeded, updating export time");
             $this->updateExportTime($ldap_config,$satellites);
             $this->log("Export time updated");
-
-            return $this->parseSuccessfulOutput($exportCmd);
+            // Change: Pass the Duration Variable
+            return $this->parseSuccessfulOutput($exportCmd, $lconf_export_duration_start);
         }
     }
     
@@ -151,7 +153,7 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
         }
     }
 
-    protected function parseSuccessfulOutput(Api_Console_ConsoleCommandModel $exportCmd) {
+    protected function parseSuccessfulOutput(Api_Console_ConsoleCommandModel $exportCmd, $lconf_export_duration_start) {
         $output = utf8_encode($exportCmd->getOutput());
         $matches = array();
         $result = array();
@@ -162,6 +164,12 @@ class LConf_LConfExporterModel extends IcingaLConfBaseModel
                 "count" => intval($matches["number"][$i])
             );
         }
+	$lconf_export_duration = microtime(true) - $lconf_export_duration_start;
+	$lconf_export_duration = number_format($lconf_export_duration,0);
+	$result[] = array(
+		"type" => "Export Duration",
+		"count" => sprintf('%02d:%02d', floor($lconf_export_duration/60), $lconf_export_duration % 60)." minutes"
+	);
         return $result;
     }
 
